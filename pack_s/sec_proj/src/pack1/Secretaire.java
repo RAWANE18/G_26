@@ -38,4 +38,24 @@ public class Secretaire extends Personne{
         }
     
     
+        private RendezVousDAO rendezVousDAO;
+
+        public Secretaire(RendezVousDAO rendezVousDAO) {
+            this.rendezVousDAO = rendezVousDAO;
+        }
+    
+        public void gererDemandeRendezVous(String nomPatient, String prenomPatient, String date, String heure) {
+            RendezVous nouveauRendezVous = new RendezVous();
+            nouveauRendezVous.setNomPatient(nomPatient);
+            nouveauRendezVous.setPrenomPatient(prenomPatient);
+            nouveauRendezVous.setDate(date);
+            nouveauRendezVous.setHeure(heure);
+    
+            if (rendezVousDAO.verifierDisponibilite(date, heure)) {
+                rendezVousDAO.enregistrerRendezVous(nouveauRendezVous);
+                System.out.println("Rendez-vous enregistré avec succès.");
+            } else {
+                System.out.println("Le rendez-vous n'est pas disponible à cette date et heure.");
+            }
+        }
 }
