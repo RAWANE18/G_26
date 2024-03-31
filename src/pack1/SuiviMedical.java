@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SuiviMedical {
-      private List<FichePatient> fichesPatients;
-	  private List<Consultation> consultations;
-	  private List<Certificat> certificats;
+     private List<FichePatient> fichesPatients;
+	 private List<Consultation> consultations;
+	 private List<Certificat> certificats;
 	    
 	   
 
