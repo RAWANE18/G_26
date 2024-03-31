@@ -61,6 +61,7 @@ public class FichePatientDAO {
             
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
+                System.err.println("SQL EXEPTION: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -87,6 +88,7 @@ public class FichePatientDAO {
             
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
+                System.err.println("SQL EXEPTION: " + e.getMessage());
                 e.printStackTrace();
             }
         } else {

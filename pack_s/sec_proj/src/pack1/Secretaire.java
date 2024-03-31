@@ -43,6 +43,7 @@ public class Secretaire extends Personne{
             FichePatientDAO fichePatientDAO = new FichePatientDAO();
             fichePatientDAO.insertFichePatient(fichePatient);
     }  catch(SQLException e) {
+        System.err.println("SQL EXEPTION: " + e.getMessage());
                 e.printStackTrace();
             }    
     }

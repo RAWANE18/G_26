@@ -23,6 +23,7 @@ public class RendezVousDAO {
             ResultSet resultSet = statement.executeQuery();
             return !resultSet.next(); // Rendez-vous disponible si aucun résultat trouvé
         } catch (SQLException e) {
+            System.err.println("SQL EXEPTION: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -56,6 +57,7 @@ public class RendezVousDAO {
                 rendezVousList.add(rendezVous);
             }
         } catch (SQLException e) {
+            System.err.println("SQL EXEPTION: " + e.getMessage());
             e.printStackTrace();
         }
         return rendezVousList;
