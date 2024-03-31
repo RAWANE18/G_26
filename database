@@ -1,0 +1,25 @@
+CREATE DATABASE consultation;
+
+//table de consulatation
+CREATE TABLE consultation (
+date DATE,
+id_consultation INT,
+id_patient INT
+)
+ALTER TABLE consultation 
+ADD ordonnance TEXT;
+
+//table ordonnace
+CREATE TABLE ordonnance(
+id_patient INT,
+date_ordonnance DATE,
+ordonnance TEXT
+);
+
+//table medecin
+CREATE TABLE medecin(
+nom VARCHAR(20),
+prenon VARCHAR(20),
+specialite VARCHAR(20),
+numTEL INT
+);
