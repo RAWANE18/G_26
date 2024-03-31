@@ -78,8 +78,11 @@ public class RendezVous {
 
 
     //afficher les dates 
-    //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-    //for (LocalDateTime dateTimeRange : dateTimeRanges) {
-    //    System.out.println(dateTimeRange.format(formatter));
-    //}
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public void dateaffiche( List<LocalDateTime>  dateTimeRanges){
+    for (LocalDateTime dateTimeRange : dateTimeRanges) {
+        System.out.println(dateTimeRange.format(formatter));
+    }
+}
 }

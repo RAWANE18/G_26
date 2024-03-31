@@ -1,14 +1,21 @@
 package pack1;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Connection;
 
 public class Secretaire extends Personne{
+    private Connection connection; 
    
+    public Secretaire(Connection connection){
+        this.connection=connection;
+    }
+
     FichePatient fichePatient;
   public void remplirFichePatient(String nom, String prenom, String numTel) {
     // Récupérer les informations du patient à partir de la base de données
     String sql = "SELECT * FROM patients WHERE nom = ? AND prenom = ? tel = ?";
-    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+ try{ PreparedStatement preparedStatement = connection.prepareStatement(sql);
     preparedStatement.setString(1, nom);
     preparedStatement.setString(2, prenom);
     preparedStatement.setString(3, numTel);
@@ -35,7 +42,10 @@ public class Secretaire extends Personne{
     
             FichePatientDAO fichePatientDAO = new FichePatientDAO();
             fichePatientDAO.insertFichePatient(fichePatient);
-        }
+    }  catch(SQLException e) {
+                e.printStackTrace();
+            }    
+    }
     
     
         private RendezVousDAO rendezVousDAO;
@@ -50,12 +60,14 @@ public class Secretaire extends Personne{
             nouveauRendezVous.setPrenomPatient(prenomPatient);
             nouveauRendezVous.setDate(date);
             nouveauRendezVous.setHeure(heure);
-    
+        
             if (rendezVousDAO.verifierDisponibilite(date, heure)) {
                 rendezVousDAO.enregistrerRendezVous(nouveauRendezVous);
                 System.out.println("Rendez-vous enregistré avec succès.");
             } else {
-                System.out.println("Le rendez-vous n'est pas disponible à cette date et heure.");
-            }
+    
+                  System.out.println("Le rendez-vous n'est pas disponible à cette date et heure.");
+            } 
+        
         }
-}
+    }
