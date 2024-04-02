@@ -1,0 +1,20 @@
+
+CREATE TABLE patient (
+    id_patient INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    date_of_birth DATE,
+    gender VARCHAR(10),
+    address VARCHAR(255),
+    phone_number VARCHAR(20),
+    email VARCHAR(255)
+);
+
+CREATE TABLE certificats (
+    id_certificat INT AUTO_INCREMENT PRIMARY KEY,
+    contenu TEXT,
+    date_delivrance DATE,
+    date_expiration DATE,
+    id_patient INT,
+FOREIGN KEY (id_patient) REFERENCES patient(id_patient)
+);
