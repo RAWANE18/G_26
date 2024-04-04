@@ -18,3 +18,11 @@ CREATE TABLE certificats (
     id_patient INT,
 FOREIGN KEY (id_patient) REFERENCES patient(id_patient)
 );
+
+CREATE TABLE antecedent (
+    id_antecedent INT AUTO_INCREMENT PRIMARY KEY,
+    antecedentMedicaux TEXT,
+    antecedentChirurgicaux TEXT,
+    id_patient INT,
+FOREIGN KEY (id_patient) REFERENCES patient(id_patient)
+);
