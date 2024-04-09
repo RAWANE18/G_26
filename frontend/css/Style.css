@@ -15,6 +15,17 @@ body {
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+.connexion_Container {
+  background-color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0;
+  width: 600px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px -15px rgba(0, 0, 0, 0.3);
+  display: none;
 }
 .container {
   display: flex;
@@ -24,14 +35,14 @@ body {
   height: 100vh;
 }
 
-.form-container .title {
+.title {
   color: #000;
   font-size: 25px;
   font-weight: 600;
   text-transform: capitalize;
   margin: 0 0 25px;
 }
-.form-container .title:after {
+.title:after {
   content: "";
   background-color: #00a9ef;
   height: 3px;
@@ -40,7 +51,7 @@ body {
   display: block;
   clear: both;
 }
-.form-container .sub-title {
+.sub-title {
   color: #333;
   font-size: 18px;
   font-weight: 550;
@@ -58,24 +69,24 @@ body {
   flex-direction: row;
 }
 
-.form-container .form-horizontal {
+.form-horizontal {
   font-size: 0;
 }
-.form-container .form-horizontal .form-group {
+.form-horizontal .form-group {
   color: #333;
   width: 50%;
   padding: 0 8px;
   margin: 0 0 15px;
   display: inline-block;
 }
-.form-container .form-horizontal .form-group:nth-child(4) {
+.form-horizontal .form-group:nth-child(4) {
   margin-bottom: 30px;
 }
-.form-container .form-horizontal .form-group label {
+.form-horizontal .form-group label {
   font-size: 17px;
   font-weight: 600;
 }
-.form-container .form-horizontal .form-control {
+.form-horizontal .form-control {
   color: #888;
   background: #fff;
   font-weight: 400;
@@ -86,14 +97,14 @@ body {
   border: 2px solid #e7e7e7;
   box-shadow: none;
 }
-.form-container .form-horizontal .form-control:focus {
+.form-horizontal .form-control:focus {
   box-shadow: 0 0 5px #dcdcdc;
 }
-.form-container .form-horizontal .check-terms {
+.form-horizontal .check-terms {
   padding: 0 8px;
   margin: 0 0 25px;
 }
-.form-container .form-horizontal .check-terms .check-label {
+.form-horizontal .check-terms .check-label {
   color: #333;
   font-size: 14px;
   font-weight: 500;
@@ -101,7 +112,7 @@ body {
   vertical-align: top;
   display: inline-block;
 }
-.form-container .form-horizontal .check-terms .checkbox {
+.form-horizontal .check-terms .checkbox {
   height: 17px;
   width: 17px;
   min-height: auto;
@@ -116,7 +127,7 @@ body {
   -webkit-appearance: none;
   transition: all 0.3s ease 0s;
 }
-.form-container .form-horizontal .check-terms .checkbox:before {
+.form-horizontal .check-terms .checkbox:before {
   content: "";
   height: 5px;
   width: 9px;
@@ -128,16 +139,16 @@ body {
   top: 2.5px;
   transition: all 0.3s ease;
 }
-.form-container .form-horizontal .check-terms .checkbox:checked:before {
+.form-horizontal .check-terms .checkbox:checked:before {
   opacity: 1;
 }
-.form-container .form-horizontal .check-terms .checkbox:not(:checked):before {
+.form-horizontal .check-terms .checkbox:not(:checked):before {
   opacity: 0;
 }
-.form-container .form-horizontal .check-terms .checkbox:focus {
+.form-horizontal .check-terms .checkbox:focus {
   outline: none;
 }
-.form-container .signin-link {
+.signin-link {
   color: #333;
 
   font-size: 14px;
@@ -146,19 +157,20 @@ body {
   display: inline-block;
   vertical-align: top;
 }
-.form-container .signin-link a {
+.signin-link a {
   color: #00a9ef;
   font-weight: 600;
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
-.form-container .signin-link a:hover {
+.signin-link a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
-.footer-container .signin-link {
+.signin-link {
   width: 300px;
 }
-.form-container .form-horizontal .signup {
+.form-horizontal .signup {
   color: #fff;
   background: #00a9ef;
   font-size: 15px;
@@ -170,11 +182,12 @@ body {
   border-radius: 10px;
   transition: all 0.3s ease 0s;
 }
-.form-container .form-horizontal .btn:hover,
-.form-container .form-horizontal .btn:focus {
+.form-horizontal .btn:hover,
+.form-horizontal .btn:focus {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px rgba(0, 0, 0, 0.15), 5px 5px rgba(0, 0, 0, 0.1);
   outline: none;
+  cursor: pointer;
 }
 .form-group .form-control {
   width: 250px;
@@ -182,6 +195,13 @@ body {
 button {
   border: none;
   margin-left: 40px;
+}
+#btn {
+  text-decoration: none;
+  color: #fff;
+}
+#btn:hover {
+  color: #fff;
 }
 @media only screen and (max-width: 479px) {
   .form-container .form-horizontal .form-group {
