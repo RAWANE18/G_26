@@ -203,11 +203,16 @@ button {
 #btn:hover {
   color: #fff;
 }
+@media only screen and (max-width: 843px) {
+  .container {
+    margin-right: 10px;
+  }
+}
 @media only screen and (max-width: 479px) {
-  .form-container .form-horizontal .form-group {
+  .form-horizontal .form-group {
     width: 100%;
   }
-  .form-container .signin-link {
+  .signin-link {
     width: 100%;
     margin: 0 10px 15px;
   }

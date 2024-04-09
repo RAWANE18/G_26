@@ -4,6 +4,7 @@ var formContainer = document.getElementsByClassName("form-container")[0];
 var connexionContainer = document.getElementsByClassName(
   "connexion_Container"
 )[0];
+var btn = document.getElementById("btn");
 
 connexion.addEventListener("click", () => {
   if (window.getComputedStyle(connexionContainer).display === "none") {
@@ -22,4 +23,7 @@ register.addEventListener("click", () => {
     connexionContainer.style.display = "block";
     formContainer.style.display = "none";
   }
+});
+btn.addEventListener("click", () => {
+  alert("compte créé avec succès");
 });
