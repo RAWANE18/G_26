@@ -1,0 +1,39 @@
+public class Ordonnance {
+
+    private int id_Patient;
+    private String date;
+    private String ordonnance;
+
+    // Constructor
+    public Ordonnance(int id_Patient, String date, String ordonnance) {
+        this.id_Patient = id_Patient;
+        this.date = date;
+        this.ordonnance = ordonnance;
+    }
+
+  //setters and getters 
+    
+    public int getId_Patient() {
+        return idPatient;
+    }
+
+    public void setIdPatient(int idPatient) {
+        this.id_Patient = id_Patient;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getOrdonnance() {
+        return ordonnance;
+    }
+
+    public void setOrdonnance(String ordonnance) {
+        this.ordonnance = ordonnance;
+    }
+}
