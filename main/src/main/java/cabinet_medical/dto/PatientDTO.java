@@ -9,7 +9,7 @@ public class PatientDTO {
     @NotEmpty(message="entrez le nom")
     private String lastname;
     @NotEmpty(message="entrez le prenom")
-    private String firstname;
+    public String firstname;
     @NotEmpty(message="entrez le numero de telephone")
     private String numtel;
     @NotEmpty(message="veuillez saisir votre Email")
