@@ -18,12 +18,22 @@ public class Consultation {
     private String date ;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @column(name="idConsultation")
     private long idConsultation;
   
     @Column(table="patients")
     private int idPatient;
+   //liste des ordonnances 
+    @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ordonnance> ordonnances = new ArrayList<>();
+
+    //liste des certificats
+    @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Certificat> certificats = new ArrayList<>();
      
     //getters 
+    public List<Ordonnance> getOrdonnances() {
+        return ordonnances;
     public String getDate() {
         return date;
     }
@@ -33,8 +43,14 @@ public class Consultation {
     public int getIdPatient() {
     return idPatient;
     }
+    public void setOrdonnances(List<Ordonnance> ordonnances) {
+        this.ordonnances = ordonnances;
+    }
 
     //setters
+    public void setCertificats(List<Certificat> certificats) {
+        this.certificats = certificats;
+    }
     public void setIdConsultation(Long idConsultation) {
     this.idConsultation = idConsultation;
     }
@@ -44,7 +60,9 @@ public class Consultation {
     public void setDate(String date) {
         this.date = date;
     }
-
+    public List<Certificat> getCertificats() {
+        return certificats;
+    }
 
     //constructeurs
     public Consultation(){}
@@ -55,6 +73,19 @@ public class Consultation {
         this.idPatient = idpatient;
 
     }
+    public void addOrdonnance(Ordonnance ordonnance) {
+        this.ordonnances.add(ordonnance);
+        ordonnance.setFichePatient(this);
+    }           
+    public void removeOrdonnance(Ordonnance ordonnance) {
+        this.ordonnances.remove(ordonnance);
+        ordonnance.setFichePatient(null);
+    }
+
     
+     // rajouter/enlever certificat de la fiche patient
+    public void addCertificat(Certificat certificat) {
+        this.certificats.add(certificat);
+        certificat.setFichePatient(this);
 
 }

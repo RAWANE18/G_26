@@ -21,12 +21,7 @@ public class FichePatientService {
     @Autowired
     private PatientService patientService;
 
-    @Autowired
-    private OrdonnanceService ordonnanceService;
-
-    @Autowired
-    private CertificatService certificatService;
-
+   
     @Autowired
     private AntecedantService antecedantService;
 
@@ -74,6 +69,7 @@ public FichePatient addOrdonnanceToFichePatient(Long fichePatientId, Ordonnance 
     fichePatientRepository.save(fichePatient);
     return fichePatient;
 }
+//ajouter antecedant a fiche patient
 public FichePatient addAntecedantToFichePatient(Long fichePatientId, Antecedant antecedant) {
     FichePatient fichePatient = findById(fichePatientId);
     antecedant.setFichePatient(fichePatient);
@@ -81,12 +77,7 @@ public FichePatient addAntecedantToFichePatient(Long fichePatientId, Antecedant 
     fichePatientRepository.save(fichePatient);
     return fichePatient;
 }
-public FichePatient addCertificatToFichePatient(Long fichePatientId, Certificat certificat) {
-    FichePatient fichePatient = findById(fichePatientId);
-    certificat.setFichePatient(fichePatient);
-    fichePatient.addCertificat(certificat);
-    fichePatientRepository.save(fichePatient);
-    return fichePatient;
+
 }
 
 

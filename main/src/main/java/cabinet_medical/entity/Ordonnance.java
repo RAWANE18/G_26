@@ -20,10 +20,10 @@ public class Ordonnance {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", referencedColumnName = "idPatient")
     private Patient patient;
-    //link with la fiche patient
+    //link with la consutlation
     @ManyToOne
-    @JoinColumn(name = "fiche_patient_id")
-    private FichePatient fichePatient;
+    @JoinColumn(name = "idConsultation")
+    private Consultation consultation;
    
     @Column(name = "lastname")
     private String lastname;
@@ -45,17 +45,18 @@ public class Ordonnance {
    public void setIdOrdonnance(Long idOrdonnance) {
        this.idOrdonnance = idOrdonnance;
    }
-   public void setFichePatient(FichePatient fichePatient) {
-       this.fichePatient = fichePatient;
-   }
+  
    public String getContenu() {
        return contenu;
    }
    public String getLastname() {
        return lastname;
    }
-   public FichePatient getFichePatient() {
-       return fichePatient;
+   public void setConsultation(Consultation consultation) {
+    this.consultation = consultation;
+}
+public Consultaiton getConsultation() {
+    return consultation;
    }
    public String getFirstname() {
        return firstname;

@@ -9,19 +9,27 @@ private String antecedantMedicaux;
 private String antecedantChirurgicaux;
 private Long patientId;
 private Long fichePatientId;
+private String contenu;
 
 public AntecedantDTO() {
 }
 
-public AntecedantDTO(Long id, String antecedantMedicaux, String antecedantChirurgicaux, Long patientId, Long fichePatientId) {
+public AntecedantDTO(Long id,String contenu ,String antecedantMedicaux, String antecedantChirurgicaux, Long patientId, Long fichePatientId) {
 this.id = id;
 this.antecedantMedicaux = antecedantMedicaux;
 this.antecedantChirurgicaux = antecedantChirurgicaux;
 this.patientId = patientId;
 this.fichePatientId = fichePatientId;
+this.contenu = contenu;
 }
 
 // Getters and setters
+public void setContenu(String contenu) {
+    this.contenu = contenu;
+}
+public String getContenu(){
+ return contenu ;
+}
 
 public Long getId() {
 return id;
