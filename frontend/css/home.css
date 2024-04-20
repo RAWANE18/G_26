@@ -34,11 +34,11 @@ body {
   border-left: 10px solid var(--blue);
   transition: 0.5s;
   overflow: hidden;
-  margin-left: 0;
+
   left: 0;
 }
 .navigation.active {
-  width: 80px;
+  width: 102px;
 }
 
 .navigation ul {
@@ -101,7 +101,7 @@ body {
 .navigation ul li a .title {
   position: relative;
   display: block;
-  padding: 0 10px;
+  padding: 0;
   height: 60px;
   line-height: 60px;
   text-align: start;
@@ -140,14 +140,15 @@ body {
 .main {
   position: absolute;
   width: calc(100% - 300px);
+
   left: 300px;
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
 }
 .main.active {
-  width: calc(100% - 80px);
-  left: 80px;
+  width: calc(100% - 102px);
+  left: 102px;
 }
 
 .topbar {
@@ -185,4 +186,16 @@ body {
 .Ajouter {
   display: flex;
   justify-content: end;
+}
+.Ajouter .btn {
+  background-color: #00816d;
+}
+.Ajouter .btn:hover {
+  background-color: #00816d;
+}
+.table th {
+  background-color: #f1f9ff;
+}
+.table tr:nth-child(even) {
+  background-color: #f1f9ff;
 }
