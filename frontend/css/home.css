@@ -12,6 +12,8 @@
   --gray: #f5f5f5;
   --black1: #222;
   --black2: #999;
+  --red: #ff502f;
+  --green: #00816d;
 }
 
 body {
@@ -180,7 +182,7 @@ body {
 }
 
 .btn-delete i {
-  color: red;
+  color: var(--red);
   margin-left: 20px;
 }
 .Ajouter {
@@ -188,13 +190,14 @@ body {
   justify-content: end;
 }
 .Ajouter .btn {
-  background-color: #00816d;
+  background-color: var(--green);
 }
 .Ajouter .btn:hover {
-  background-color: #00816d;
+  background-color: var(--green);
 }
 .table th {
   background-color: #f1f9ff;
+  color: var(--blue);
 }
 .table tr:nth-child(even) {
   background-color: #f1f9ff;
