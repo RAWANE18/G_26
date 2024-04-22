@@ -8,14 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -51,23 +49,19 @@ public class FichePatient {
         private String numTel;
     
         @JsonIgnoreProperties("fichePatient")
-        @ManyToOne(fetch = FetchType.LAZY)
+        @OneToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "id_patient")
         private Patient patient;
-        //liste des ordonnances       
-        @OneToMany(mappedBy = "fichePatient", cascade = CascadeType.ALL, orphanRemoval = true)
-        private List<Ordonnance> ordonnances = new ArrayList<>();
-    
-        //liste des certificats
-        @OneToMany(mappedBy = "fichePatient", cascade = CascadeType.ALL, orphanRemoval = true)
-        private List<Certificat> certificats = new ArrayList<>();
         //l'antecedant 
         @OneToOne(mappedBy = "fichePatient", cascade = CascadeType.ALL)
          private Antecedant antecedant;
 
-         @OneToOne(mappedBy = "suivimedical", cascade = CascadeType.ALL)
+        @OneToOne(mappedBy = "suivimedical", cascade = CascadeType.ALL)
          private SuiviMedical suiviMedical ;
-     
+        //liste des consultations
+        @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, orphanRemoval = true)
+         private List<Consultation> consultations = new ArrayList<>();
+ 
     //constructeurs    
     public FichePatient() {
     }
@@ -81,9 +75,6 @@ public class FichePatient {
     // Getters and setters
     public String getAdresse() {
         return adresse;
-    }
-    public List<Certificat> getCertificats() {
-        return certificats;
     }
     public Date getDateNaissance() {
         return dateNaissance;
@@ -103,9 +94,8 @@ public class FichePatient {
     public String getNumTel() {
         return numTel;
     }
-    public List<Ordonnance> getOrdonnances() {
-        return ordonnances;
-    }public Patient getPatient() {
+  
+    public Patient getPatient() {
         return patient;
     }
     public String getPrenom() {
@@ -114,14 +104,16 @@ public class FichePatient {
     public String getGenre() {
         return genre;
     }
-   
-
+    public List<Consultation> getConsultations() {
+       return consultations;
+    }
+    public void setConsultations(List<Consultation> consultations) {
+       this.consultations = consultations;
+    }
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
-    public void setCertificats(List<Certificat> certificats) {
-        this.certificats = certificats;
-    }
+    
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }public void setEmail(String email) {
@@ -139,9 +131,7 @@ public class FichePatient {
     public void setNumTel(String numTel) {
         this.numTel = numTel;
     }
-    public void setOrdonnances(List<Ordonnance> ordonnances) {
-        this.ordonnances = ordonnances;
-    }
+    
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
@@ -165,26 +155,14 @@ public class FichePatient {
         antecedant.setFichePatient(null);
     }
 
-    // rajouter/enlever ordonnance de la fiche patient
-    public void addOrdonnance(Ordonnance ordonnance) {
-        this.ordonnances.add(ordonnance);
-        ordonnance.setFichePatient(this);
+    // rajouter/enlever antecedant de la fiche patient
+    public void addConsultation(Consultation consultation) {
+        this.consultations.add(consultation);
+        consultation.setFichePatient(this);
     }           
-    public void removeOrdonnance(Ordonnance ordonnance) {
-        this.ordonnances.remove(ordonnance);
-        ordonnance.setFichePatient(null);
-    }
-
-    
-     // rajouter/enlever certificat de la fiche patient
-    public void addCertificat(Certificat certificat) {
-        this.certificats.add(certificat);
-        certificat.setFichePatient(this);
-    }
-    
-    public void removeCertificat(Certificat certificat) {
-        this.certificats.remove(certificat);
-        certificat.setFichePatient(null);
+    public void removeConsultation(Consultation consultation) {
+        this.consultations.remove(consultation);
+        consultation.setFichePatient(null);
     }
 
     public void setSuivimedical(SuiviMedical suiviMedical2) {

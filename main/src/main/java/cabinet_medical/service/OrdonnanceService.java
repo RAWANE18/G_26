@@ -14,7 +14,7 @@ public class OrdonnanceService {
     @Autowired
     private OrdonnanceRepository ordonnanceRepository;
 
-public List<Ordonnance> getOrdonnancesByFichePatientId(Long fichePatientId) {
-        return ordonnanceRepository.findByFichePatientId(fichePatientId);
+public List<Ordonnance> getOrdonnancesByConsultationId(Long idconsult) {
+        return ordonnanceRepository.findByConsultationId(idconsult);
     }
 }

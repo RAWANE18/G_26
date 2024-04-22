@@ -35,11 +35,9 @@ public class CertificatService {
             certificatRepository.save(certificat);
         }
     }
-
-   
-
-    public List<Certificat> getCertificatsByFichePatientId(Long fichePatientId) {
-        return certificatRepository.findByFichePatientId(fichePatientId);
+    
+    public List<Certificat> getCertificatsByConsultationId(Long idconsult) {
+        return certificatRepository.findByConsultationId(idconsult);
     }
 
 }

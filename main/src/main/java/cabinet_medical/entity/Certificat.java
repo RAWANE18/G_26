@@ -29,12 +29,11 @@ public class Certificat {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", referencedColumnName = "patient_id")
     private Patient patient;
-   
     //link with la consutlation
     @ManyToOne
     @JoinColumn(name = "idConsultation")
     private Consultation consultation;
-
+   
     @Column(name = "lastname")
     private String lastname;
 
@@ -79,9 +78,9 @@ public class Certificat {
      public void setConsultation(Consultation consultation) {
          this.consultation = consultation;
      }
-     public Consultaiton getConsultation() {
+     public Consultation getConsultation() {
          return consultation;
-        }
+     }
     //constructeur
     public Certificat(String contenu, Date dateDelivrance, Date dateExpiration, Patient patient) {
         this.contenu = contenu;

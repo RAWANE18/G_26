@@ -55,7 +55,7 @@ public class Ordonnance {
    public void setConsultation(Consultation consultation) {
     this.consultation = consultation;
 }
-public Consultaiton getConsultation() {
+public Consultation getConsultation() {
     return consultation;
    }
    public String getFirstname() {

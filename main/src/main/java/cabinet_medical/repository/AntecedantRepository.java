@@ -10,5 +10,6 @@ import cabinet_medical.entity.Antecedant;
 
 @Repository
 public interface AntecedantRepository extends JpaRepository<Antecedant, Long> {
+   //retrouver un antecedanta aoartir de sa fiche patient
     Antecedant findByFichePatientId(Long fichePatientId);
 }

@@ -3,16 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>les patients</title>
+    <title>patient</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
        <div class="row">
         <div class="col-md-8 mx-auto rounded border p-4 m-4">
-            <h2 class="text-center mb-5">Nouveau Patient</h2>
+            <h2 class="text-center mb-5">Update Patient</h2>
             <form method="post" enctype="application/x-www-form-urlencoded" th:object="${patientDTO}">
-              <div class="row mb-3">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">ID</label>
+                    <div class="col-sm-8">
+                    <input class="form-control" th:value="${patientDto.idPatient}">
+                    <p th: if="${#fields.hasErrors ('idPatient')}" th:errorclass="text-danger"
+                    th: errors="${patientDto.idPatient}" ></p>
+                    </div>
+                    </div>
+                <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Nom</label>
                 <div class="col-sm-8">
                 <input class="form-control" th:field="${patientDto.lastname}">

@@ -1,7 +1,6 @@
 package cabinet_medical.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.data.jpa.repository.JpaRepository; 
 import cabinet_medical.entity.Consultation;
 
 

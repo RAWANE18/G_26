@@ -23,10 +23,7 @@ public class Antecedant {
 
     @Column(name = "Antecedant_chirurgicaux")
     private String AntecedantChirurgicaux;
-    @Column(name = "contenu",columnDefinition = "TEXT")
-    private String contenu;
-
-  
+    
 
     //lien avec le patient concerne
     @OneToOne
@@ -36,18 +33,9 @@ public class Antecedant {
    //link to fiche patient
    @OneToOne
     @JoinColumn(name = "fiche_patient_id")
-    private FichePatient fichePatient;@Column(name = "contenu",columnDefinition = "TEXT")
-    private String contenu;
+    private FichePatient fichePatient;
 
-   //setters and getters
-   public void setContenu(String contenu) {
-       this.contenu = contenu;
-   }
-   public String getContenu(){
-    return contenu ;
-   }
 
-     set
     public Long getId() {
         return id;
     }
@@ -59,7 +47,7 @@ public class Antecedant {
     public String getAntecedantMedicaux() {
         return AntecedantMedicaux;
     }
-    
+
     public void setAntecedantMedicaux(String antecedantMedicaux) {
         this.AntecedantMedicaux = antecedantMedicaux;
     }

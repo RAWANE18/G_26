@@ -62,7 +62,7 @@ public String createPatient(@Valid @ModelAttribute PatientDTO patientDto, Bindin
     }
 
     @PutMapping("/{id}")
-    public Patient updatePatientName(@PathVariable Long id, @RequestBody Patient patient) {
+    public Patient updatePatientName(@PathVariable Long id, @RequestBody String patient) {
         return patientService.updatePatientName(id, patient);
     }
 
@@ -70,7 +70,7 @@ public String createPatient(@Valid @ModelAttribute PatientDTO patientDto, Bindin
     public void deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
     }
-    @GetMapping("/edit")
+    @GetMapping("/update")
     public String showEditPage(Model model, @RequestParam Long id) {
         try {
             Patient patient = patientService.getPatientById(id);

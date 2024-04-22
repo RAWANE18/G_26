@@ -9,6 +9,6 @@ import java.util.*;
 @Repository
 public interface CertificatRepository extends JpaRepository<Certificat, Long> {
     Patient findByLastname(String lastName);
-  List<Certificat> findByFichePatientId(Long fichePatientId);
+  List<Certificat> findByConsultationId(Long idconsult);
 }
 

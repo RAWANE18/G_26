@@ -53,15 +53,17 @@ public Patient createPatient(PatientDTO patientDto) {
     public Patient getPatientByName(String name) {
         return patientRepository.findByLastname(name);
     }
-   //changer le nom du patient
-    public Patient updatePatientName(Long id, Patient patient) {
-        Patient existingPatient = getPatientById(id);
-        existingPatient.setFirstname(patient.getFirstname());
-        existingPatient.setLastname(patient.getLastname());
-        return patientRepository.save(existingPatient);
-    }
     //supprimer un patient
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
+    }
+    //update un patient
+    
+
+    //update patient name
+    public Patient updatePatientName(Long id, String patient){
+        Patient patient1=this.getPatientById(id);
+        patient1.setLastname(patient);
+        return patient1;
     }
 }

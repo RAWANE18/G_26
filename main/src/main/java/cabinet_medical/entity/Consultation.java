@@ -2,13 +2,11 @@ package cabinet_medical.entity;
 
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SecondaryTable;
-import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name="consultations")
@@ -18,11 +16,9 @@ public class Consultation {
     private String date ;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @column(name="idConsultation")
+   
     private long idConsultation;
   
-    @Column(table="patients")
-    private int idPatient;
    //liste des ordonnances 
     @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ordonnance> ordonnances = new ArrayList<>();
@@ -31,18 +27,30 @@ public class Consultation {
     @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Certificat> certificats = new ArrayList<>();
      
+    //lien au patient
+    @JsonIgnoreProperties("consultaion")
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "id_patient")
+        private Patient patient;
+    //lien fiche patient
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_fichepatient")
+    private FichePatient fichepatient;
+     
     //getters 
+
+    public Patient getPatient() {
+        return patient;
+    }
     public List<Ordonnance> getOrdonnances() {
-        return ordonnances;
+        return ordonnances;}
     public String getDate() {
         return date;
     }
     public Long getIdConsultation() {
         return idConsultation;
     }
-    public int getIdPatient() {
-    return idPatient;
-    }
+   
     public void setOrdonnances(List<Ordonnance> ordonnances) {
         this.ordonnances = ordonnances;
     }
@@ -54,38 +62,49 @@ public class Consultation {
     public void setIdConsultation(Long idConsultation) {
     this.idConsultation = idConsultation;
     }
-    public void setIdPatient(int idPatient) {
-        this.idPatient = idPatient;
-    }
+    
     public void setDate(String date) {
         this.date = date;
     }
     public List<Certificat> getCertificats() {
         return certificats;
     }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     //constructeurs
     public Consultation(){}
 
-    public Consultation(String date, Long idconsultation,int idpatient){
+    public Consultation(String date, Long idconsultation,Patient patient){
         this.date = date;
         this.idConsultation = idconsultation;
-        this.idPatient = idpatient;
+        this.patient = patient;
 
     }
+    //rajouter une ordonnance et la supprimer
     public void addOrdonnance(Ordonnance ordonnance) {
         this.ordonnances.add(ordonnance);
-        ordonnance.setFichePatient(this);
+        ordonnance.setConsultation(this);
     }           
     public void removeOrdonnance(Ordonnance ordonnance) {
         this.ordonnances.remove(ordonnance);
-        ordonnance.setFichePatient(null);
+        ordonnance.setConsultation(null);
     }
 
     
-     // rajouter/enlever certificat de la fiche patient
+     // rajouter/enlever certificat de la consultation
     public void addCertificat(Certificat certificat) {
         this.certificats.add(certificat);
-        certificat.setFichePatient(this);
-
+        certificat.setConsultation(this);
+    }
+    public void removeCertificat(Certificat certificat) {
+        this.certificats.remove(certificat);
+        certificat.setConsultation(null);
+    }
+    
+    public void setFichePatient(FichePatient fichepatient) {
+       this.fichepatient=fichepatient;
+    }
+   
 }
