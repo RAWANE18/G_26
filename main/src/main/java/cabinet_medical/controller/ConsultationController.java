@@ -12,7 +12,7 @@ public class ConsultationController {
 
     @GetMapping("")
     public String showConsultationList(Model model) {
-      List<Consultation> consultations = ConsultationService.getAllConsultations();
+      List<Consultation> consultations = ConsultationService.findAllConsultations();
       model.addAttribute("consultations", consultations);
       return "Consultations/indexconsult";
    }
