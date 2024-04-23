@@ -10,5 +10,10 @@ public class ConsultationController {
       @Autowired
     private ConsultationRepository consultationrepo;
 
-    
+    @GetMapping("")
+    public String showConsultationList(Model model) {
+      List<Consultation> consultations = ConsultationService.getAllConsultations();
+      model.addAttribute("consultations", consultations);
+      return "Consultations/indexconsult";
+   }
 }
