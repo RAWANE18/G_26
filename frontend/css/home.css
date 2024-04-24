@@ -21,12 +21,6 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  position: relative;
-  width: 100%;
-  margin-left: 0;
-}
-
 /* =============== Navigation ================ */
 .navigation {
   position: fixed;
@@ -95,10 +89,6 @@ body {
 .navigation ul li a #doctor {
   font-size: 1.78rem;
 }
-.navigation ul li a #consul {
-  font-size: 1.75rem;
-  line-height: 60px;
-}
 
 .navigation ul li a .title {
   position: relative;
@@ -160,6 +150,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
 .toggle {
@@ -188,12 +179,15 @@ body {
 .Ajouter {
   display: flex;
   justify-content: end;
+  margin-bottom: 10px;
 }
 .Ajouter .btn {
   background-color: var(--green);
+  border-color: var(--green);
 }
 .Ajouter .btn:hover {
   background-color: var(--green);
+  border-color: var(--green);
 }
 .table th {
   background-color: #f1f9ff;
@@ -201,4 +195,10 @@ body {
 }
 .table tr:nth-child(even) {
   background-color: #f1f9ff;
+}
+#title {
+  color: var(--green);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
 }

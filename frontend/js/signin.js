@@ -6,7 +6,7 @@ document.getElementById("btn").addEventListener("click", function (event) {
   var signinLink = document.querySelector(".signin-link");
 
   if (username === "doctor" && password === "1234") {
-    window.location.href = "Doctor.html";
+    window.location.href = "Plistdoctor.html";
   } else {
     signinLink.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
     signinLink.style.color = "red";
