@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #095d7e;
+  --white: #fff;
+  --skyblue: #ccecee;
+  --red: #ff502f;
+  --green: #00816d;
+}
+body {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  background-color: var(--blue);
+}
+.ctn-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  border-radius: 5px;
+  width: 600px;
+  height: 80vh;
+  background-color: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.header {
+  text-align: center;
+  padding: 30px;
+  border-bottom: 1px solid var(--blue);
+  color: var(--blue);
+}
+.header h2 {
+  font-weight: 500;
+}
+form {
+  margin-top: 20px;
+  padding: 20px;
+  color: var(--green);
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--blue);
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+label span {
+  color: var(--red);
+}
+input {
+  border-radius: 10px;
+  border: 2px solid #e7e7e7;
+  box-shadow: none;
+  height: 40px;
+  color: #888;
+  width: 250px;
+  padding-left: 10px;
+}
+.gender {
+  align-self: flex-end;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.gender select {
+  color: #888;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--white);
+  cursor: pointer;
+  height: 20px;
+}
+
+.gender select option {
+  background-color: var(--white);
+  color: #888;
+}

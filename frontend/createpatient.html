@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les patients</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/cpstyle.css">
+  </head>
+  <body>
+    <div class="ctn-form">
+    <div class="container">
+       <div class="row">
+        <div class="col-md-8 mx-auto rounded border p-4 m-4">
+          <div class="header">
+            <h2 class="text-center mb-5">Nouveau Patient</h2>
+            <p>Remplissez soigneusement le formulaire d’inscription</p>
+          </div>
+            <form method="post" enctype="application/x-www-form-urlencoded" th:object="${patientDTO}">
+              <div class="item">
+              <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Nom <span>*</span> </label>
+                <div class="col-sm-8">
+                <input class="form-control" th:field="${patientDto.lastname}">
+                <p th: if="${#fields.hasErrors ('lastname')}" th:errorclass="text-danger"
+                th: errors="${patientDto.lastname}" ></p>
+                </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label">Prenom <span>*</span> </label>
+                  <div class="col-sm-8">
+                  <input class="form-control" th:field="${patientDto.firstname}">
+                  <p th: if="${#fields.hasErrors ('firstname')}" th:errorclass="text-danger"
+                  th: errors="${patientDto.firstname}" ></p>
+                  </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Numero <span>*</span> </label>
+                    <div class="col-sm-8">
+                    <input class="form-control" th:field="${patientDto.numtel}">
+                    <p th: if="${#fields.hasErrors ('numtel')}" th:errorclass="text-danger"
+                    th: errors="${patientDto.numtel}" ></p>
+                    </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-sm-4 col-form-label">Email <span>*</span> </label>
+                      <div class="col-sm-8">
+                      <input class="form-control" th:field="${patientDto.email}">
+                      <p th: if="${#fields.hasErrors ('email')}" th:errorclass="text-danger"
+                      th: errors="${patientDto.email}" ></p>
+                      </div>
+                      </div> 
+                </div>
+                <div class="item">
+                      <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label">Adresse <span>*</span> </label>
+                        <div class="col-sm-8">
+                        <input class="form-control" th:field="${patientDto.adress}">
+                        <p th: if="${#fields.hasErrors ('adress')}" th:errorclass="text-danger"
+                        th: errors="${patientDto.adress}" ></p>
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-4 col-form-label">Date de naissance <span>*</span> </label>
+                          <div class="col-sm-8">
+                          <input type="date"  min="1900-01-01" max="2024-12-31" class="form-control" th:field="${patientDto.birthdate}">
+                          <p th: if="${#fields.hasErrors ('birthdate')}" th:errorclass="text-danger"
+                          th: errors="${patientDto.birthdate}" ></p>
+                          </div>
+                          </div>
+                </div>
+   <!--au cas ou on veut une selection-->
+   <div class="gender">
+   <div class="row mb-3">
+    <label class="col-sm-4 col-form-label">gender <span>*</span></label>
+    <div class="col-sm-8">
+    <select class="form-select" th: field="${productDto.genre}">
+      <option>Option</option>
+    <option value='Femme'>Femme</option> I
+    <option value='Homme'>Homme</option>
+    </select>
+    <p th: if="$(#fields. hasErrors ('genre'))" th:errorclass="text-danger"
+    th:errors="${productDto.genre}" ></p>
+    </div>
+    </div>                     
+   </div>
+            </form>
+      
+        </div>
+
+       </div>
+    </div>
+
+  </div>
+
+    <!-- bootstrap js-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
