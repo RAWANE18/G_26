@@ -28,7 +28,7 @@ public class ConsultationService {
     public Consultation findById(Long id) {
         return ConsultationRepository.findById(id).orElseThrow(() -> new RuntimeException("Consultation not found"));
     }
-    public List<Consultation> findAll() {
+    public List<Consultation> findAllConsultations() {
         return ConsultationRepository.findAll();
     }
 
