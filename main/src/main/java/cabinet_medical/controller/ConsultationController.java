@@ -15,5 +15,5 @@ public class ConsultationController {
       List<Consultation> consultations = ConsultationService.findAllConsultations();
       model.addAttribute("consultations", consultations);
       return "Consultations/indexconsult";
-   }
+}
 }
