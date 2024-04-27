@@ -13,7 +13,7 @@ import cabinet_medical.repository.ConsultationRepository;
 public class ConsultationService {
 
     @Autowired
-    private ConsultationRepository ConsultationRepository;
+    private ConsultationRepository consultationRepository;
     
     @Autowired
     private PatientService patientService;
@@ -26,10 +26,10 @@ public class ConsultationService {
 
 
     public Consultation findById(Long id) {
-        return ConsultationRepository.findById(id).orElseThrow(() -> new RuntimeException("Consultation not found"));
+        return consultationRepository.findById(id).orElseThrow(() -> new RuntimeException("Consultation not found"));
     }
-    public List<Consultation> findAllConsultations() {
-        return ConsultationRepository.findAll();
+    public  List<Consultation> findAllConsultations() {
+        return consultationRepository.findAll();
     }
 
    //save a consultaion
@@ -37,7 +37,7 @@ public class ConsultationService {
         Patient patient = consultation.getPatient();
         patient = patientService.addPatient(patient);
         consultation.setPatient(patient);
-        return ConsultationRepository.save(consultation);
+        return consultationRepository.save(consultation);
     }
 
     //ajouter certificat a Consultation
@@ -45,7 +45,7 @@ public Consultation addCertificatToconsultation(Long idConsultation, Certificat 
    Consultation consultation= findById(idConsultation);
     certificat.setConsultation(consultation);
     consultation.addCertificat(certificat);
-    ConsultationRepository.save(consultation);
+    consultationRepository.save(consultation);
     return consultation;
 }
 
@@ -62,7 +62,7 @@ public Consultation addOrdonnanceToConsultationS(Long idConsultation, Ordonnance
     Consultation consultation = findById(idConsultation);
     ordonnance.setConsultation(consultation);
     consultation.addOrdonnance(ordonnance);
-    ConsultationRepository.save(consultation);
+    consultationRepository.save(consultation);
     return consultation;
 }
 //rajouter certificat a la consultation
@@ -70,7 +70,7 @@ public Consultation addCertificatToConsultationS(Long idConsultation, Certificat
     Consultation consultation = findById(idConsultation);
     certificat.setConsultation(consultation);
     consultation.addCertificat(certificat);
-    ConsultationRepository.save(consultation);
+    consultationRepository.save(consultation);
     return consultation;
 }
 }
