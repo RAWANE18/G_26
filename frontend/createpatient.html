@@ -65,7 +65,7 @@
                         <div class="row mb-3">
                           <label class="col-sm-4 col-form-label">Date de naissance <span>*</span> </label>
                           <div class="col-sm-8">
-                          <input type="date"  min="1900-01-01" max="2024-12-31" class="form-control" th:field="${patientDto.birthdate}">
+                          <input   type="date"  class="form-control" th:field="${patientDto.birthdate}">
                           <p th: if="${#fields.hasErrors ('birthdate')}" th:errorclass="text-danger"
                           th: errors="${patientDto.birthdate}" ></p>
                           </div>
@@ -87,6 +87,9 @@
     </div>                     
    </div>
             </form>
+            <div class="btn-submit">
+              <a class="btn btn-primary"  href="secretaire.html" >Sauvgarder</a></div>
+            </div>
       
         </div>
 
@@ -95,6 +98,7 @@
 
   </div>
 
+  
     <!-- bootstrap js-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49" crossorigin="anonymous"></script>

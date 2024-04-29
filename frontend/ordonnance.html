@@ -35,7 +35,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="Plistdoctor.html">
               <span class="icon">
                 <ion-icon name="people-outline"></ion-icon>
               </span>
@@ -44,7 +44,7 @@
           </li>
 
           <li>
-            <a href="ordonnance.html">
+            <a href="#">
               <span class="icon" >
                 <ion-icon name="reader-outline"></ion-icon>
               </span>
@@ -88,7 +88,7 @@
           
         </div>
         <div class="center">
-          <h1 id="title">List patient</h1>
+          <h1 id="title">Ordonnance</h1>
           
         
         <div class="section2">
@@ -98,28 +98,28 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
+                  <th scope="col">ID Patient</th>
                   <th scope="col">Nom</th>
-                  <th scope="col">Prénom</th>
-                  <th scope="col">telephone</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Sexe</th>
-                  <th scope="col">adrress</th>
-                  <th scope="col">Date de naissance</th>
+                  <th scope="col">Prenom</th>
+                  <th scope="col">consultation</th>
+                  <th scope="col">contenu</th>
+                  <th scope="col">Date Delivrance</th>
+                  <th scope="col">DateExpiration</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                   <tr th:each="patient : ${patients}">
+                      <td th:text="${ordonnance.idordonnance}"></td>  
                       <td th:text="${patient.idpatient}"></td>
                       <td th:text="${patient.firstname}"></td>
-                      <td th:text="${patient.lastname}"></td>
-                      <td th:text="${patient.numtel}"></td>   
-                      <td th:text="${patient.email}"></td>
-                      <td th:text="${patient.gender}"></td>
-                      <td th:text="${patient.adress}"></td>            
-      <!--date-->     <td th:text="${patient.Birthdate.toString().substring(0,10)}"></td>
+                      <td th:text="${patient.lastname}"></td> 
+                      <td th:text="${consultation.idConsultation}"></td>
+                      <td th:text="${certificat.contenu}"></td>
+                      <td th:text="${certificat.date_delivrance.toString().substring(0,10)}"></td>            
+      <!--date-->     <td th:text="${certificat.date_expiration.toString().substring(0,10)}"></td>
                       <td class="nameof classe">
-            
+        <!--btn update--> <a class="btn-update" th:href="@{/patients/update(id=${smth.id})}"><i class="fa-solid fa-pen-to-square" style="color: #00816d;"></i></a>    
         <!--btn delete--> <a class="btn-delete" th:href="@{/patients/delete(id=${smth.id})}"><i class="fa-solid fa-trash"></i></a>
                       </td>
       
