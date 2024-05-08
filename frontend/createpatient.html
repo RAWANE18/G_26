@@ -6,6 +6,7 @@
     <title>les patients</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/cpstyle.css">
+    
   </head>
   <body>
     <div class="ctn-form">
@@ -65,7 +66,7 @@
                         <div class="row mb-3">
                           <label class="col-sm-4 col-form-label">Date de naissance <span>*</span> </label>
                           <div class="col-sm-8">
-                          <input   type="date"  class="form-control" th:field="${patientDto.birthdate}">
+                          <input   class="form-control" th:field="${patientDto.birthdate}">
                           <p th: if="${#fields.hasErrors ('birthdate')}" th:errorclass="text-danger"
                           th: errors="${patientDto.birthdate}" ></p>
                           </div>
@@ -88,7 +89,7 @@
    </div>
             </form>
             <div class="btn-submit">
-              <a class="btn btn-primary"  href="secretaire.html" >Sauvgarder</a></div>
+               <button class="button-3" role="button"><a href="secretaire.html">Sauvgarder</a> </button>
             </div>
       
         </div>
