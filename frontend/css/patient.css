@@ -30,10 +30,11 @@ body {
   border-left: 10px solid var(--blue);
   transition: 0.5s;
   overflow: hidden;
+  padding-left: 75px;
   left: 0;
 }
 .navigation.active {
-  width: 102px;
+  width: 110px;
 }
 
 .navigation ul {
@@ -84,6 +85,7 @@ body {
 }
 .navigation ul li a .icon ion-icon {
   font-size: 1.75rem;
+  margin-left: 30px;
 }
 .navigation ul li a #doctor {
   font-size: 1.78rem;
@@ -92,7 +94,7 @@ body {
 .navigation ul li a .title {
   position: relative;
   display: block;
-  padding: 0;
+  padding-left: 40px;
   height: 60px;
   line-height: 60px;
   text-align: start;
@@ -137,8 +139,8 @@ body {
   transition: 0.5s;
 }
 .main.active {
-  width: calc(100% - 102px);
-  left: 102px;
+  width: calc(100% - 70px);
+  left: 110px;
 }
 
 .topbar {
@@ -161,39 +163,7 @@ body {
   font-size: 2.5rem;
   cursor: pointer;
 }
-.center {
-  margin: 50px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.btn-delete i {
-  color: var(--red);
-  margin-left: 20px;
-}
-.Ajouter {
-  display: flex;
-  justify-content: end;
-  margin-bottom: 10px;
-}
-.Ajouter .btn {
-  background-color: var(--green);
-  border-color: var(--green);
-}
-.Ajouter .btn:hover {
-  background-color: var(--green);
-  border-color: var(--green);
-}
-.table th {
-  background-color: #f1f9ff;
-  color: var(--blue);
-}
-.table tr:nth-child(even) {
-  background-color: #f1f9ff;
-}
 #title {
   color: var(--green);
   font-size: 1.5rem;
