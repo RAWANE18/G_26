@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.PatientService;
@@ -18,7 +19,8 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
-
+    
+    @GetMapping("/showall")
     public String showPatientList(Model model) {
         List<Patient> patients = patientService.getAllPatients();
         model.addAttribute("patients", patients);
