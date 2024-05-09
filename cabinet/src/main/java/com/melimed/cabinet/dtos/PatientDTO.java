@@ -6,7 +6,7 @@ public class PatientDTO {
     private Long idPatient;
     private String email;
     private String gender;
-    private String address;
+    private String adress;
     private Date birthdate;
     private String lastname;
     private String firstname;
@@ -16,11 +16,11 @@ public class PatientDTO {
     public PatientDTO() {
     }
 
-    public PatientDTO(Long idPatient, String email, String gender, String address, Date birthdate, String lastname, String firstname, String numtel) {
+    public PatientDTO(Long idPatient, String email, String gender, String adress, Date birthdate, String lastname, String firstname, String numtel) {
         this.idPatient = idPatient;
         this.email = email;
         this.gender = gender;
-        this.address = address;
+        this.adress = adress;
         this.birthdate = birthdate;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -52,12 +52,12 @@ public class PatientDTO {
         this.gender = gender;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     public Date getBirthdate() {
