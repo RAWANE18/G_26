@@ -11,11 +11,17 @@ import com.melimed.cabinet.dtos.PatientDTO;
 import java.util.List;
 
 
+import org.springframework.stereotype.Service;
 
+@Service
 public class PatientService {
-  @Autowired
+  
   private PatientRepository repo;
-
+  
+  @Autowired
+  public void setRepo(PatientRepository repo) {
+      this.repo = repo;
+  }
 
   //show all patients
   public List<Patient> getAllPatients() {
@@ -32,6 +38,11 @@ public Patient createPatient(PatientDTO patientDto) {
     patient.setGender(patientDto.getGender());
     patient.setBirthdate(patientDto.getBirthdate());
     return repo.save(patient);
+}
+
+public PatientDTO createPatientDTO() {
+    PatientDTO patientDTO = new PatientDTO();
+    return patientDTO;
 }
 
  //supprimer un patient
