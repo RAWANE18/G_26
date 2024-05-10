@@ -48,7 +48,11 @@ public String createPatient(@Valid @ModelAttribute("patientDTO") PatientDTO pati
     return "redirect:/patient";
 }
 
-                               
+//delete the patient
+@DeleteMapping("/delete/{id}")
+    public void deletePatient(@PathVariable Long id) {
+        patientService.deletePatient(id);
+    }                               
 
 
 

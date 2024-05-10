@@ -121,7 +121,7 @@
               </thead>
               <tbody>
                   <tr th:each="patient : ${patients}">
-                      <td th:text="${patient.idpatient}"></td>
+                      <td th:text="${patient.idPatient}"></td>
                       <td th:text="${patient.firstname}"></td>
                       <td th:text="${patient.lastname}"></td>
                       <td th:text="${patient.numtel}"></td>   
@@ -131,7 +131,7 @@
       <!--date-->     <td th:text="${patient.Birthdate.toString().substring(0,10)}"></td>
                       <td class="nameof classe">
             
-        <!--btn delete--> <a class="btn-delete" th:href="@{/patients/delete(id=${smth.id})}"><i class="fa-solid fa-trash"></i></a>
+        <!--btn delete--> <a class="btn-delete" th:href="@{/patient/delete(id=${patient.idPatient })}"><i class="fa-solid fa-trash"></i></a>
                       </td>
       
                   </tr>
