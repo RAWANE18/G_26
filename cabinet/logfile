@@ -1,3 +1,19 @@
 
-> Task :compileJava FAILED
-1 actionable task: 1 executed
+/home/melib/javagit/java-project/cabinet/src/main/java/com/melimed/cabinet/controllers/PatientController.java:36: error: cannot find symbol
+       PatientDTO patientDTO = patientService.createPatientDTO();
+                                             ^
+  symbol:   method createPatientDTO()
+  location: variable patientService of type PatientService
+1 error
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --info option to get more log output.
+> Run with --scan to get full insights.
+
+BUILD FAILED in 1s

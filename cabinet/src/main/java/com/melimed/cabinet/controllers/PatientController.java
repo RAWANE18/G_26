@@ -33,7 +33,7 @@ public class PatientController {
     //show the html page to create the patient
    @GetMapping("/create")
    public String showCreatePage(Model model) {
-       PatientDTO patientDTO = patientService.createPatientDTO();
+       PatientDTO patientDTO = new PatientDTO();
        model.addAttribute("patientDTO", patientDTO);
        return "patient/create";
    }
