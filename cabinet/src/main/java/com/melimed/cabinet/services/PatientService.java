@@ -49,5 +49,9 @@ public PatientDTO createPatientDTO() {
  public void deletePatient(Long id) {
     repo.deleteById(id);
 }
+//maye needed maybe not
+//public Patient getPatientById(Long patientId) {
+//    return repo.findById(patientId).orElse(null);
+//}
 
 }

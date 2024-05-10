@@ -23,7 +23,7 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
-    
+    //tableau de tout les patients
     @GetMapping("/showall")
     public String showPatientList(Model model) {
         List<Patient> patients = patientService.getAllPatients();
