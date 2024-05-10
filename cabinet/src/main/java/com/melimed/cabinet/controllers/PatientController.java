@@ -40,15 +40,15 @@ public class PatientController {
   //save the data of the created patient in the database
 @PostMapping("/create")
 
-public String createPatient(@Valid @ModelAttribute PatientDTO patientDto, BindingResult result) {
+public String createPatient(@Valid @ModelAttribute("patientDTO") PatientDTO patientDTO, BindingResult result,Model model) {
     if (result.hasErrors()) {
         return "patient/create";
     }
-    patientService.createPatient(patientDto);
+    patientService.createPatient(patientDTO);
     return "redirect:/patient";
 }
 
-                                    
+                               
 
 
 
