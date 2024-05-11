@@ -27,7 +27,7 @@
                     <div class="col-sm-8">
                        <select class="form-select" th:field="*{patientId}">
                         <option value="">Select Patient</option>
-                        <option th:each="patientId : ${patientIds}" th:value="${patientId}"></option>
+                        <option th:each="patientId : ${patientId}" th:value="${patientId}"></option>
                       </select>
                     </div>
                   </div>

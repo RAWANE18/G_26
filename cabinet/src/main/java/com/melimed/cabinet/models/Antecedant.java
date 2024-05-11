@@ -41,7 +41,9 @@ public class Antecedant {
     public Long getIdAntecedant() {
         return idAntecedant;
     }
-
+   public Patient getPatient() {
+       return patient;
+   }
     //setters
     public void setAntecedantChirurgicaux(String antecedantChirurgicaux) {
         this.antecedantChirurgicaux = antecedantChirurgicaux;
@@ -52,5 +54,7 @@ public class Antecedant {
     public void setIdAntecedant(Long idAntecedant) {
         this.idAntecedant = idAntecedant;
     }
-    
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }

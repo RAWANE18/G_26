@@ -37,7 +37,7 @@ public Certificat createCertificat(CertificatDTO certificatDTO) {
     return repo.save(certificat);
 }
 
-public CertificatDTO createOrdonnanceDTO() {
+public CertificatDTO createCertificatDTO() {
     CertificatDTO certificatDTO= new CertificatDTO();
     return certificatDTO;
 }
