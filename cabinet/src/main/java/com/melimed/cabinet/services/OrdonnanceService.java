@@ -50,4 +50,9 @@ public List<Long> getAllPatientIds() {
         .collect(Collectors.toList());
 }
 
+//suppression
+public void deleteOrdonnace(Long id) {
+    repo.deleteById(id);
+}
+
 }

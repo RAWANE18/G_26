@@ -50,5 +50,15 @@ public String createOrdonnance(@Valid @ModelAttribute("ordonnanceDTO") Ordonnanc
     ordonnanceService.createOrdonnance(ordonnanceDTO);
     return "redirect:/patient";
 }
+//suppression
+@GetMapping("/delete{id}")
+public String deleteOrdonnace(
+        @PathVariable(name = "id") Long id) {
+
+    ordonnanceService.deleteOrdonnace(id);
+
+    return "redirect:/ordonnance/showall";
+}
+
 
 }

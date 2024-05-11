@@ -97,7 +97,8 @@
               
             
             <div class="section2">
-             
+             <a class="btn-create" th:href="@{/ordonnance/create}"><i class="fa-solid fa-add"> add a new one</i></a>
+                
               <table class="table">
                
                   <thead>
@@ -113,12 +114,12 @@
                   <tbody>
                       <tr th:each="ordonnances: ${ordonnances}">
                           <td th:text="${ordonnances.idOrdonnance}"></td>  
-                          <td th:text="${ordonnances.idPatient}"></td>
+                          <td th:text="${ordonnances.patient.idPatient}"></td>
                           <td th:text="${ordonnances.patient.firstname}"></td>
                           <td th:text="${ordonnances.patient.lastname}"></td> 
                           <td class="contentcolumn" th:text="${ordonnances.contenu}"></td>
                          <td class="nameof classe">
-     <!--btn delete-->  <a class="btn-delete" th:href="@{/ordonnances/delete(id=${ordonnances.idOrdonnance})}"><i class="fa-solid fa-trash"></i></a>
+     <!--btn delete-->  <a class="btn-delete" th:href="@{/ordonnance/delete(id=${ordonnances.idOrdonnance})}"><i class="fa-solid fa-trash"></i></a>
                           </td>
           
                       </tr>
