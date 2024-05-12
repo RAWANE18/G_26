@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #095d7e;
+  --white: #fff;
+  --skyblue: #ccecee;
+  --red: #ff502f;
+  --green: #00816d;
+}
+body {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+}
+.ctn-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #095d7e;
+}
+.col-md-8 {
+  border-radius: 5px;
+  width: 600px;
+  height: 80vh;
+  background-color: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.header {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #095d7e;
+  color: #095d7e;
+}
+.header h2 {
+  font-weight: 500;
+}
+form {
+  margin-top: 20px;
+  padding: 20px;
+  color: #00816d;
+  flex-direction: column;
+  display: flex;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  margin-left: 30px;
+}
+label span {
+  color: #ff502f;
+}
+.col-sm-12 textarea {
+  border-radius: 10px;
+  border: 2px solid #e7e7e7;
+  box-shadow: none;
+  height: 350px;
+  color: #888;
+  width: 100%;
+  padding-left: 10px;
+  resize: none;
+}
+
+#idpatients {
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border: 1px solid black;
+  opacity: 1;
+}
+
+.button-3 a {
+  color: #fff;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.button-3 {
+  appearance: none;
+  background-color: #00816d;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 16px;
+  width: 150px;
+  height: 40px;
+  position: relative;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #00816d;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: var(--skyblue);
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: var(--green);
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+.btn-submit {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 75px;
+  padding-left: 60px;
+}
+#content {
+  height: 30vh;
+  width: 70vh;
+}
+
+.gender select {
+  color: #888;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--white);
+  cursor: pointer;
+  height: 20px;
+}
+
+.gender select option {
+  background-color: #fff;
+  color: #888;
+}
