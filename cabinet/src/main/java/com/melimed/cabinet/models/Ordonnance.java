@@ -8,7 +8,6 @@ public class Ordonnance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOrdonnance;
-
     private String contenu;
 
     //Foreign key
@@ -16,13 +15,17 @@ public class Ordonnance {
     @OneToOne(cascade = CascadeType.ALL)
       @JoinColumn(name="patient" , referencedColumnName = "idPatient" )
       private Patient patient;
-    
+    @ManyToOne(cascade = CascadeType.ALL)
+      @JoinColumn(name="consultation" , referencedColumnName = "idconsultation" )
+      private Consultation consultation;
     //Constructeurs
     public Ordonnance(){}
-    public Ordonnance(Long id, String contenu, Patient patient){
+    public Ordonnance(Long id, String contenu, Patient patient, Consultation consultation){
         this.idOrdonnance=id;
         this.contenu=contenu;
         this.patient=patient;
+        this.consultation=consultation;
+        
     }
     //setters and getters 
     public Patient getPatient() {
@@ -33,6 +36,9 @@ public class Ordonnance {
     }
     public Long getIdOrdonnance() {
         return idOrdonnance;
+    }
+    public Consultation getConsultation() {
+        return consultation;
     }
 
 
@@ -45,4 +51,8 @@ public class Ordonnance {
     public void setIdOrdonnance(Long idOrdonnance) {
         this.idOrdonnance = idOrdonnance;
     }
+    public void setConsultation(Consultation consultation) {
+        this.consultation = consultation;
+    }
+    
 }

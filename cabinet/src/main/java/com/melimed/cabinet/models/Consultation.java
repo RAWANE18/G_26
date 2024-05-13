@@ -14,23 +14,18 @@ public class Consultation {
       private Date dateconsultation;
 
       //foreign keys 
-      @OneToOne(cascade = CascadeType.ALL)
-      @JoinColumn(name="ordonnance" , referencedColumnName = "idOrdonnance" )
-      private Ordonnance ordonnance;
-     
-      @OneToOne(cascade = CascadeType.ALL)
-      @JoinColumn(name="certificat" , referencedColumnName = "IdCertificat" )
-      private Certificat certificat;
-     
+      @ManyToOne(cascade =CascadeType.ALL)
+      @JoinColumn(name="patient" , referencedColumnName = "idPatient" )
+      private Patient patient;
+      
 
       //constructeurs
       public Consultation(){}
      
-      public Consultation(Long id ,Date dateconsult, Ordonnance ordonnance , Certificat certificat){
+      public Consultation(Long id ,Date dateconsult){
         this.idconsultation=id;
         this.dateconsultation=dateconsult;
-        this.certificat=certificat;
-        this.ordonnance=ordonnance;  
+  
     }
       
      
@@ -41,20 +36,15 @@ public class Consultation {
       public Long getIdconsultation() {
           return idconsultation;
       }
-      public Certificat getCertificat() {
-          return certificat;
-      }
-      public Ordonnance getOrdonnance() {
-          return ordonnance;
+      
+      public Patient getPatient() {
+          return patient;
       }
      //setters
-
-    public void setCertificat(Certificat certificat) {
-        this.certificat = certificat;
-    }
-    public void setOrdonnance(Ordonnance ordonnance) {
-        this.ordonnance = ordonnance;
-    }
+   public void setPatient(Patient patient) {
+       this.patient = patient;
+   }
+    
       public void setDateconsultation(Date dateconsultation) {
           this.dateconsultation = dateconsultation;
       }

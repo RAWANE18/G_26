@@ -6,19 +6,21 @@ public class OrdonnanceDTO {
     private Long patientId;
     private String patientlastname;
     private String patientfirstname;
-
+    private Long  idconsultation;
 
     // Constructors
     public OrdonnanceDTO() {
     }
 
-    public OrdonnanceDTO(Long idOrdonnance, String contenu, Long patientId,String patientfirstname ,String patientlastname) {
+    public OrdonnanceDTO(Long  idconsultation,Long idOrdonnance, String contenu, Long patientId,String patientfirstname ,String patientlastname ) {
         this.idOrdonnance = idOrdonnance;
         this.contenu = contenu;
         this.patientId = patientId;
         this.patientfirstname=patientfirstname;
         this.patientlastname=patientlastname;
+        this.idconsultation=idconsultation;
     }
+    
 
     // Getters and Setters
     public Long getIdOrdonnance() {
@@ -45,6 +47,12 @@ public class OrdonnanceDTO {
 
     public Long getPatientId() {
         return patientId;
+    }
+    public Long getIdconsultation() {
+        return idconsultation;
+    }
+    public void setIdconsultation(Long idconsultation) {
+        this.idconsultation = idconsultation;
     }
     public void setPatientfirstname(String patientfirstname) {
         this.patientfirstname = patientfirstname;

@@ -10,12 +10,13 @@ public class CertificatDTO {
     private Long patientId; 
     private String patientlastname;
     private String patientfirstname;
+    private Long idconsultation;
 
     // Constructors
     public CertificatDTO() {
     }
 
-    public CertificatDTO(Long idCertificat, String contenu,String patientfirstname ,String patientlastname, Date dateDelivrance, Date dateExpiration, Long patientId) {
+    public CertificatDTO(Long idCertificat, String contenu,String patientfirstname ,String patientlastname, Date dateDelivrance, Date dateExpiration, Long patientId, Long idconsultation) {
         this.idCertificat = idCertificat;
         this.contenu = contenu;
         this.dateDelivrance = dateDelivrance;
@@ -23,6 +24,7 @@ public class CertificatDTO {
         this.patientId = patientId;
         this.patientfirstname=patientfirstname;
         this.patientlastname=patientlastname;
+        this.idconsultation=idconsultation;
     }
 
     // Getters and Setters
@@ -51,7 +53,13 @@ public class CertificatDTO {
     public Date getDateDelivrance() {
         return dateDelivrance;
     }
+    public Long getIdconsultation() {
+        return idconsultation;
+    }
 
+    public void setIdconsultation(Long idconsultation) {
+        this.idconsultation = idconsultation;
+    }
     public void setDateDelivrance(Date dateDelivrance) {
         this.dateDelivrance = dateDelivrance;
     }

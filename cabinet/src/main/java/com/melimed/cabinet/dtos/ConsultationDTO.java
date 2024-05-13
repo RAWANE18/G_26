@@ -5,18 +5,16 @@ import java.util.Date;
 public class ConsultationDTO {
     private Long idConsultation;
     private Date dateConsultation;
-    private Long ordonnanceId;
-    private Long certificatId;
+    private Long idPatient;
 
     // Constructors
     public ConsultationDTO() {
     }
 
-    public ConsultationDTO(Long idConsultation, Date dateConsultation, Long ordonnanceId, Long certificatId) {
+    public ConsultationDTO(Long idConsultation, Date dateConsultation, Long idPatient) {
         this.idConsultation = idConsultation;
         this.dateConsultation = dateConsultation;
-        this.ordonnanceId = ordonnanceId;
-        this.certificatId = certificatId;
+        this.idPatient = idPatient;
     }
 
     // Getters and Setters
@@ -36,19 +34,10 @@ public class ConsultationDTO {
         this.dateConsultation = dateConsultation;
     }
 
-    public Long getOrdonnanceId() {
-        return ordonnanceId;
+    public Long getIdPatient() {
+        return idPatient;
     }
-
-    public void setOrdonnanceId(Long ordonnanceId) {
-        this.ordonnanceId = ordonnanceId;
-    }
-
-    public Long getCertificatId() {
-        return certificatId;
-    }
-
-    public void setCertificatId(Long certificatId) {
-        this.certificatId = certificatId;
+    public void setIdPatient(Long idPatient) {
+        this.idPatient = idPatient;
     }
 }

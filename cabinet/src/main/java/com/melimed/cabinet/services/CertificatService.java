@@ -2,6 +2,7 @@ package com.melimed.cabinet.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.melimed.cabinet.repositories.CertificatRepository;
 import com.melimed.cabinet.repositories.PatientRepository;
+import com.melimed.cabinet.repositories.ConsultationRepository;
 import com.melimed.cabinet.models.Certificat;
 import com.melimed.cabinet.dtos.CertificatDTO;
 import com.melimed.cabinet.models.Patient;
@@ -13,10 +14,12 @@ import org.springframework.stereotype.Service;
 public class CertificatService {
     private CertificatRepository repo;
     private PatientRepository patientrepo;
+    private ConsultationRepository consultrepo;
     @Autowired
-    public void setRepo(CertificatRepository repo, PatientRepository patientrepo) {
+    public void setRepo(ConsultationRepository consultrepo,CertificatRepository repo, PatientRepository patientrepo) {
         this.repo = repo;
         this.patientrepo=patientrepo;
+        this.consultrepo=consultrepo;
     }
     //show all certificats
   public List<Certificat> getAllCertificats() {
@@ -28,7 +31,9 @@ public class CertificatService {
 public Certificat createCertificat(CertificatDTO certificatDTO) {
     Certificat certificat = new Certificat();
     certificat.setContenu(certificatDTO.getContenu());
-    certificat.setContenu(certificatDTO.getContenu());
+    certificat.setIdconsultation(consultrepo.findById(certificatDTO.getIdconsultation()).orElse(null));
+   
+    
     // Using the PatientService to fetch the patient
     Patient patient = new Patient(); 
     patient = patientrepo.findById(certificatDTO.getPatientId()).orElse(null);
