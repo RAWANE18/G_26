@@ -76,10 +76,10 @@ public class ConsultationController {
     @GetMapping("/create{id}")
     public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
         ConsultationDTO consultationDTO = new ConsultationDTO();
-        Patient patient = patientService.getPatientById(id);
-        consultationDTO.setIdPatient(id);
+        // Patient patient = patientService.getPatientById(id);
+        // consultationDTO.setIdPatient(id);
         model.addAttribute("consultationDTO", consultationDTO);
-        model.addAttribute("patient", patient);
+        // model.addAttribute("patient", patient);
         // ajouter dans lhtml just the rendering of the value
 
         return "consultation/create";
@@ -87,16 +87,21 @@ public class ConsultationController {
 
     // save the data of the created ordonnance in the database
     @PostMapping("/create{id}")
-
     public String createConsultation(@Valid @ModelAttribute("consultationDTO") ConsultationDTO consultationDTO,
             BindingResult result, Model model,
-            @PathVariable(name = "id") Long id  ) {
+            @PathVariable(name = "id") Long id) {
+
         if (result.hasErrors()) {
             return "consultation/create";
         }
+
+        // consultationDTO.
+        consultationDTO.setIdPatient(id);
         consultationService.createConsultation(consultationDTO);
+
         return "redirect:/patient";
     }
+
 
     @GetMapping("/delete{id}")
     public String deleteCertificat(
