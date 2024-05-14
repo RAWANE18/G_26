@@ -47,14 +47,14 @@ public class OrdonnanceController {
    }
 
     //save the data of the created ordonnance in the database
-@PostMapping("/create")
+@PostMapping("/create{id}")
 
 public String createOrdonnance(@Valid @ModelAttribute("ordonnanceDTO") OrdonnanceDTO ordonnanceDTO, BindingResult result,Model model) {
     if (result.hasErrors()) {
         return "ordonnance/create";
     }
     ordonnanceService.createOrdonnance(ordonnanceDTO);
-    return "redirect:/patient";
+    return "redirect:/patient/showall";
 }
 //suppression
 @GetMapping("/delete{id}")

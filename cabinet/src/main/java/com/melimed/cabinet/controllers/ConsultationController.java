@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
+import com.melimed.cabinet.models.Certificat;
 import com.melimed.cabinet.models.Consultation;
 import com.melimed.cabinet.models.Ordonnance;
 import com.melimed.cabinet.models.Patient;
+import com.melimed.cabinet.services.CertificatService;
 import com.melimed.cabinet.services.ConsultationService;
 import com.melimed.cabinet.services.OrdonnanceService;
 import com.melimed.cabinet.services.PatientService;
@@ -28,6 +30,8 @@ public class ConsultationController {
     private OrdonnanceService ordonnanceService;
     @Autowired
     private PatientService patientService;
+    @Autowired
+    private CertificatService certificatService;
 
     // tableau de toutes les ordonnances
     @GetMapping("/showall")
@@ -51,6 +55,8 @@ public class ConsultationController {
     public String showConsultation(Model model, @PathVariable(name = "id") Long id) {
         Consultation consultations = consultationService.getOneConsultation(id);
         List<Ordonnance> ordonnances = ordonnanceService.getAllOrdonnances();
+        List<Certificat> certificats = certificatService.getAllCertificats();
+        model.addAttribute("certificats", certificats);
         model.addAttribute("ordonnances", ordonnances);
         model.addAttribute("consultations", consultations);
         return "consultation/show";

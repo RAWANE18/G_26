@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import com.melimed.cabinet.models.Certificat;
+import com.melimed.cabinet.models.Consultation;
 import com.melimed.cabinet.services.CertificatService;
+import com.melimed.cabinet.services.ConsultationService;
 import com.melimed.cabinet.dtos.CertificatDTO;
+
 
 @Controller
 @RequestMapping("certificat")
@@ -22,6 +25,8 @@ public class CertificatController {
 
     @Autowired
     private CertificatService certificatService;
+    @Autowired
+    private ConsultationService consultationService;
     //tableau de toutes les ordonnances
     @GetMapping("/showall")
     public String showOrdonnanceList(Model model) {
@@ -31,13 +36,15 @@ public class CertificatController {
     }
 
    //show the html page to create the ordonnance
-   @GetMapping("/create")
-   public String showCreatePage(Model model) {
-    List<Long> patientIds = certificatService.getAllPatientIds();   
-    CertificatDTO certificatDTO = new CertificatDTO();
+   @GetMapping("/create{id}")
+   public String showCreatePage(Model model,  @PathVariable(name = "id") Long id) {
+    List<Long> patientIds = consultationService.getAllPatientIds();   
+   CertificatDTO certificatDTO = new CertificatDTO();
+    Consultation consultation =consultationService.getById(id); 
        model.addAttribute("certificatDTO", certificatDTO);
        model.addAttribute("patientIds", patientIds);
-       return "certificat/create";
+       model.addAttribute("consultation", consultation);
+       return "ordonnance/create";
    }
 
     //save the data of the created ordonnance in the database
@@ -48,7 +55,7 @@ public String createCertificat(@Valid @ModelAttribute("certificatDTO") Certifica
         return "certificat/create";
     }
     certificatService.createCertificat(certificatDTO);
-    return "redirect:/patient";
+    return "redirect:/patient/showall";
 }
 
 @GetMapping("/delete{id}")
