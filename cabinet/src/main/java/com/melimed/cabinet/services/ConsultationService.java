@@ -28,7 +28,10 @@ public class ConsultationService {
 public Consultation getOneConsultation(Long consultationid){
   return repo.findById(consultationid).orElse(null);
 }
-
+public List<Consultation> getAllConsultationPatient(long idpatient){
+ Patient patient=patientrepo.findById(idpatient).orElse(null);
+  return repo.findAllByPatient(patient);
+}
 //create une consultation a vide
 public Consultation createConsultation(ConsultationDTO consultationDTO) {
    
@@ -48,6 +51,10 @@ public List<Long> getAllPatientIds() {
   return patientrepo.findAll().stream()
       .map(Patient::getIdPatient)
       .collect(Collectors.toList());
+}
+//find by id
+public Consultation getById(Long id){
+  return repo.findById(id).orElse(null);
 }
 
 //suppression

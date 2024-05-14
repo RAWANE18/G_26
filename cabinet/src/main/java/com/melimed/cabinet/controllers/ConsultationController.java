@@ -1,4 +1,5 @@
 package com.melimed.cabinet.controllers;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +9,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 
-
 import jakarta.validation.Valid;
 
 import com.melimed.cabinet.models.Consultation;
 import com.melimed.cabinet.models.Ordonnance;
+import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.ConsultationService;
 import com.melimed.cabinet.services.OrdonnanceService;
+import com.melimed.cabinet.services.PatientService;
 import com.melimed.cabinet.dtos.ConsultationDTO;
-
 
 @Controller
 @RequestMapping("consultation")
@@ -25,7 +26,10 @@ public class ConsultationController {
     private ConsultationService consultationService;
     @Autowired
     private OrdonnanceService ordonnanceService;
-    //tableau de toutes les ordonnances
+    @Autowired
+    private PatientService patientService;
+
+    // tableau de toutes les ordonnances
     @GetMapping("/showall")
     public String showConsultationList(Model model) {
         List<Consultation> consultations = consultationService.getAllConsultations();
@@ -33,34 +37,60 @@ public class ConsultationController {
         return "consultation/showAll";
     }
 
-    //show une consultation
+     // tableau de toutes les ordonnances d'un seul patient
+     @GetMapping("/showone{id}")
+     public String showConsultationListByPatient(Model model,@PathVariable(name = "id") Long id) {
+         List<Consultation> consultations = consultationService.getAllConsultationPatient(id);
+         model.addAttribute("idPatient", id);
+         model.addAttribute("consultations", consultations);
+         return "consultation/showAll";
+     }
+
+    // show une consultation , on passe l'id d'une consult pour avoir toutes les ordonnances et certificats
     @GetMapping("/show{id}")
-    public String showConsultation (Model model ,  @PathVariable(name = "id") Long id) {
+    public String showConsultation(Model model, @PathVariable(name = "id") Long id) {
         Consultation consultations = consultationService.getOneConsultation(id);
         List<Ordonnance> ordonnances = ordonnanceService.getAllOrdonnances();
         model.addAttribute("ordonnances", ordonnances);
         model.addAttribute("consultations", consultations);
         return "consultation/show";
-    } 
-      //show the html page to create the ordonnance
-   @GetMapping("/create")
-   public String showCreatePage(Model model) {  
-    ConsultationDTO consultationDTO = new ConsultationDTO();
-       model.addAttribute("consultationDTO", consultationDTO);
-       return "consultation/create";
-   }
-
-    //save the data of the created ordonnance in the database
-@PostMapping("/create")
-
-public String createConsultation(@Valid @ModelAttribute("consultationDTO") ConsultationDTO consultationDTO, BindingResult result,Model model) {
-    if (result.hasErrors()) {
-        return "Consultation/create";
     }
-    consultationService.createConsultation(consultationDTO);
-    return "redirect:/consultation";
-}
 
+    // show the html page to create the ordonnance
+    /*
+     * @GetMapping("/create")
+     * public String showCreatePage(Model model) {
+     * ConsultationDTO consultationDTO = new ConsultationDTO();
+     * List<Long> patientIds = consultationService.getAllPatientIds();
+     * model.addAttribute("consultationDTO", consultationDTO);
+     * model.addAttribute("patientIds", patientIds);
+     * return "consultation/create";
+     * }
+     */
+    @GetMapping("/create{id}")
+    public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
+        ConsultationDTO consultationDTO = new ConsultationDTO();
+        Patient patient = patientService.getPatientById(id);
+        consultationDTO.setIdPatient(id);
+        model.addAttribute("consultationDTO", consultationDTO);
+        model.addAttribute("patient", patient);
+        // ajouter dans lhtml just the rendering of the value
+
+        return "consultation/create";
+    }
+
+    // save the data of the created ordonnance in the database
+    @PostMapping("/create{id}")
+
+    public String createConsultation(@Valid @ModelAttribute("consultationDTO") ConsultationDTO consultationDTO,
+            BindingResult result, Model model,
+            @PathVariable(name = "id") Long id  ) {
+        if (result.hasErrors()) {
+            return "consultation/create";
+        }
+        consultationService.createConsultation(consultationDTO);
+        return "redirect:/patient";
+    }
 
     @GetMapping("/delete{id}")
     public String deleteCertificat(
