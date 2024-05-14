@@ -131,11 +131,11 @@
                       <td th:text="${patient.adress}"></td>            
       <!--date-->     <td th:text="${patient.Birthdate.toString().substring(0,10)}"></td>
                       <td class="nameof classe">
-            
-
 
          <!--btn delete--> <a class="btn-delete" th:href="@{'/patient/delete' + ${patient.idPatient}}" onclick="confirm('etes vous sure de vouloir suprimer le patient?')"><i class="fa-solid fa-trash"></i></a>
-                      </td>
+                            <a class="btn-delete" th:href="@{'/consultation/showone' + ${patient.idPatient}}"><i class="fa-solid fa-add"></i></a>
+                       
+                    </td>
       
                   </tr>
                   

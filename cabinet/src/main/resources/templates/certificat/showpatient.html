@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docteur</title>
 
-    <link th:href="@{/css/templates/patient/update/update.css}" rel="stylesheet" />
-	<link th:href="@{/css/templates/patient/create/create.css}" rel="stylesheet" />
-	<link th:href="@{/css/templates/ordonnance/showAll/showAll.css}" rel="stylesheet" />
+    <link th:href="@{/css/templates/certificat/update/update.css}" rel="stylesheet" />
+	<link th:href="@{/css/templates/certificat/create/create.css}" rel="stylesheet" />
+	<link th:href="@{/css/templates/certificat/showAll/showAll.css}" rel="stylesheet" />
 
    
     <link
@@ -24,7 +24,6 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-
 </head>
 <body>
    
@@ -93,48 +92,13 @@
               
             </div>
             <div class="center">
-              <h1 id="title">Ordonnance</h1>
-              
-            
-            <div class="section2">
-             <a class="btn-create" th:href="@{/ordonnance/create}"><i class="fa-solid fa-add"> add a new one</i></a>
-                
-              <table class="table">
-               
-                  <thead>
-                    <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">ID Patient</th>
-                      <th scope="col">Nom</th>
-                      <th scope="col">Prenom</th>
-                      <th scope="col">contenu</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <tr th:each="ordonnances: ${ordonnances}">
-                          <td th:text="${ordonnances.idOrdonnance}"></td>  
-                          <td th:text="${ordonnances.patient.idPatient}"></td>
-                          <td th:text="${ordonnances.patient.firstname}"></td>
-                          <td th:text="${ordonnances.patient.lastname}"></td> 
-                          <td class="contentcolumn" th:text="${ordonnances.contenu}"></td>
-                         <td class="nameof classe">
-     <!--btn delete-->  <a class="btn-delete" th:href="@{/ordonnance/delete(id=${ordonnances.idOrdonnance})}"><i class="fa-solid fa-trash"></i></a>
-                       
-                        </td>
-          
-                      </tr>
-                      
-                  </tbody>    
-          
-              </table>
-               
-                </div>
             </div>
+          </div>
+
+
+
           
-    
-        
-        <script
+          <script
           type="module"
           src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
         ></script>

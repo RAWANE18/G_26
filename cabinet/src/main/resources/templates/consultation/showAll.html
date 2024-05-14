@@ -96,12 +96,12 @@
             <div class="center">
                 <h1>Liste des Consultations</h1>
                 <div class="section2">
-                    <a class="btn-create" th:href="@{/consultation/create}"><i class="fa-solid fa-add"> Add a new consultation</i></a>
+                    <a   class="btn-create" th:href="@{'/consultation/create' +  ${idPatient} }"><i class="fa-solid fa-add"> Add a new consultation</i></a>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Date</th>-
                                 <th scope="col">Patient ID</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -114,7 +114,7 @@
                                 <td>
                                     <!-- Action buttons -->
                                     <a class="btn-delete" th:href="@{/consultation/delete(id=${consultation.idConsultation})}" onclick="confirm('etes vous sure de vouloir suprimer la consultation?')"><i class="fa-solid fa-trash"></i></a>
-                                    <a class="btn-create" th:href="@{/consultation/show(id=${consultation.idConsultation})}" ><i class="fa-solid fa-circle-plus"></i></a>
+                                    <a class="btn-create" th:href="@{/ordonnance/create(id=${consultation.idConsultation})}" ><i class="fa-solid fa-circle-plus"></i></a>
                                
                                 </td>
                             </tr>

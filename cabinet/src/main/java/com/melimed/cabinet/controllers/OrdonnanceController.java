@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
+import com.melimed.cabinet.models.Consultation;
 import com.melimed.cabinet.models.Ordonnance;
+import com.melimed.cabinet.services.ConsultationService;
 import com.melimed.cabinet.services.OrdonnanceService;
 import com.melimed.cabinet.dtos.OrdonnanceDTO;
 
@@ -22,6 +24,8 @@ public class OrdonnanceController {
    
     @Autowired
     private OrdonnanceService ordonnanceService;
+    @Autowired
+    private ConsultationService consultationService;
     //tableau de toutes les ordonnances
     @GetMapping("/showall")
     public String showOrdonnanceList(Model model) {
@@ -31,12 +35,14 @@ public class OrdonnanceController {
     }
 
    //show the html page to create the ordonnance
-   @GetMapping("/create")
-   public String showCreatePage(Model model) {
+   @GetMapping("/create{id}")
+   public String showCreatePage(Model model,  @PathVariable(name = "id") Long id) {
     List<Long> patientIds = ordonnanceService.getAllPatientIds();   
     OrdonnanceDTO ordonnanceDTO = new OrdonnanceDTO();
+    Consultation consultation =consultationService.getById(id); 
        model.addAttribute("ordonnanceDTO", ordonnanceDTO);
        model.addAttribute("patientIds", patientIds);
+       model.addAttribute("consultation", consultation);
        return "ordonnance/create";
    }
 
