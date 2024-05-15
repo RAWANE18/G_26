@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ConsultationRepository extends JpaRepository<Consultation, Long>{
 public List<Consultation> findAllByPatient(Patient patient);
+public Consultation findByIdConsultation(Long idconsult);
 }

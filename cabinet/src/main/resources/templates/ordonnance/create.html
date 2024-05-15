@@ -22,15 +22,6 @@
               <form method="post" enctype="application/x-www-form-urlencoded" th:object="${ordonnanceDTO}">
                 <div class="item">
                  
-                  <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label">Patient <span>*</span></label>
-                    <div class="col-sm-8">
-                       <select class="form-select" th:field="*{patientId}">
-                        <option value="">Select Patient</option>
-                        <option th:each="patientId : ${patientId}" th:value="${patientId}"></option>
-                      </select>
-                    </div>
-                  </div>
                   
                   <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Contenu <span>*</span></label>
