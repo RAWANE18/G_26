@@ -61,7 +61,7 @@ public class ConsultationService {
 
   // find by id
   public Consultation getById(Long id) {
-    return repo.findById(id).orElse(null);
+    return repo.findByIdConsultation(id);
   }
 
   // suppression

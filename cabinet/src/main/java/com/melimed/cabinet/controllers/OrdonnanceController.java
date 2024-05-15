@@ -14,8 +14,10 @@ import jakarta.validation.Valid;
 
 import com.melimed.cabinet.models.Consultation;
 import com.melimed.cabinet.models.Ordonnance;
+import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.ConsultationService;
 import com.melimed.cabinet.services.OrdonnanceService;
+import com.melimed.cabinet.services.PatientService;
 import com.melimed.cabinet.dtos.OrdonnanceDTO;
 
 @Controller
@@ -26,6 +28,8 @@ public class OrdonnanceController {
     private OrdonnanceService ordonnanceService;
     @Autowired
     private ConsultationService consultationService;
+    @Autowired
+    private PatientService patientService;
     //tableau de toutes les ordonnances
     @GetMapping("/showall")
     public String showOrdonnanceList(Model model) {
@@ -37,11 +41,13 @@ public class OrdonnanceController {
    //show the html page to create the ordonnance
    @GetMapping("/create{id}")
    public String showCreatePage(Model model,  @PathVariable(name = "id") Long id) {
-    List<Long> patientIds = ordonnanceService.getAllPatientIds();   
+      
     OrdonnanceDTO ordonnanceDTO = new OrdonnanceDTO();
-    Consultation consultation =consultationService.getById(id); 
+    Consultation consultation =consultationService.getById(id);
+    ordonnanceDTO.setIdconsultation(consultation.getIdConsultation());
+    Patient patient = patientService.getPatientById(consultation.getPatient().getIdPatient());
        model.addAttribute("ordonnanceDTO", ordonnanceDTO);
-       model.addAttribute("patientIds", patientIds);
+       model.addAttribute("patient", patient);
        model.addAttribute("consultation", consultation);
        return "ordonnance/create";
    }
