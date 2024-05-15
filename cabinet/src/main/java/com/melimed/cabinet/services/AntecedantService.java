@@ -57,6 +57,11 @@ public List<Long> getAllPatientIds() {
 }
 
 
+public Antecedant getByIdPatient(Long idPatient) {
+return repo.findByPatient(patientrepo.findByIdPatient(idPatient));
+}
+
+
 
 
 }

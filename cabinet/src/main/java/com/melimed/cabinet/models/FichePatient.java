@@ -16,11 +16,10 @@ public class FichePatient {
     @OneToOne(cascade = CascadeType.ALL)
       @JoinColumn(name="patient" , referencedColumnName = "idPatient" )
       private Patient patient;
-     
-      @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-      @CollectionTable(name = "ficheConsultations", joinColumns = @JoinColumn(name = "idconsultation"))
-      @Column(name = "idconsultation", nullable = false, insertable=false, updatable = false)
-      private List<Consultation> consultation = new ArrayList<>();
+      @OneToOne(cascade = CascadeType.ALL)
+      @JoinColumn(name="Antecedant" , referencedColumnName = "idAntecedant" )
+      private Antecedant antecedant;
+        
     
       
      //constructeurs
@@ -32,8 +31,11 @@ public class FichePatient {
  
 
      //setters and getters
-     public List<Consultation> getConsultation() {
-         return consultation;
+     public Antecedant getAntecedant() {
+         return antecedant;
+     }
+     public void setAntecedant(Antecedant antecedant) {
+         this.antecedant = antecedant;
      }
      public Long getIdFichePatient() {
          return idFichePatient;
@@ -43,9 +45,7 @@ public class FichePatient {
      }
      
      
-     public void setConsultation(List<Consultation> consultation) {
-         this.consultation = consultation;
-     }
+
      public void setIdFichePatient(Long idFichePatient) {
          this.idFichePatient = idFichePatient;
      }

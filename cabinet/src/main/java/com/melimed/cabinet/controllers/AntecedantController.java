@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 import com.melimed.cabinet.models.Antecedant;
+import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.AntecedantService;
+import com.melimed.cabinet.services.PatientService;
 import com.melimed.cabinet.dtos.AntecedantDTO;
 
 @Controller
@@ -24,6 +26,8 @@ public class AntecedantController {
 
     @Autowired
     private AntecedantService antecedantService;
+    @Autowired
+    private PatientService patientService;
 
     @GetMapping("/showall")
     public String showAntecedantList(Model model) {
@@ -32,12 +36,13 @@ public class AntecedantController {
         return "antecedant/showAll";
     }
 
-    @GetMapping("/create")
-    public String showCreatePage(Model model) {
-        List<Long> patientIds = antecedantService.getAllPatientIds();
+    @GetMapping("/create{id}")
+    public String showCreatePage(Model model,@PathVariable(name = "id") Long id) {
         AntecedantDTO antecedantDTO = new AntecedantDTO();
+        Patient patient = patientService.getPatientById(id);
+        
         model.addAttribute("antecedantDTO", antecedantDTO);
-        model.addAttribute("patientIds", patientIds);
+        model.addAttribute("patient", patient);
         return "antecedant/create";
     }
 
@@ -47,7 +52,7 @@ public class AntecedantController {
             return "antecedant/create";
         }
         antecedantService.createAntecedant(antecedantDTO);
-        return "redirect:/patient";
+        return "redirect:/patient/showall";
     }
 
     @GetMapping("/delete/{id}")

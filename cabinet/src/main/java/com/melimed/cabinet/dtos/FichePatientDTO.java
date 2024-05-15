@@ -3,47 +3,46 @@ package com.melimed.cabinet.dtos;
 
 import java.util.List;
 
+import com.melimed.cabinet.models.Antecedant;
+import com.melimed.cabinet.models.Patient;
+
 public class FichePatientDTO {
     private Long idFichePatient;
-    private PatientDTO patient;
-    private List<ConsultationDTO> consultations;
+    private Patient patient;
+    private Antecedant antecedant;
 
     // Constructors
     public FichePatientDTO() {
     }
 
-    public FichePatientDTO(Long idFichePatient, PatientDTO patient, List<ConsultationDTO> consultations) {
+    public FichePatientDTO(Long idFichePatient, Patient patient) {
         this.idFichePatient = idFichePatient;
         this.patient = patient;
-        this.consultations = consultations;
+       
     }
 
     // Getters and Setters
     public Long getIdFichePatient() {
         return idFichePatient;
     }
+public Antecedant getAntecedant() {
+    return antecedant;
+}
 
     public void setIdFichePatient(Long idFichePatient) {
         this.idFichePatient = idFichePatient;
     }
 
-    public PatientDTO getPatient() {
-        return patient;
-    }
+   public Patient getPatient() {
+       return patient;
+   }
+public void setAntecedant(Antecedant antecedant) {
+    this.antecedant = antecedant;
+}
+public void setPatient(Patient patient) {
+    this.patient = patient;
+}
+    
 
-    public void setPatient(PatientDTO patient) {
-        this.patient = patient;
-    }
-
-    public List<ConsultationDTO> getConsultations() {
-        return consultations;
-    }
-
-    public void setConsultations(List<ConsultationDTO> consultations) {
-        this.consultations = consultations;
-    }
-
-    public void addConsultation(ConsultationDTO consultation) {
-        this.consultations.add(consultation);
-    }
+    
 }

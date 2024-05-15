@@ -27,7 +27,7 @@ public class CertificatService {
 }
 
  // create une ordonnance
- public Certificat createOrdonnance(CertificatDTO certificatDto) {
+ public Certificat createCertificat(CertificatDTO certificatDto) {
     Certificat certificat = new Certificat();
     certificat.setContenu(certificatDto.getContenu());
     certificat.setIdconsultation(consultrepo.findByIdConsultation(certificatDto.getIdconsultation()));
