@@ -46,6 +46,7 @@ public class OrdonnanceController {
     Consultation consultation =consultationService.getById(id);
     ordonnanceDTO.setIdconsultation(consultation.getIdConsultation());
     Patient patient = patientService.getPatientById(consultation.getPatient().getIdPatient());
+    ordonnanceDTO.setPatientId(patient.getIdPatient());
        model.addAttribute("ordonnanceDTO", ordonnanceDTO);
        model.addAttribute("patient", patient);
        model.addAttribute("consultation", consultation);
