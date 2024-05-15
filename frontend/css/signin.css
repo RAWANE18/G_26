@@ -1,5 +1,5 @@
 body {
-  background-image: url("../img/Background.jpg");
+  background-image: url("../img/backround.jpeg");
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,9 +18,9 @@ body {
 }
 .container {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-  margin-right: 150px;
+
   height: 100vh;
 }
 
