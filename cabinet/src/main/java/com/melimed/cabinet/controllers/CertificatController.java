@@ -48,9 +48,9 @@ public class CertificatController {
    }
 
     //save the data of the created ordonnance in the database
-@PostMapping("/create")
+@PostMapping("/create{id}")
 
-public String createCertificat(@Valid @ModelAttribute("certificatDTO") CertificatDTO certificatDTO, BindingResult result,Model model) {
+public String createCertificat(@Valid @ModelAttribute("certificatDTO") CertificatDTO certificatDTO, BindingResult result,Model model,  @PathVariable(name = "id") Long id  ) {
     if (result.hasErrors()) {
         return "certificat/create";
     }

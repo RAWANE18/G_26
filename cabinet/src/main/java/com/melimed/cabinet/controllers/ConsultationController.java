@@ -14,7 +14,6 @@ import jakarta.validation.Valid;
 import com.melimed.cabinet.models.Certificat;
 import com.melimed.cabinet.models.Consultation;
 import com.melimed.cabinet.models.Ordonnance;
-import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.CertificatService;
 import com.melimed.cabinet.services.ConsultationService;
 import com.melimed.cabinet.services.OrdonnanceService;
