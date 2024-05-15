@@ -26,20 +26,18 @@ public class CertificatService {
     return repo.findAll();
 }
 
- 
-//creer un certificat
-public Certificat createCertificat(CertificatDTO certificatDTO) {
+ // create une ordonnance
+ public Certificat createOrdonnance(CertificatDTO certificatDto) {
     Certificat certificat = new Certificat();
-    certificat.setContenu(certificatDTO.getContenu());
-    certificat.setIdconsultation(consultrepo.findById(certificatDTO.getIdconsultation()).orElse(null));
-   
-    
+    certificat.setContenu(certificatDto.getContenu());
+    certificat.setIdconsultation(consultrepo.findByIdConsultation(certificatDto.getIdconsultation()));
+
     // Using the PatientService to fetch the patient
-    Patient patient = new Patient(); 
-    patient = patientrepo.findById(certificatDTO.getPatientId()).orElse(null);
-    certificat.setPatient(patient);
-    
+    // Patient patient = new Patient();
+    certificat.setPatient(certificat.getIdconsultation().getPatient());
+
     return repo.save(certificat);
+
 }
 
 public CertificatDTO createCertificatDTO() {

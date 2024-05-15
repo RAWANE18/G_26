@@ -114,6 +114,8 @@
                 <a class="btn-delete" th:href="@{/consultation/delete(id=${consultation.idConsultation})}"
                   onclick="confirm('etes vous sure de vouloir suprimer la consultation?')"><i
                     class="fa-solid fa-trash"></i></a>
+                    <a class="btn-create" th:href="@{'/consultation/show' + ${consultation.idConsultation}}"><i
+                      class="fa-solid fa-plus"></i></a> 
                 <a class="btn-create" th:href="@{'/ordonnance/create' + ${consultation.idConsultation}}"><i
                     class="fa-solid fa-circle-plus"></i></a>
 
