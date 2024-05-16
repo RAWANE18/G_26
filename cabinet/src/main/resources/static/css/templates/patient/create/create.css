@@ -46,7 +46,6 @@ form {
   margin-top: 20px;
   padding: 20px;
   color: var(--green);
-  border-bottom: 1px solid var(--blue);
 }
 .item {
   display: flex;
@@ -107,7 +106,7 @@ input {
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
   box-sizing: border-box;
-
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   padding: 6px 16px;
@@ -143,7 +142,7 @@ input {
 }
 .btn-submit {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  height: 75px;
+  padding-right: 40px;
 }

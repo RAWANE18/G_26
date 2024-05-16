@@ -46,7 +46,6 @@ form {
   margin-top: 20px;
   padding: 20px;
   color: var(--green);
-  border-bottom: 1px solid var(--blue);
   flex-direction: column;
   display: flex;
 }
@@ -60,7 +59,7 @@ form {
 label span {
   color: var(--red);
 }
-input {
+.col-sm-12 textarea {
   border-radius: 10px;
   border: 2px solid #e7e7e7;
   box-shadow: none;
@@ -68,14 +67,15 @@ input {
   color: #888;
   width: 250px;
   padding-left: 10px;
+  resize: none;
 }
 
 #idpatients {
-    background-color: white;
-    color: black;
-    padding: 5px;
-    border: 1px solid black;
-    opacity: 1;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border: 1px solid black;
+  opacity: 1;
 }
 
 .button-3 a {
@@ -100,7 +100,7 @@ input {
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
   box-sizing: border-box;
-
+  color: var(--white);
   cursor: pointer;
   display: inline-block;
   padding: 6px 16px;
@@ -136,11 +136,28 @@ input {
 }
 .btn-submit {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   height: 75px;
 }
-#content{
- height: 30vh;
- width: 70vh;
+#content {
+  height: 30vh;
+  width: 70vh;
+}
+.gender {
+  margin-bottom: 20px;
+}
+.gender select {
+  color: #888;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--white);
+  cursor: pointer;
+  height: 20px;
+}
+
+.gender select option {
+  background-color: #fff;
+  color: #888;
 }

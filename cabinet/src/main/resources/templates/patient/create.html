@@ -1,148 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createPatient</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>createPatient</title>
+    <link
+      th:href="@{/css/templates/patient/update/update.css}"
+      rel="stylesheet"
+    />
+    <link
+      th:href="@{/css/templates/patient/create/create.css}"
+      rel="stylesheet"
+    />
+    <link
+      th:href="@{/css/templates/patient/showAll/showAll.css}"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
 
-  <link th:href="@{/css/templates/patient/update/update.css}" rel="stylesheet" />
-  <link th:href="@{/css/templates/patient/create/create.css}" rel="stylesheet" />
-  <link th:href="@{/css/templates/patient/showAll/showAll.css}" rel="stylesheet" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-
-</head>
-
-<body>
-
-
-
-
-  <!---->
-  <div class="ctn-form">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto rounded border p-4 m-4">
-          <div class="header">
-            <h2 class="text-center mb-5">Nouveau Patient</h2>
-            <p>Remplissez soigneusement le formulaire d’inscription</p>
-          </div>
-          <form method="post" enctype="application/x-www-form-urlencoded" th:object="${patientDTO}">
-            <div class="item">
-
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Nom <span>*</span> </label>
-                <div class="col-sm-8">
-                  <input class="form-control" th:field="*{lastname}">
-                  <!--
+  <body>
+    <!---->
+    <div class="ctn-form">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto rounded border p-4 m-4">
+            <div class="header">
+              <h2 class="text-center mb-5">Nouveau Patient</h2>
+              <p>Remplissez soigneusement le formulaire d’inscription</p>
+            </div>
+            <form
+              method="post"
+              enctype="application/x-www-form-urlencoded"
+              th:object="${patientDTO}"
+            >
+              <div class="item">
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Nom <span>*</span>
+                  </label>
+                  <div class="col-sm-8">
+                    <input class="form-control" th:field="*{lastname}" />
+                    <!--
                   <p th: if="${#fields.hasErrors ('lastname')}" th:errorclass="text-danger" th:
                     errors="${lastname}"></p>
                 -->
+                  </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Prenom <span>*</span> </label>
-                <div class="col-sm-8">
-                  <input class="form-control" th:field="*{firstname}">
-                  <!--
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Prenom <span>*</span>
+                  </label>
+                  <div class="col-sm-8">
+                    <input class="form-control" th:field="*{firstname}" />
+                    <!--
                   <p th: if="${#fields.hasErrors ('firstname')}" th:errorclass="text-danger" th:
                     errors="${firstname}"></p>
                 -->
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Numero <span>*</span> </label>
-                <div class="col-sm-8">
-                  <input class="form-control" th:field="*{numtel}">
-                  <!--
+              <div class="item">
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Numero <span>*</span>
+                  </label>
+                  <div class="col-sm-8">
+                    <input class="form-control" th:field="*{numtel}" />
+                    <!--
                   <p th: if="${#fields.hasErrors ('numtel')}" th:errorclass="text-danger" th:
                     errors="${numtel}"></p>
                 -->
+                  </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Email <span>*</span> </label>
-                <div class="col-sm-8">
-                  <input class="form-control" th:field="*{email}">
-                  <!--
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Email <span>*</span>
+                  </label>
+                  <div class="col-sm-8">
+                    <input class="form-control" th:field="*{email}" />
+                    <!--
                   <p th: if="${#fields.hasErrors ('email')}" th:errorclass="text-danger" th:
                     errors="${email}"></p>
                 -->
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item">
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Adresse <span>*</span> </label>
-                <div class="col-sm-8">
-                  <input class="form-control" th:field="*{adress}">
-                  <!--
+              <div class="item">
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Adresse <span>*</span>
+                  </label>
+                  <div class="col-sm-8">
+                    <input class="form-control" th:field="*{adress}" />
+                    <!--
                   <p th: if="${#fields.hasErrors ('adress')}" th:errorclass="text-danger" th:
                     errors="${adress}"></p>
                 -->
+                  </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">Date de naissance <span>*</span> </label>
-                <div class="col-sm-8">
-                  <input class="form-control" th:field="*{birthdate}">
-                  <!--
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Date de naissance <span>*</span>
+                  </label>
+                  <div class="col-sm-8">
+                    <input class="form-control" th:field="*{birthdate}" />
+                    <!--
                   <p th: if="${#fields.hasErrors ('birthdate')}" th:errorclass="text-danger" th:
                     errors="${birthdate}"></p>
                 -->
+                  </div>
                 </div>
               </div>
-            </div>
-            <!--au cas ou on veut une selection-->
-            <div class="gender">
-              <div class="row mb-3">
-                <label class="col-sm-4 col-form-label">gender <span>*</span></label>
-                <div class="col-sm-8">
+              <!--au cas ou on veut une selection-->
+              <div class="gender">
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >gender <span>*</span></label
+                  >
+                  <div class="col-sm-8">
+                    <select class="form-select" th:field="*{gender}">
+                      <!--<option>Option</option>-->
+                      <option th:value="'Femme'" th:text="Femme">Femme</option>
+                      <option th:value="'Homme'" th:text="Homme">Homme</option>
+                    </select>
 
-
-                  <select class="form-select" th:field="*{gender}">
-                    <!--<option>Option</option>-->
-                    <option th:value="'Femme'" th:text="Femme"></option> 
-                    <option th:value="'Homme'" th:text="Homme"></option>
-                  </select>
-
-
-                  <!--
+                    <!--
                   <p th: if="$(#fields. hasErrors ('genre'))" th:errorclass="text-danger"
                     th:errors="${genre}"></p>
                 -->
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="btn-submit">
-              <button type="submit" class="button-3" role="button">Sauvegarder</button>
-            </div>
-          </form>
-
-
+              <div class="btn-submit">
+                <button type="submit" class="button-3" role="button">
+                  Sauvegarder
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-
       </div>
     </div>
 
-  </div>
-
-
-  <!-- bootstrap js-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-    integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
-
-
-</body>
-
+    <!-- bootstrap js-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

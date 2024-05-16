@@ -16,15 +16,15 @@
 body {
   font-family: Inter, sans-serif;
   font-size: 16px;
-  background-color: var(--blue);
 }
 .ctn-form {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #095d7e;
 }
-.container {
+.col-md-8 {
   border-radius: 5px;
   width: 600px;
   height: 80vh;
@@ -35,9 +35,9 @@ body {
 }
 .header {
   text-align: center;
-  padding: 30px;
-  border-bottom: 1px solid var(--blue);
-  color: var(--blue);
+  padding: 10px;
+  border-bottom: 1px solid #095d7e;
+  color: #095d7e;
 }
 .header h2 {
   font-weight: 500;
@@ -45,8 +45,7 @@ body {
 form {
   margin-top: 20px;
   padding: 20px;
-  color: var(--green);
-  border-bottom: 1px solid var(--blue);
+  color: #00816d;
   flex-direction: column;
   display: flex;
 }
@@ -58,24 +57,25 @@ form {
   margin-left: 30px;
 }
 label span {
-  color: var(--red);
+  color: #ff502f;
 }
-input {
+.col-sm-12 textarea {
   border-radius: 10px;
   border: 2px solid #e7e7e7;
   box-shadow: none;
-  height: 150px;
+  height: 350px;
   color: #888;
-  width: 250px;
+  width: 100%;
   padding-left: 10px;
+  resize: none;
 }
 
 #idpatients {
-    background-color: white;
-    color: black;
-    padding: 5px;
-    border: 1px solid black;
-    opacity: 1;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border: 1px solid black;
+  opacity: 1;
 }
 
 .button-3 a {
@@ -95,12 +95,12 @@ input {
 }
 .button-3 {
   appearance: none;
-  background-color: var(--green);
+  background-color: #00816d;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
   box-sizing: border-box;
-
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   padding: 6px 16px;
@@ -115,7 +115,7 @@ input {
 }
 
 .button-3:hover {
-  background-color: var(--green);
+  background-color: #00816d;
 }
 
 .button-3:focus {
@@ -136,11 +136,27 @@ input {
 }
 .btn-submit {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   height: 75px;
+  padding-left: 60px;
 }
-#content{
- height: 30vh;
- width: 70vh;
+#content {
+  height: 30vh;
+  width: 70vh;
+}
+
+.gender select {
+  color: #888;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--white);
+  cursor: pointer;
+  height: 20px;
+}
+
+.gender select option {
+  background-color: #fff;
+  color: #888;
 }

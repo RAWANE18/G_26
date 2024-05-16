@@ -26,8 +26,8 @@ body {
   position: fixed;
   width: 300px;
   height: 100%;
-  background: var(--blue);
-  border-left: 10px solid var(--blue);
+  background: #095d7e;
+  border-left: 10px solid #095d7e;
   transition: 0.5s;
   overflow: hidden;
   left: 0;
@@ -53,7 +53,7 @@ body {
 
 .navigation ul li:hover,
 .navigation ul li.hovered {
-  background-color: var(--white);
+  background-color: #fff;
 }
 
 .navigation ul li:nth-child(1) {
@@ -71,7 +71,7 @@ body {
 }
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
-  color: var(--blue);
+  color: #095d7e;
 }
 
 .navigation ul li a .icon {
@@ -171,31 +171,21 @@ body {
 }
 
 .btn-delete i {
-  color: var(--red);
+  color: #ff502f;
   margin-left: 20px;
 }
-.Ajouter {
-  display: flex;
-  justify-content: end;
-  margin-bottom: 10px;
+.section2 .table {
+  margin-top: 10px;
 }
-.Ajouter .btn {
-  background-color: var(--green);
-  border-color: var(--green);
-}
-.Ajouter .btn:hover {
-  background-color: var(--green);
-  border-color: var(--green);
-}
-.table th {
+.section2 .table th {
   background-color: #f1f9ff;
-  color: var(--blue);
+  color: #095d7e;
 }
-.table tr:nth-child(even) {
+.section2 .table tr:nth-child(even) {
   background-color: #f1f9ff;
 }
 #title {
-  color: var(--green);
+  color: #00816d;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 10px;
@@ -207,4 +197,21 @@ body {
   border-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.btn-create {
+  text-decoration: none;
+  color: #ccecee;
+  padding: 6px 16px;
+  border-radius: 5px;
+  background-color: #00816d;
+  margin-bottom: 20px;
+}
+.fa-solid {
+  font-size: small;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.btn-create:hover {
+  text-decoration: none;
+  color: var(--white);
 }
