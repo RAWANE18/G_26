@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,8 +13,10 @@ import jakarta.validation.Valid;
 
 import com.melimed.cabinet.models.Certificat;
 import com.melimed.cabinet.models.Consultation;
+import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.CertificatService;
 import com.melimed.cabinet.services.ConsultationService;
+import com.melimed.cabinet.services.PatientService;
 import com.melimed.cabinet.dtos.CertificatDTO;
 
 
@@ -27,33 +28,42 @@ public class CertificatController {
     private CertificatService certificatService;
     @Autowired
     private ConsultationService consultationService;
-    //tableau de toutes les ordonnances
-    @GetMapping("/showall")
-    public String showOrdonnanceList(Model model) {
-        List<Certificat> certificats = certificatService.getAllCertificats();
-        model.addAttribute("certificats", certificats);
-        return "certificat/showAll";
-    }
+    @Autowired
+    private PatientService patientService;
+ 
+    // tableau de toutes les certificats
+     @GetMapping("/showall")
+     public String showOrdonnanceList(Model model) {
+         List<Certificat> certificats = certificatService.getAllCertificats();
+         model.addAttribute("certificats", certificats);
+         return "certificat/showAll";
+     }
 
-   //show the html page to create the ordonnance
-   @GetMapping("/create{id}")
-   public String showCreatePage(Model model,  @PathVariable(name = "id") Long id) {
-    List<Long> patientIds = consultationService.getAllPatientIds();   
-   CertificatDTO certificatDTO = new CertificatDTO();
-    Consultation consultation =consultationService.getById(id); 
-       model.addAttribute("certificatDTO", certificatDTO);
-       model.addAttribute("patientIds", patientIds);
-       model.addAttribute("consultation", consultation);
-       return "ordonnance/create";
-   }
+   //show the html page to create the certif
+  @GetMapping("/create{id}")
+  public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
 
-    //save the data of the created ordonnance in the database
+      CertificatDTO certificatDTO = new CertificatDTO();
+      Consultation consultation = consultationService.getById(id);
+      certificatDTO.setIdconsultation(consultation.getIdConsultation());
+      Patient patient = patientService.getPatientById(consultation.getPatient().getIdPatient());
+      model.addAttribute("certificatDTO", certificatDTO);
+      model.addAttribute("patient", patient);
+      model.addAttribute("consultation", consultation);
+      return "certificat/create";
+  }
+
+// save the data of the created certificat in the database
 @PostMapping("/create{id}")
-
-public String createCertificat(@Valid @ModelAttribute("certificatDTO") CertificatDTO certificatDTO, BindingResult result,Model model,  @PathVariable(name = "id") Long id  ) {
+public String createCertificat(
+        @Valid @ModelAttribute("certificatDTO") CertificatDTO certificatDTO,
+        @PathVariable(name = "id") Long idConsult,
+        BindingResult result, Model model) {
     if (result.hasErrors()) {
         return "certificat/create";
     }
+    certificatDTO.setIdconsultation(idConsult);
+
     certificatService.createCertificat(certificatDTO);
     return "redirect:/patient/showall";
 }

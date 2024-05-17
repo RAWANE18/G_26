@@ -7,6 +7,7 @@ public class RDVDTO {
     private Date date;
     private String description;
     private Long patientId;
+    private Date datePriseRdv;
 
     // Constructors
     public RDVDTO() {
@@ -31,7 +32,10 @@ public class RDVDTO {
     public Date getDate() {
         return date;
     }
-
+ 
+    public Date getDatePriseRdv() {
+        return datePriseRdv;
+    }
     public void setDate(Date date) {
         this.date = date;
     }
@@ -40,6 +44,9 @@ public class RDVDTO {
         return description;
     }
 
+    public void setDatePriseRdv(Date datePriseRdv) {
+        this.datePriseRdv = datePriseRdv;
+    }
     public void setDescription(String description) {
         this.description = description;
     }

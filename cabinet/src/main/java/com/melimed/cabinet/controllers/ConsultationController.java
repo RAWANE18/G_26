@@ -40,7 +40,7 @@ public class ConsultationController {
         return "consultation/showAll";
     }
 
-     // tableau de toutes les ordonnances d'un seul patient
+     // tableau de toutes les consultations d'un seul patient
      @GetMapping("/showone{id}")
      public String showConsultationListByPatient(Model model,@PathVariable(name = "id") Long id) {
          List<Consultation> consultations = consultationService.getAllConsultationPatient(id);
@@ -52,12 +52,12 @@ public class ConsultationController {
     // show une consultation , on passe l'id d'une consult pour avoir toutes les ordonnances et certificats
     @GetMapping("/show{id}")
     public String showConsultation(Model model, @PathVariable(name = "id") Long id) {
-        Consultation consultations = consultationService.getOneConsultation(id);
+        Consultation consultation = consultationService.getOneConsultation(id);
         List<Ordonnance> ordonnances = ordonnanceService.getAllOrdonnances();
         List<Certificat> certificats = certificatService.getAllCertificats();
         model.addAttribute("certificats", certificats);
         model.addAttribute("ordonnances", ordonnances);
-        model.addAttribute("consultations", consultations);
+        model.addAttribute("consultation", consultation);
         return "consultation/show";
     }
 

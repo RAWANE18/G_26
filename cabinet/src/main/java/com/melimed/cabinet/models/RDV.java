@@ -9,8 +9,9 @@ public class RDV {
     private Long idRdv;
 
     private Date date;
-
-    private String description;
+	private Date datePriseRdv;
+	private String description;
+	
     //Foreign key
     @OneToOne(cascade = CascadeType.ALL)
       @JoinColumn(name="patient" , referencedColumnName = "idPatient" )
@@ -34,6 +35,12 @@ public class RDV {
     public String getDescription() {
         return description;
     }
+   public Date getDatePriseRdv() {
+       return datePriseRdv;
+   }
+    public Patient getPatient() {
+        return patient;
+    }
 
     //setters
     public void setDate(Date date) {
@@ -45,5 +52,10 @@ public class RDV {
     public void setIdRdv(Long idRdv) {
         this.idRdv = idRdv;
     }
-
+    public void setDatePriseRdv(Date datePriseRdv) {
+        this.datePriseRdv = datePriseRdv;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }

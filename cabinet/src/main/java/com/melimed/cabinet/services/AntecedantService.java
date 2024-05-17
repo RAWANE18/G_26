@@ -20,11 +20,14 @@ public class AntecedantService {
     }
   
 
-//creer un certificat
+//creer un antecedant
 public Antecedant createAntecedant(AntecedantDTO antecedantDTO) {
     Antecedant antecedant = new Antecedant();
     antecedant.setAntecedantMedicaux(antecedantDTO.getAntecedantMedicaux());
     antecedant.setAntecedantChirurgicaux(antecedantDTO.getAntecedantChirurgicaux());
+    antecedant.setAllergies(antecedantDTO.getAllergies());
+    antecedant.setObservation(antecedantDTO.getObservation());
+    
     // Using the PatientService to fetch the patient
     Patient patient = new Patient(); 
     patient = patientrepo.findById(antecedantDTO.getPatientId()).orElse(null);
@@ -32,6 +35,24 @@ public Antecedant createAntecedant(AntecedantDTO antecedantDTO) {
     
     return repo.save(antecedant);
 }
+
+//edit un antecedant:
+public Antecedant updateAntecedant(Long id, AntecedantDTO antecedantDTO) {
+    Antecedant antecedant = repo.findById(id).orElse(null);
+    if (antecedant != null) {
+        antecedant.setAntecedantMedicaux(antecedantDTO.getAntecedantMedicaux());
+        antecedant.setAntecedantChirurgicaux(antecedantDTO.getAntecedantChirurgicaux());
+        antecedant.setAllergies(antecedantDTO.getAllergies());
+        antecedant.setObservation(antecedantDTO.getObservation());
+        
+
+        
+        return repo.save(antecedant);
+    }
+    //au cas ou not found
+    return null; 
+}
+
   //show all certificats
   public List<Antecedant> getAllAntecedants() {
     return repo.findAll();
@@ -54,6 +75,11 @@ public List<Long> getAllPatientIds() {
  //supprimer un antecedant
  public void deleteAntecedant(Long id) {
     repo.deleteById(id);
+}
+
+
+public Antecedant getByIdPatient(Long idPatient) {
+return repo.findByPatient(patientrepo.findByIdPatient(idPatient));
 }
 
 

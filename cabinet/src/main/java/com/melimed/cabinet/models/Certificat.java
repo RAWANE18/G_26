@@ -74,4 +74,5 @@ public class Certificat {
     public void setIdconsultation(Consultation idconsultation) {
         this.idconsultation = idconsultation;
     }
+    
 }

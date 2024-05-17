@@ -11,7 +11,9 @@ public class PatientDTO {
     private String lastname;
     private String firstname;
     private String numtel;
-
+    //foreigns
+    private Long idFichePatient;
+   // private Long idAntecedant;
     // Constructors
     public PatientDTO() {
     }
@@ -31,6 +33,12 @@ public class PatientDTO {
     public Long getIdPatient() {
         return idPatient;
     }
+/*     public Long getIdAntecedant() {
+        return idAntecedant;
+    }*/
+    public Long getIdFichePatient() {
+        return idFichePatient;
+    }
 
     public void setIdPatient(Long idPatient) {
         this.idPatient = idPatient;
@@ -43,7 +51,12 @@ public class PatientDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-
+ //   public void setIdAntecedant(Long idAntecedant) {
+  //      this.idAntecedant = idAntecedant;
+  //  }
+    public void setIdFichePatient(Long idFichePatient) {
+        this.idFichePatient = idFichePatient;
+    }
     public String getGender() {
         return gender;
     }

@@ -17,7 +17,7 @@ public class Consultation {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patient", referencedColumnName = "idPatient")
     private Patient patient;
-
+    
     // constructeurs
     public Consultation() {
     }

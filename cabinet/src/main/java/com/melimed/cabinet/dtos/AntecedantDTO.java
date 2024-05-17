@@ -5,7 +5,9 @@ public class AntecedantDTO {
     private Long idAntecedant;
     private String antecedantMedicaux;
     private String antecedantChirurgicaux;
-    private Long patientId; // Assuming you only need the patient's ID in the DTO
+    private String allergies;
+    private String observation;
+    private Long patientId; 
 
     // Constructors
     public AntecedantDTO() {
@@ -19,6 +21,19 @@ public class AntecedantDTO {
     }
 
     // Getters and Setters
+  
+    public String getAllergies() {
+        return allergies;
+    }
+    public String getObservation() {
+        return observation;
+    }
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+    public void setObservation(String observation) {
+        this.observation = observation;
+    }
     public Long getIdAntecedant() {
         return idAntecedant;
     }

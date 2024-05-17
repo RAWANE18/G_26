@@ -28,12 +28,6 @@
 </head>
 <body>
   
- 
-    
-   
-    
-  
-    
       <div class="navigation">
         <ul>
           <li>
@@ -103,7 +97,7 @@
           
         
         <div class="section2">
-          <a class="btn-create" th:href="@{/patient/create}"><i class="fa-solid fa-add"> add a new one</i></a>
+          <a class="btn-create" th:href="@{/patient/create}"><i class="fa-solid fa-add"></i>Ajouter un patient</a>
              
           <table class="table">
            
@@ -131,21 +125,21 @@
                       <td th:text="${patient.adress}"></td>            
       <!--date-->     <td th:text="${patient.Birthdate.toString().substring(0,10)}"></td>
                       <td class="nameof classe">
+            
+
 
          <!--btn delete--> <a class="btn-delete" th:href="@{'/patient/delete' + ${patient.idPatient}}" onclick="confirm('etes vous sure de vouloir suprimer le patient?')"><i class="fa-solid fa-trash"></i></a>
-                            <a class="btn-delete" th:href="@{'/consultation/showone' + ${patient.idPatient}}"><i class="fa-solid fa-add"></i></a>
-                       
-                    </td>
+                      </td>
       
                   </tr>
                   
               </tbody>    
-      
+          </table>
       
            
             </div>
         </div>
-      
+      </div>
 
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/" crossorigin="anonymous"></script>

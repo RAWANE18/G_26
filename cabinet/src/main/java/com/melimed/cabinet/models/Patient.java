@@ -23,6 +23,8 @@ public class Patient {
     
     private String  numtel;
 
+
+
     //getters and setters
 
     public String getAdress() {
@@ -49,8 +51,7 @@ public class Patient {
     public String getNumtel() {
         return numtel;
     }
-
-
+    
     public void setAdress(String adress) {
         this.adress = adress;
     }
