@@ -45,7 +45,7 @@ public class FichepatientController {
         FichePatientDTO fichePatientDTO = new FichePatientDTO();
        
         
-        model.addAttribute("fichepatientDTO", fichePatientDTO);
+        model.addAttribute("fichePatientDTO", fichePatientDTO);
         return "fichePatient/create";
     }
 

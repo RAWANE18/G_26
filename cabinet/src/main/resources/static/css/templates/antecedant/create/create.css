@@ -16,13 +16,15 @@
 body {
   font-family: Inter, sans-serif;
   font-size: 16px;
+  height: 100vh;
 }
 .ctn-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-color: #095d7e;
+
 }
 .col-md-8 {
   border-radius: 5px;
@@ -48,6 +50,7 @@ form {
   color: #00816d;
   flex-direction: column;
   display: flex;
+  height: 100vh;
 }
 .item {
   display: flex;
