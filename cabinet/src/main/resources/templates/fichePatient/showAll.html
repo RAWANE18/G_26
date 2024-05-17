@@ -98,6 +98,8 @@
                             <th scope="col">ID</th>
                             <th scope="col">Antécédant Médicaux</th>
                             <th scope="col">Antécédant Chirurgicaux</th>
+                            <th scope="col">Allergies</th>
+                            <th scope="col">Observations</th>
                             <th scope="col">Patient</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -108,6 +110,8 @@
                             <td th:text="${fichePatient.idFichePatient}"></td>
                             <td th:text="${fichePatient.antecedant.antecedantMedicaux}"></td>
                             <td th:text="${fichePatient.antecedant.antecedantChirurgicaux}"></td>
+                            <td th:text="${fichePatient.antecedant.allergies}"></td>
+                            <td th:text="${fichePatient.antecedant.observation}"></td>
                             <td th:text="${fichePatient.patient.firstname + ' ' + fichePatient.patient.lastname}"></td>
                             <td class="nameof classe">
                                 <!-- Delete button -->
