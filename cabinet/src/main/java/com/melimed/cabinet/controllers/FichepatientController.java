@@ -34,34 +34,31 @@ public class FichepatientController {
     public String showFichepatientList(Model model) {
         List<FichePatient> fiches = fichepatientService.getAllFiches();
         model.addAttribute("fiches", fiches);
-        return "fichepatient/showAll";
+        return "fichePatient/showAll";
     }
   
 //create une fiche patient
-    @GetMapping("/create{id}")
-    public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
+    @GetMapping("/create")
+    public String showCreatePage(Model model) {
         FichePatientDTO fichePatientDTO = new FichePatientDTO();
     
         model.addAttribute("fichepatientDTO", fichePatientDTO);
-        return "consultation/create";
+        return "fichePatient/create";
     }
 
    // save the data of the created fichepatient in the database
-   @PostMapping("/create{id}")
+   @PostMapping("/create")
    public String createFichepatient(@Valid @ModelAttribute("fichePatientDTO") FichePatientDTO fichePatientDTO,
-           BindingResult result, Model model,
-           @PathVariable(name = "id") Long id) {
+           BindingResult result, Model model) {
 
        if (result.hasErrors()) {
-           return "consultation/create";
+           return "fichePatient/create";
        }
 
-       // consultationDTO.
-       fichePatientDTO.setPatient(patientService.getPatientById(id));
-       fichePatientDTO.setAntecedant(antecedantService.getByIdPatient(fichePatientDTO.getPatient().getIdPatient()));
-       fichepatientService.createFichePatient(fichePatientDTO);
+       // fichepatient DTO.
+        fichepatientService.createFichePatient(fichePatientDTO);
 
-       return "redirect:/patient";
+       return "redirect:/fiche/showall";
    }
 
   
@@ -71,6 +68,6 @@ public class FichepatientController {
 
         fichepatientService.deleteFichepatient(id);
 
-        return "redirect:/consultation/showall";
+        return "redirect:/fiche/showall";
     }
 }

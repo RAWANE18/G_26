@@ -1,16 +1,19 @@
 package com.melimed.cabinet.dtos;
 
 
-import java.util.List;
-
+import java.util.Date;
 import com.melimed.cabinet.models.Antecedant;
 import com.melimed.cabinet.models.Patient;
 
 public class FichePatientDTO {
     private Long idFichePatient;
-    private Patient patient;
     private Antecedant antecedant;
-
+    private Patient patient;
+    private String groupesanguin;
+    private Date dateCreation;
+    private String etatCivil;
+    private Long securiteSociale;
+    private String profession;
     // Constructors
     public FichePatientDTO() {
     }
@@ -25,10 +28,41 @@ public class FichePatientDTO {
     public Long getIdFichePatient() {
         return idFichePatient;
     }
-public Antecedant getAntecedant() {
-    return antecedant;
-}
+    public Antecedant getAntecedant() {
+        return antecedant;
+    } 
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+    public String getGroupesanguin() {
+        return groupesanguin;
+    }
+    public String getEtatCivil() {
+        return etatCivil;
+    }
+    public String getProfession() {
+        return profession;
+    }
+    public Long getSecuriteSociale() {
+        return securiteSociale;
+    }
 
+    
+    public void setEtatCivil(String etatCivil) {
+        this.etatCivil = etatCivil;
+    }
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+    public void setSecuriteSociale(Long securiteSociale) {
+        this.securiteSociale = securiteSociale;
+    }
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+    public void setGroupesanguin(String groupesanguin) {
+        this.groupesanguin = groupesanguin;
+    }
     public void setIdFichePatient(Long idFichePatient) {
         this.idFichePatient = idFichePatient;
     }

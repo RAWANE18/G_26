@@ -9,11 +9,12 @@ public class Antecedant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAntecedant;
-
+    private String allergies;
+    private String observation;
     private String antecedantMedicaux;
     private String antecedantChirurgicaux;
     //Foreign Keys
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL )
       @JoinColumn(name="patient" , referencedColumnName = "idPatient" )
       private  Patient patient;
     
@@ -44,7 +45,19 @@ public class Antecedant {
    public Patient getPatient() {
        return patient;
    }
+   public String getAllergies() {
+       return allergies;
+   }
+   public String getObservation() {
+       return observation;
+   }
     //setters
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+    public void setObservation(String observation) {
+        this.observation = observation;
+    }
     public void setAntecedantChirurgicaux(String antecedantChirurgicaux) {
         this.antecedantChirurgicaux = antecedantChirurgicaux;
     }

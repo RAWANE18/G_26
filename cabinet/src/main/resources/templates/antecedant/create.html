@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
 
 </head>
 <body>
+  
     <div class="ctn-form">
         <div class="container">
           <div class="row">
@@ -23,15 +24,7 @@
               </div>
               <form method="post" enctype="application/x-www-form-urlencoded" th:object="${antecedantDTO}">
                 <div class="item">
-                  <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label">Patient <span>*</span></label>
-                    <div class="col-sm-8">
-                       <select class="form-select" th:field="*{patientId}">
-                        <option value="">Sélectionner un patient</option>
-                        <option th:each="patientId : ${patientId}" th:value="${patientId}"></option>
-                      </select>
-                    </div>
-                  </div>
+                
                   <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Antécédants Médicaux <span>*</span></label>
                     <div  class="col-sm-12">
@@ -42,6 +35,18 @@
                     <label class="col-sm-4 col-form-label">Antécédants Chirurgicaux <span>*</span></label>
                     <div  class="col-sm-12">
                       <textarea id="antecedantChirurgicaux" class="form-control" th:field="*{antecedantChirurgicaux}"></textarea>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Allergies <span>*</span></label>
+                    <div  class="col-sm-12">
+                      <textarea id="antecedantChirurgicaux" class="form-control" th:field="*{allergies}"></textarea>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Observations du medecin: <span>*</span></label>
+                    <div  class="col-sm-12">
+                      <textarea id="antecedantChirurgicaux" class="form-control" th:field="*{observation}"></textarea>
                     </div>
                   </div>
                 </div>

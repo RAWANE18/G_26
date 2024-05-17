@@ -25,6 +25,9 @@ public Antecedant createAntecedant(AntecedantDTO antecedantDTO) {
     Antecedant antecedant = new Antecedant();
     antecedant.setAntecedantMedicaux(antecedantDTO.getAntecedantMedicaux());
     antecedant.setAntecedantChirurgicaux(antecedantDTO.getAntecedantChirurgicaux());
+    antecedant.setAllergies(antecedantDTO.getAllergies());
+    antecedant.setObservation(antecedantDTO.getObservation());
+    
     // Using the PatientService to fetch the patient
     Patient patient = new Patient(); 
     patient = patientrepo.findById(antecedantDTO.getPatientId()).orElse(null);

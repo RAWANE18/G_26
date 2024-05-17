@@ -46,11 +46,12 @@ public class AntecedantController {
         return "antecedant/create";
     }
 
-    @PostMapping("/create")
-    public String createAntecedant(@Valid @ModelAttribute("antecedantDTO") AntecedantDTO antecedantDTO, BindingResult result, Model model) {
+    @PostMapping("/create{id}")
+    public String createAntecedant(@Valid @ModelAttribute("antecedantDTO") AntecedantDTO antecedantDTO, @PathVariable(name = "id") Long id ,BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "antecedant/create";
         }
+        antecedantDTO.setPatientId(id);
         antecedantService.createAntecedant(antecedantDTO);
         return "redirect:/patient/showall";
     }

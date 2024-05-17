@@ -12,40 +12,47 @@
 
 </head>
 <body>
-    <a class="btn btn-primary" href="/products/create">Ajouter ...</a>
-        <table class="table">
-            <caption>table of .....</caption>
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-              </tr>
-            </thead>
-            <tbody> <!--   smth: singular , element: plural-->
-                <tr th:each="smth : ${element}">
-                    <td th:text="${smth.attributr}"></td>
-                    <td th:text="${smth.attributr}"></td>
-    <!--attribute--><td th:text="${smth.attributr}"></td>
-                    <td th:text="${smth.attributr}"></td>
-    <!--add strng--><td th:text="@{${smth.attributr}+'string'}"></td>
-    <!--date-->     <td th:text="${smth.attributr.toString().substring(0,10)}"></td>
-                    <td class="nameof classe">
-    <!--btn update--> <a class="btn-update" th:href="@{/element/edit(id=${smth.id})}">Update </a>    
-    <!--btn delete--> <a class="btn-delete" th:href="@{/element/delete(id=${smth.id})}">Delete </a>
-                    </td>
+
+    <div class="ctn-form">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 mx-auto rounded border p-4 m-4">
+              <div class="header">
+                <h2 class="text-center mb-5">Nouvelle Fiche patient</h2>
+
+              </div>
+              <form method="post" enctype="application/x-www-form-urlencoded" th:object="${consultationDTO}">
+                <div class="item">
     
-                </tr>
-            </tbody>    
     
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Date <span>*</span></label>
+                    <div class="col-sm-8">
+                      <!--<input type="date" class="form-control" th:field="*{dateConsultation}" />-->
+                      <input type="text" class="form-control" th:field="*{dateConsultation}" />
+                    </div>
+                  </div>
+                </div>
+    
+    
+                <div class="btn-submit">
+                  <button type="submit" class="button-3" role="button">Sauvegarder</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     
     
     
         <!-- bootstrap js-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
       
 </body>
 </html>
