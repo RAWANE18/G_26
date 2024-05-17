@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>createCertificat</title>
+
+  <link th:href="@{/css/templates/certificat/update/update.css}" rel="stylesheet" />
+  <link th:href="@{/css/templates/certificat/create/create.css}" rel="stylesheet" />
+  <link th:href="@{/css/templates/certificat/showAll/showAll.css}" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+  <div class="ctn-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto rounded border p-4 m-4">
+          <div class="header">
+            <h2 class="text-center mb-5">Nouveau certificat</h2>
+          </div>
+          <form method="post" enctype="application/x-www-form-urlencoded" th:object="${certificatDTO}">
+            <div class="item">
+              <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Date De Delivrance <span>*</span></label>
+                <div class="col-sm-8">
+
+                  <input type="text" class="form-control" th:field="*{dateDelivrance}" />
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-4 col-form-label">Date D'expiration <span>*</span></label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" th:field="*{dateExpiration}" />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-4 col-form-label">Contenu <span>*</span></label>
+              <div class="col-sm-12">
+                <textarea id="content" class="form-control" th:field="*{contenu}"></textarea>
+              </div>
+            </div>
+
+            <div class="btn-submit">
+              <button type="submit" class="button-3" role="button">Sauvegarder</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
+  <!-- bootstrap js-->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
