@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>showFichePatient</title>
+    <title>showAllFichePatients</title>
 
     <link th:href="@{/css/templates/fichePatient/update/update.css}" rel="stylesheet" />
 	<link th:href="@{/css/templates/fichePatient/create/create.css}" rel="stylesheet" />
@@ -128,77 +128,48 @@
                         </tr>
                     </tbody>
                 </table >
-                <table class="table">
-                  <h2>Informations du patient:</h2>
-                  <thead>
-                    <th scope="col">ID</th>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Prénom</th>
-                  <th scope="col">telephone</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Sexe</th>
-                  <th scope="col">adrress</th>
-                  <th scope="col">Date de naissance</th>
-                  <th scope="col">Details</th>
-                  </thead>
-                <tbody>
-                  <tr th:each="fichePatient : ${fichePatientDTO}">
-                    <td th:text="${fichePatient.patient.idPatient}"></td>
-                    <td th:text="${fichePatient.patient.firstname}"></td>
-                    <td th:text="${fichePatient.patient.lastname}"></td>
-                    <td th:text="${fichePatient.patient.numtel}"></td>   
-                    <td th:text="${fichePatient.patient.email}"></td>
-                    <td th:text="${fichePatient.patient.gender}"></td>
-                    <td th:text="${fichePatient.patient.adress}"></td>            
-    <!--date-->     <td th:text="${fichePatient.patient.Birthdate.toString().substring(0,10)}"></td>
-    <td class="nameof classe">
-      <!-- Delete button -->
-      <a class="btn-create" th:href="@{/patient/showone(id=${fichePatient.patient.idPatient})}"><i class="fa-solid fa-info"></i></a>
-     
-  </td>
-                    </tr>
-                </tbody>
-                </table>
-                <h2>Antecedants du patient:</h2>
-                <table class="table">
-                 
-                  <thead>
-                      <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Antécédant Médicaux</th>
-                          <th scope="col">Antécédant Chirurgicaux</th>
-                          <th scope="col">Allergies</th>
-                          <th scope="col">Observations</th>
-                          <th scope="col">Details</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <!-- Loop through antecedants -->
-                      <tr th:each="fichePatient : ${fichePatientDTO}">
-                          <td th:text="${fichePatient.antecedant.idAntecedant}"></td>
-                          <td th:text="${fichePatient.antecedant.antecedantMedicaux}"></td>
-                          <td th:text="${fichePatient.antecedant.antecedantChirurgicaux}"></td>
-                          <td th:text="${fichePatient.antecedant.allergies}"></td>
-                          <td th:text="${fichePatient.antecedant.observation}"></td>
-                           <td class="nameof classe">
-                            <!-- Delete button -->
-                            <a class="btn-create" th:href="@{/antecedant/showone(id=${fichePatient.patient.idPatient})}"><i class="fa-solid fa-info"></i></a>
-                           
-                        </td> 
-                      </tr>
-                  </tbody>
-              </table>
-            </div>
         </div>
+      </div>
     </div>
-
-    <!-- Add your script links here -->
-    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
-    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" nomodule></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- bootstrap js-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSGFpoO/ufreqqF6MVu4JdG7PhIxZlW8sSJv43gkdSHlua9DmM/"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMmcke49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/home.js"></script>
-</body>
+  </body>
 </html>
-

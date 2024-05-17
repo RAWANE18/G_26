@@ -17,19 +17,21 @@ public class FichepatientService {
 
     private FichePatientRepository repo;
     private PatientRepository patientrepo;
-   // private AntecedantRepository antecedantrepo;
+    private AntecedantRepository antecedantrepo;
 
     @Autowired
-    public void setRepo(/*AntecedantRepository antecedantrepo,*/ FichePatientRepository repo, PatientRepository patientrepo) {
+    public void setRepo(AntecedantRepository antecedantrepo, FichePatientRepository repo, PatientRepository patientrepo) {
         this.repo = repo;
         this.patientrepo = patientrepo;
-     //   this.antecedantrepo = antecedantrepo;
+        this.antecedantrepo = antecedantrepo;
     }
 
     public List<FichePatient> getAllFiches() {
         return repo.findAll();
     }
-
+    public FichePatient getFicheOne(Long id) {
+        return repo.findByPatient(patientrepo.findByIdPatient(id));
+    }
     public FichePatient createFichePatient(FichePatientDTO fichePatientDTO) {
         FichePatient fichePatient=new FichePatient();
         fichePatient.setDateCreation(fichePatientDTO.getDateCreation());
@@ -41,7 +43,7 @@ public class FichepatientService {
         Patient patient = new Patient();
         patient = patientrepo.findById(fichePatientDTO.getPatient().getIdPatient()).orElse(null);
         fichePatient.setPatient(patient);
-        // fichePatient.setAntecedant(antecedantrepo.findByPatient(patient));
+        fichePatient.setAntecedant(antecedantrepo.findByPatient(patient));
      
         return repo.save(fichePatient);
 

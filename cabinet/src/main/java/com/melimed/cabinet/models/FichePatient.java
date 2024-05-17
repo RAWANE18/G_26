@@ -15,33 +15,32 @@ public class FichePatient {
     private Long securiteSociale;
     private String profession;
 
-
+    //Foreign keys
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="Patient" , referencedColumnName = "idPatient" )
     private Patient patient;
-    //Foreign keys
+  
 
-   /* 
+    
       @OneToOne(cascade = CascadeType.ALL)
       @JoinColumn(name="Antecedant" , referencedColumnName = "idAntecedant" )
       private Antecedant antecedant;
-      */  
     
       
      //constructeurs
   public FichePatient(){}
-  public FichePatient(Long id, Patient patient){
+  public FichePatient(Long id){
     this.idFichePatient=id;
   }
  
 
      //setters and getters
-   /*   public Antecedant getAntecedant() {
+      public Antecedant getAntecedant() {
          return antecedant;
      }
       public void setAntecedant(Antecedant antecedant) {
        this.antecedant = antecedant; 
-     }*/
+      }
        public Patient getPatient() {
          return patient;
      }

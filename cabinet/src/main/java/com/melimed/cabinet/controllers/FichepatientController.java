@@ -34,10 +34,17 @@ public class FichepatientController {
     //donner toutes les fiches patient
     @GetMapping("/showall")
     public String showFichepatientList(Model model) {
-        List<FichePatient> fiches = fichepatientService.getAllFiches();
-        model.addAttribute("fiches", fiches);
-        return "fichePatient/showAll";
+        List<FichePatient> fichePatientDTO = fichepatientService.getAllFiches();
+        model.addAttribute("fichePatientDTO", fichePatientDTO);
+        return "fichePatient/show";
     }
+     //donner  une fiche patient
+     @GetMapping("/showall{id}")
+     public String showFichepatient(Model model,  @PathVariable(name = "id") Long id) {
+         FichePatient fichePatientDTO = fichepatientService.getFicheOne(id);
+         model.addAttribute("fichePatientDTO", fichePatientDTO);
+         return "fichePatient/showAll";
+     }
   
 //create une fiche patient
     @GetMapping("/create")

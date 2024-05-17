@@ -88,7 +88,7 @@
           <ion-icon name="menu-outline"></ion-icon>
         </div>
       </div>
-      <form th:action="@{/appointments/create}" th:object="${appointment}" method="post">
+      <form th:object="${appointment}" method="post"  enctype="application/x-www-form-urlencoded">
         <!-- Form fields for appointment details -->
         <input type="text" th:field="*{date}" />
         <input type="text" th:field="*{time}" />
