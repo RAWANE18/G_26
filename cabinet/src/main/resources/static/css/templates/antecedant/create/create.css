@@ -16,20 +16,18 @@
 body {
   font-family: Inter, sans-serif;
   font-size: 16px;
-  height: 100vh;
 }
 .ctn-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 105vh;
   background-color: #095d7e;
-
 }
 .col-md-8 {
   border-radius: 5px;
   width: 600px;
-  height: 80vh;
+  height: 95vh;
   background-color: var(--white);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -37,7 +35,6 @@ body {
 }
 .header {
   text-align: center;
-  padding: 10px;
   border-bottom: 1px solid #095d7e;
   color: #095d7e;
 }
@@ -46,17 +43,16 @@ body {
 }
 form {
   margin-top: 20px;
-  padding: 20px;
+  padding: 10px;
   color: #00816d;
   flex-direction: column;
   display: flex;
-  height: 100vh;
 }
 .item {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   margin-left: 30px;
 }
 label span {
@@ -147,19 +143,4 @@ label span {
 #content {
   height: 30vh;
   width: 70vh;
-}
-
-.gender select {
-  color: #888;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  background-color: var(--white);
-  cursor: pointer;
-  height: 20px;
-}
-
-.gender select option {
-  background-color: #fff;
-  color: #888;
 }
