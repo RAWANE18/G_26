@@ -96,8 +96,10 @@
         <div class="center">
           
              <div class="section2">
-              <h1>ordonnances:</h2>
-                <table class="table">
+              <h2>ordonnances:</h2>
+              <a   th:consult_id="${idConsultation}" class="button-3"  th:onclick="window.location.href=`/ordonnance/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i>Ajouter une ordonnance</i></a>
+                     
+              <table class="table">
                
                     <thead>
                       <tr>
@@ -118,8 +120,7 @@
                             <td class="contentcolumn" th:text="${ordonnances.contenu}"></td>
                            <td class="nameof classe">
        <!--btn delete-->  <a class="btn-delete" th:href="@{/ordonnance/delete(id=${ordonnances.idOrdonnance})}"><i class="fa-solid fa-trash"></i></a>
-                          <a  th:consult_id="${idConsultation}" class="btn-create"  th:onclick="window.location.href=`/ordonnance/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i></a>
-                         
+                          
                          </td>
                           
             
@@ -130,10 +131,12 @@
                 </table>
                   
 
-               
+               <br>
                 <table class="table">
-                 
-                    <thead>
+                  <h2>Consultations:</h2>
+                  <a   th:consult_id="${idConsultation}" class="button-3"  th:onclick="window.location.href=`/certificat/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i>Ajouter un Certificat</i></a>
+                   
+                  <thead>
                       <tr>
                         <th scope="col">ID</th>
                         <th scope="col">ID Patient</th>

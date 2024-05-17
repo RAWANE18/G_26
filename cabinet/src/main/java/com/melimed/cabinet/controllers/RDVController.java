@@ -1,4 +1,5 @@
 package com.melimed.cabinet.controllers;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,10 @@ public class RDVController {
     public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
       RDVDTO rdvdto= new RDVDTO();
       Patient patient =patientService.getPatientById(id);
+
+      List<Calendar> oktime = rdvService.getAllowedAppointmentTimes();
+    
+      model.addAttribute("oktime", oktime);
       model.addAttribute("patient", patient);
       model.addAttribute("rdvdto", rdvdto);
       return ("rdv/create");

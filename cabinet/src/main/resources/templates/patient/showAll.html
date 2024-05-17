@@ -127,7 +127,8 @@
                       <td class="nameof classe">
             
 
-
+                        <a class="btn-create" th:href="@{'/consultation/showone' + ${patient.idPatient}}" ><i class="fa-solid fa-info"></i></a>
+                       
          <!--btn delete--> <a class="btn-delete" th:href="@{'/patient/delete' + ${patient.idPatient}}" onclick="confirm('etes vous sure de vouloir suprimer le patient?')"><i class="fa-solid fa-trash"></i></a>
                       </td>
       
