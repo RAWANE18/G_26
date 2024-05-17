@@ -91,16 +91,18 @@
         <div class="center">
             <h1 id="title">Liste des Fiches Patient</h1>
             <div class="section2">
-                <a class="btn-create" href="/fichePatient/create"><i class="fa-solid fa-add"></i>Ajouter une fiche patient</a>
+                <a class="btn-create" href="/fiche/create"><i class="fa-solid fa-add"></i>Ajouter une fiche patient</a>
                 <table class="table">
-                    <thead>
+                  <h2>Fiche patient</h1> 
+                  <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Antécédant Médicaux</th>
-                            <th scope="col">Antécédant Chirurgicaux</th>
-                            <th scope="col">Allergies</th>
-                            <th scope="col">Observations</th>
-                            <th scope="col">Patient</th>
+                            <th scope="col">Groupe Sanguin</th>
+                            <th scope="col">Date de Creation</th>
+                            <th scope="col">Etat Civil</th>
+                            <th scope="col">Num Securite Social</th>
+                            <th scope="col">Profession</th>
+                            <th scope="co">patient</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -108,10 +110,11 @@
                         <!-- Loop through antecedants -->
                         <tr th:each="fichePatient : ${fichePatientDTO}">
                             <td th:text="${fichePatient.idFichePatient}"></td>
-                            <td th:text="${fichePatient.antecedant.antecedantMedicaux}"></td>
-                            <td th:text="${fichePatient.antecedant.antecedantChirurgicaux}"></td>
-                            <td th:text="${fichePatient.antecedant.allergies}"></td>
-                            <td th:text="${fichePatient.antecedant.observation}"></td>
+                            <td th:text="${fichePatient.groupesanguin}"></td>
+                            <td th:text="${fichePatient.dateCreation}"></td>
+                            <td th:text="${fichePatient.etatCivil}"></td>
+                            <td th:text="${fichePatient.securiteSociale}"></td>
+                            <td th:text="${fichePatient.profession}"></td>
                             <td th:text="${fichePatient.patient.firstname + ' ' + fichePatient.patient.lastname}"></td>
                             <td class="nameof classe">
                                 <!-- Delete button -->
@@ -121,6 +124,68 @@
                         </tr>
                     </tbody>
                 </table>
+                <table>
+                  <h2>Informations du patient:</h2>
+                  <thead>
+                    <th scope="col">ID</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prénom</th>
+                  <th scope="col">telephone</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Sexe</th>
+                  <th scope="col">adrress</th>
+                  <th scope="col">Date de naissance</th>
+                  <th scope="col">Details</th>
+                  </thead>
+                <tbody>
+                  <tr th:each="fichePatient : ${fichePatientDTO}">
+                    <td th:text="${fichePatient..idPatient}"></td>
+                    <td th:text="${fichePatient.patient.firstname}"></td>
+                    <td th:text="${fichePatient.patient.lastname}"></td>
+                    <td th:text="${fichePatient.patient.numtel}"></td>   
+                    <td th:text="${fichePatient.patient.email}"></td>
+                    <td th:text="${fichePatient.patient.gender}"></td>
+                    <td th:text="${fichePatient.patient.adress}"></td>            
+    <!--date-->     <td th:text="${fichePatient.patient.Birthdate.toString().substring(0,10)}"></td>
+    <td class="nameof classe">
+      <!-- Delete button -->
+      <a class="btn-create" th:href="@{/patient/showone(id=${fichePatient.patient.idPatient})}"><i class="fa-solid fa-info"></i></a>
+     
+  </td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <table class="table">
+                  <h2>Antecedants du patient:</h2>
+                  <thead>
+                      <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Antécédant Médicaux</th>
+                          <th scope="col">Antécédant Chirurgicaux</th>
+                          <th scope="col">Patient</th>
+                          <th scope="col">Allergies</th>
+                          <th scope="col">Observations</th>
+                          <th scope="col">Details</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <!-- Loop through antecedants -->
+                      <tr th:each="fichePatient : ${fichePatientDTO}"">
+                          <td th:text="${fichePatient.antecedant.idAntecedant}"></td>
+                          <td th:text="${fichePatient.antecedant.antecedantMedicaux}"></td>
+                          <td th:text="${fichePatient.antecedant.antecedantChirurgicaux}"></td>
+                          <td th:text="${fichePatient.antecedant.allergies}"></td>
+                          <td th:text="${fichePatient.antecedant.observation}"></td>
+                          <td th:text="${fichePatient.antecedant.patient.firstname + ' ' + antecedant.patient.lastname}"></td>
+                          <td class="nameof classe">
+                            <!-- Delete button -->
+                            <a class="btn-create" th:href="@{/antecedant/showone(id=${fichePatient.patient.idPatient})}"><i class="fa-solid fa-info"></i></a>
+                           
+                        </td> 
+                      </tr>
+                  </tbody>
+              </table>
             </div>
         </div>
     </div>

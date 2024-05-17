@@ -31,9 +31,12 @@ public class PatientController {
         return "patient/showAll";
     }
 
- 
-
-
+   @GetMapping("/showone{id}")
+   public String showPatient(Model model, @PathVariable(name = "id") Long id) {
+    Patient patients = patientService.getPatientById(id);
+    model.addAttribute("patients", patients);
+    return "patient/showAll";
+}
     // show the html page to create the patient
     @GetMapping("/create")
     public String showCreatePage(Model model) {

@@ -35,10 +35,33 @@
     
     
                   <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label">Date <span>*</span></label>
+                    <label class="col-sm-4 col-form-label">Date de Creation <span>*</span></label>
                     <div class="col-sm-8">
-                      <!--<input type="date" class="form-control" th:field="*{dateConsultation}" />-->
-                      <input type="text" class="form-control" th:field="*{dateConsultation}" />
+                       <input type="text" class="form-control" th:field="*{dateCreation}" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Groupe Sanguin <span>*</span></label>
+                    <div class="col-sm-8">
+                       <input type="text" class="form-control" th:field="*{groupesanguin}" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Etat Civil <span>*</span></label>
+                    <div class="col-sm-8">
+                       <input type="text" class="form-control" th:field="*{etatCivil}" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Securite Sociale <span>*</span></label>
+                    <div class="col-sm-8">
+                       <input type="text" class="form-control" th:field="*{securiteSociale}" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Profession<span>*</span></label>
+                    <div class="col-sm-8">
+                       <input type="text" class="form-control" th:field="*{profession}" />
                     </div>
                   </div>
                 </div>

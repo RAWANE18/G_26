@@ -35,6 +35,13 @@ public class AntecedantController {
         model.addAttribute("antecedants", antecedants);
         return "antecedant/showAll";
     }
+   //show un antecedant with the id of the patient
+    @GetMapping("/showone{id}")
+    public String showAntecedant(Model model, @PathVariable(name = "id") Long id) {
+        Antecedant antecedants = antecedantService.getByIdPatient(id);
+        model.addAttribute("antecedants", antecedants);
+        return "antecedant/showAll";
+ }
 
     @GetMapping("/create{id}")
     public String showCreatePage(Model model,@PathVariable(name = "id") Long id) {
@@ -55,6 +62,40 @@ public class AntecedantController {
         antecedantService.createAntecedant(antecedantDTO);
         return "redirect:/patient/showall";
     }
+
+//editing:
+
+@GetMapping("/update/{id}")
+public String showUpdatePage(@PathVariable(name = "id") Long id, Model model) {
+    Antecedant antecedant = antecedantService.getByIdPatient(id);
+    AntecedantDTO antecedantDTO = new AntecedantDTO();
+    antecedantDTO.setAntecedantMedicaux(antecedant.getAntecedantMedicaux());
+    antecedantDTO.setAntecedantChirurgicaux(antecedant.getAntecedantChirurgicaux());
+    antecedantDTO.setAllergies(antecedant.getAllergies());
+    antecedantDTO.setObservation(antecedant.getObservation());
+    
+    model.addAttribute("antecedantDTO", antecedantDTO);
+    model.addAttribute("antecedantId", id);
+    
+    return "antecedant/update";
+}
+
+@PostMapping("/update/{id}")
+public String updateAntecedant(@PathVariable(name = "id") Long id, @Valid @ModelAttribute("antecedantDTO") AntecedantDTO antecedantDTO, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        return "antecedant/update";
+    }
+    
+    Antecedant updatedAntecedant = antecedantService.updateAntecedant(id, antecedantDTO);
+    if (updatedAntecedant != null) {
+        return "redirect:/antecedant/showall";
+    } else {
+        // Handle the case where the Antecedant with the given id is not found
+        return "redirect:/fiche/showall";
+    }
+}
+
+
 
     @GetMapping("/delete/{id}")
     public String deleteAntecedant(@PathVariable(name = "id") Long id) {

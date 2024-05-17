@@ -1,5 +1,6 @@
 package com.melimed.cabinet.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class FichepatientController {
     private AntecedantService antecedantService;
     @Autowired
     private PatientService patientService;
-
+    private static final List<String> ALLOWED_GROUPE_SANGUIN = Arrays.asList("A+", "B+", "O+", "A-", "B-", "O-");
+    
     //donner toutes les fiches patient
     @GetMapping("/showall")
     public String showFichepatientList(Model model) {
@@ -41,7 +43,8 @@ public class FichepatientController {
     @GetMapping("/create")
     public String showCreatePage(Model model) {
         FichePatientDTO fichePatientDTO = new FichePatientDTO();
-    
+       
+        
         model.addAttribute("fichepatientDTO", fichePatientDTO);
         return "fichePatient/create";
     }
@@ -50,7 +53,9 @@ public class FichepatientController {
    @PostMapping("/create")
    public String createFichepatient(@Valid @ModelAttribute("fichePatientDTO") FichePatientDTO fichePatientDTO,
            BindingResult result, Model model) {
-
+            if (!ALLOWED_GROUPE_SANGUIN.contains(fichePatientDTO.getGroupesanguin())) {
+                throw new IllegalArgumentException("groupe sanguin invalide");
+            }
        if (result.hasErrors()) {
            return "fichePatient/create";
        }
