@@ -1,6 +1,5 @@
 package com.melimed.cabinet.models;
 import java.util.Calendar;
-import java.util.Date;
 import jakarta.persistence.*;
 @Entity
 @Table(name="RendezVous")
