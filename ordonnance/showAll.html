@@ -42,23 +42,39 @@
     <div class="navigation">
       <ul>
         <li>
-          <a href="signup.html">
-            <span class="icon" id="doctor">
-              <i class="fa-solid fa-user-doctor"></i>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="person-outline"></ion-icon>
             </span>
-            <span class="title" id="admin">Docteur</span>
+            <span class="title">Patient</span>
           </a>
         </li>
 
         <li>
-          <a href="Plistdoctor.html">
+          <a href="#">
             <span class="icon">
               <ion-icon name="people-outline"></ion-icon>
             </span>
             <span class="title">List patient</span>
           </a>
         </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="id-card-outline"></ion-icon>
+            </span>
+            <span class="title">Fiche patient</span>
+          </a>
+        </li>
 
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="pulse-outline"></ion-icon>
+            </span>
+            <span class="title">Consultation</span>
+          </a>
+        </li>
         <li>
           <a href="#">
             <span class="icon">
@@ -69,7 +85,7 @@
         </li>
 
         <li>
-          <a href="certificat.html">
+          <a href="#">
             <span class="icon">
               <ion-icon name="receipt-outline"></ion-icon>
             </span>
@@ -78,7 +94,7 @@
         </li>
 
         <li>
-          <a href="RDV.html">
+          <a href="#">
             <span class="icon">
               <ion-icon name="calendar"></ion-icon>
             </span>
@@ -87,7 +103,7 @@
         </li>
 
         <li>
-          <a href="Sdoctor.html">
+          <a href="#">
             <span class="icon">
               <ion-icon name="log-out-outline"></ion-icon>
             </span>
@@ -105,10 +121,6 @@
       <div class="center">
         <h1 id="title">Ordonnance</h1>
         <div class="section2">
-          <a class="btn-create" th:href="@{/ordonnance/create}"
-            ><i class="fa-solid fa-add"></i>Ajouter une ordonnance</a
-          >
-
           <table class="table">
             <thead>
               <tr>
