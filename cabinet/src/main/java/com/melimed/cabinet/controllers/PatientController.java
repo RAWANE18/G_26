@@ -28,32 +28,63 @@ public class PatientController {
     public String showPatientList(Model model) {
         List<Patient> patients = patientService.getAllPatients();
         model.addAttribute("patients", patients);
-        return "patient/showAll";
+        return "packdoctor/patient/showAll";
+    }
+    @GetMapping("/showalls")
+    public String showPatientLists(Model model) {
+        List<Patient> patients = patientService.getAllPatients();
+        model.addAttribute("patients", patients);
+        return "packsecretaire/patient/showAll";
     }
 
+//show one patient
    @GetMapping("/showone{id}")
    public String showPatient(Model model, @PathVariable(name = "id") Long id) {
     Patient patients = patientService.getPatientById(id);
     model.addAttribute("patients", patients);
-    return "patient/showAll";
+    return "packdoctor/patient/showAll";
+}
+//meme pour secretaire
+@GetMapping("/showones{id}")
+   public String showPatients(Model model, @PathVariable(name = "id") Long id) {
+    Patient patients = patientService.getPatientById(id);
+    model.addAttribute("patients", patients);
+    return "packsecretaire/patient/showAll";
 }
     // show the html page to create the patient
     @GetMapping("/create")
     public String showCreatePage(Model model) {
 
         model.addAttribute("patientDTO", new PatientDTO());
-        return "patient/create";
+        return "packdoctor/patient/create";
     }
+    @GetMapping("/creates")
+    public String showCreatePages(Model model) {
+
+        model.addAttribute("patientDTO", new PatientDTO());
+        return "packsecretaire/patient/creates";
+    }
+
 
     // save the data of the created patient in the database
     @PostMapping("/create")
     public String createPatient(@Valid @ModelAttribute PatientDTO patientDto, BindingResult result) {
         if (result.hasErrors()) {
-            return "patient/create";
+            return "packdoctor/patient/create";
         }
         patientService.createPatient(patientDto);
-        return "redirect:/patient";
+        return "redirect:/patient/showall";
     }
+    @PostMapping("/creates")
+    public String createPatients(@Valid @ModelAttribute PatientDTO patientDto, BindingResult result) {
+        if (result.hasErrors()) {
+            return "packsecretaire/patient/create";
+        }
+        patientService.createPatient(patientDto);
+        return "redirect:/patient/showalls";
+    }
+
+    
 
     @GetMapping("/delete{id}")
     public String deletePatient(
@@ -62,6 +93,15 @@ public class PatientController {
         patientService.deletePatient(id);
 
         return "redirect:/patient/showall";
+    }
+
+    @GetMapping("/deletes{id}")
+    public String deletePatients(
+            @PathVariable(name = "id") Long id) {
+
+        patientService.deletePatient(id);
+
+        return "redirect:/patient/showalls";
     }
 
 }

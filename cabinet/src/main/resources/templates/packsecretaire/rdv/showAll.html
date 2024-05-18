@@ -23,6 +23,7 @@
   />
 </head>
 <body>
+  
   <div class="navigation">
     <ul>
       <li>
@@ -34,7 +35,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="/patient/showalls">
           <span class="icon">
             <ion-icon name="people-outline"></ion-icon>
           </span>
@@ -43,7 +44,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a href="/fiche/showalls">
           <span class="icon">
             <ion-icon name="id-card-outline"></ion-icon>
           </span>
@@ -51,7 +52,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="/rdv/showalls">
           <span class="icon">
             <ion-icon name="calendar"></ion-icon>
           </span>
@@ -60,7 +61,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a href="/home/now">
           <span class="icon">
             <ion-icon name="log-out-outline"></ion-icon>
           </span>
@@ -78,7 +79,7 @@
         <div class="center">
             <h1 id="title">Liste des Rendez-Vous</h1>
             <div class="section2">
-    <a class="btn-create" href="/rdv/create"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
+    <a class="btn-create" href="/rdv/creates"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
         <table class="table">
             
             <thead>
@@ -103,7 +104,7 @@
                     class="fa-solid fa-pen-to-square"
                     style="color: #00816d"
                   ></i> </a>    
-    <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/delete(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
+    <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/deletes(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
                   > </a>
                     </td>
                 </tr>

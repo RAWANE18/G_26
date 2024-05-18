@@ -36,7 +36,7 @@ public class CertificatController {
      public String showOrdonnanceList(Model model) {
          List<Certificat> certificats = certificatService.getAllCertificats();
          model.addAttribute("certificats", certificats);
-         return "certificat/showAll";
+         return "packdoctor/certificat/showAll";
      }
 
    //show the html page to create the certif
@@ -50,7 +50,7 @@ public class CertificatController {
       model.addAttribute("certificatDTO", certificatDTO);
       model.addAttribute("patient", patient);
       model.addAttribute("consultation", consultation);
-      return "certificat/create";
+      return "packdoctor/certificat/create";
   }
 
 // save the data of the created certificat in the database
@@ -60,7 +60,7 @@ public String createCertificat(
         @PathVariable(name = "id") Long idConsult,
         BindingResult result, Model model) {
     if (result.hasErrors()) {
-        return "certificat/create";
+        return "packdoctor/certificat/create";
     }
     certificatDTO.setIdconsultation(idConsult);
 

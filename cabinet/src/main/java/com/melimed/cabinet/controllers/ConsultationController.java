@@ -37,7 +37,7 @@ public class ConsultationController {
     public String showConsultationList(Model model) {
         List<Consultation> consultations = consultationService.getAllConsultations();
         model.addAttribute("consultations", consultations);
-        return "consultation/showAll";
+        return "packdoctor/consultation/showAll";
     }
 
      // tableau de toutes les consultations d'un seul patient
@@ -46,7 +46,7 @@ public class ConsultationController {
          List<Consultation> consultations = consultationService.getAllConsultationPatient(id);
          model.addAttribute("idPatient", id);
          model.addAttribute("consultations", consultations);
-         return "consultation/showAll";
+         return "packdoctor/consultation/showAll";
      }
 
     // show une consultation , on passe l'id d'une consult pour avoir toutes les ordonnances et certificats
@@ -58,7 +58,7 @@ public class ConsultationController {
         model.addAttribute("certificats", certificats);
         model.addAttribute("ordonnances", ordonnances);
         model.addAttribute("consultation", consultation);
-        return "consultation/show";
+        return "packdoctor/consultation/show";
     }
 
     // show the html page to create the ordonnance
@@ -81,7 +81,7 @@ public class ConsultationController {
         // model.addAttribute("patient", patient);
         // ajouter dans lhtml just the rendering of the value
 
-        return "consultation/create";
+        return "packdoctor/consultation/create";
     }
 
     // save the data of the created ordonnance in the database
@@ -91,14 +91,14 @@ public class ConsultationController {
             @PathVariable(name = "id") Long id) {
 
         if (result.hasErrors()) {
-            return "consultation/create";
+            return "packdoctor/consultation/create";
         }
 
         // consultationDTO.
         consultationDTO.setIdPatient(id);
         consultationService.createConsultation(consultationDTO);
 
-        return "redirect:/patient";
+        return "redirect:/patient/showall";
     }
 
 

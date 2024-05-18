@@ -37,7 +37,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="/patient/showalls">
           <span class="icon">
             <ion-icon name="people-outline"></ion-icon>
           </span>
@@ -46,7 +46,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a href="/fiche/showalls">
           <span class="icon">
             <ion-icon name="id-card-outline"></ion-icon>
           </span>
@@ -54,7 +54,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="/rdv/showalls">
           <span class="icon">
             <ion-icon name="calendar"></ion-icon>
           </span>
@@ -63,7 +63,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a href="/home/now">
           <span class="icon">
             <ion-icon name="log-out-outline"></ion-icon>
           </span>
@@ -81,7 +81,7 @@
         <div class="center">
             <h1 id="title">Liste des Fiches Patient</h1>
             <div class="section2">
-                <a class="btn-create" href="/fiche/create"><i class="fa-solid fa-add"></i>Ajouter une fiche patient</a>
+                <a class="btn-create" href="/fiche/creates"><i class="fa-solid fa-add"></i>Ajouter une fiche patient</a>
                 <table class="table">
                   <h2>Fiche patient</h1> 
                   <thead>
@@ -108,7 +108,7 @@
                             <td th:text="${fichePatient.patient.firstname + ' ' + fichePatient.patient.lastname}"></td>
                             <td class="nameof classe">
                                 <!-- Delete button -->
-                                <a class="btn-delete" th:href="@{/fiche/delete(id=${fichePatient.idFichePatient})}"><i class="fa-solid fa-trash"></i></a>
+                                <a class="btn-delete" th:href="@{/fiche/deletes(id=${fichePatient.idFichePatient})}"><i class="fa-solid fa-trash"></i></a>
               
                             </td>
                         </tr>

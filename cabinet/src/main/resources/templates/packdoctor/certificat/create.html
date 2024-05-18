@@ -6,7 +6,7 @@
     <title>createCertificat</title>
 
     <link th:href="@{/css/templates/certificat/update/update.css}" rel="stylesheet" />
-	<link th:href="@{/css/templates/certificat/create/create.css}" rel="stylesheet" />
+	<link th:href="@{/css/templates/ordonnance/create/create.css}" rel="stylesheet" />
 	<link th:href="@{/css/templates/certificat/showAll/showAll.css}" rel="stylesheet" />
  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -31,8 +31,6 @@
               <form method="post" enctype="application/x-www-form-urlencoded" th:object="${certificatDTO}">
                 <div class="item">
 
-
-
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Date De Delivrance <span>*</span></label>
                     <div class="col-sm-8">
@@ -40,24 +38,25 @@
                       <input type="text" class="form-control" th:field="*{dateDelivrance}" />
                     </div>
                   </div>
-                </div>
+                
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Date D'expiration <span>*</span></label>
                     <div class="col-sm-8">
                       <input type="text" class="form-control" th:field="*{dateExpiration}" />
                     </div>
                   </div>
-                </div>
-                <div class="row mb-3">
+                
+               <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Contenu <span>*</span></label>
                     <div  class="col-sm-12">
-                      <textarea id="content" class="form-control" th:field="*{contenu}"></textarea>
+                      <input type="text"  class="form-control" th:field="*{contenu}" />
                     </div>
                   </div>
-                </div>
+                
                 <div class="btn-submit">
                   <button type="submit" class="button-3" role="button">Sauvegarder</button>
                 </div>
+                </div> 
               </form>
             </div>
           </div>

@@ -35,7 +35,7 @@ public class OrdonnanceController {
     public String showOrdonnanceList(Model model) {
         List<Ordonnance> ordonnances = ordonnanceService.getAllOrdonnances();
         model.addAttribute("ordonnances", ordonnances);
-        return "ordonnance/showAll";
+        return "packdoctor/ordonnance/showAll";
     }
 
     // show the html page to create the ordonnance
@@ -49,7 +49,7 @@ public class OrdonnanceController {
         model.addAttribute("ordonnanceDTO", ordonnanceDTO);
         model.addAttribute("patient", patient);
         model.addAttribute("consultation", consultation);
-        return "ordonnance/create";
+        return "packdoctor/ordonnance/create";
     }
 
     // save the data of the created ordonnance in the database
@@ -59,7 +59,7 @@ public class OrdonnanceController {
             @PathVariable(name = "id") Long idConsult,
             BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "ordonnance/create";
+            return "packdoctor/ordonnance/create";
         }
         ordonnanceDTO.setIdconsultation(idConsult);
 

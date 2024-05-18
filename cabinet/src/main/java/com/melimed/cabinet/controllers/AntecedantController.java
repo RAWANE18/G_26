@@ -102,5 +102,82 @@ public String updateAntecedant(@PathVariable(name = "id") Long id, @Valid @Model
         antecedantService.deleteAntecedant(id);
         return "redirect:/antecedant/showall";
     }
+
+
+    //meme chose mais pour secretaire 
+
+    @GetMapping("/showalls")
+    public String showAntecedantLists(Model model) {
+        List<Antecedant> antecedants = antecedantService.getAllAntecedants();
+        model.addAttribute("antecedants", antecedants);
+        return "packsecretaire/antecedant/showAll";
+    }
+   //show un antecedant with the id of the patient
+    @GetMapping("/showones{id}")
+    public String showAntecedants(Model model, @PathVariable(name = "id") Long id) {
+        Antecedant antecedants = antecedantService.getByIdPatient(id);
+        model.addAttribute("antecedants", antecedants);
+        return "packsecretaire/antecedant/showAll";
+ }
+
+    @GetMapping("/creates{id}")
+    public String showCreatePages(Model model,@PathVariable(name = "id") Long id) {
+        AntecedantDTO antecedantDTO = new AntecedantDTO();
+        Patient patient = patientService.getPatientById(id);
+        
+        model.addAttribute("antecedantDTO", antecedantDTO);
+        model.addAttribute("patient", patient);
+        return "packsecretaire/antecedant/create";
+    }
+
+    @PostMapping("/creates{id}")
+    public String createAntecedants(@Valid @ModelAttribute("antecedantDTO") AntecedantDTO antecedantDTO, @PathVariable(name = "id") Long id ,BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "packsecretaire/antecedant/create";
+        }
+        antecedantDTO.setPatientId(id);
+        antecedantService.createAntecedant(antecedantDTO);
+        return "redirect:/patient/showalls";
+    }
+
+//editing:
+
+@GetMapping("/updates{id}")
+public String showUpdatePages(@PathVariable(name = "id") Long id, Model model) {
+    Antecedant antecedant = antecedantService.getByIdPatient(id);
+    AntecedantDTO antecedantDTO = new AntecedantDTO();
+    antecedantDTO.setAntecedantMedicaux(antecedant.getAntecedantMedicaux());
+    antecedantDTO.setAntecedantChirurgicaux(antecedant.getAntecedantChirurgicaux());
+    antecedantDTO.setAllergies(antecedant.getAllergies());
+    antecedantDTO.setObservation(antecedant.getObservation());
+    
+    model.addAttribute("antecedantDTO", antecedantDTO);
+    model.addAttribute("antecedantId", id);
+    
+    return "packsecretaire/antecedant/update";
+}
+
+@PostMapping("/updates{id}")
+public String updateAntecedants(@PathVariable(name = "id") Long id, @Valid @ModelAttribute("antecedantDTO") AntecedantDTO antecedantDTO, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        return "packsecretaire/antecedant/update";
+    }
+    
+    Antecedant updatedAntecedant = antecedantService.updateAntecedant(id, antecedantDTO);
+    if (updatedAntecedant != null) {
+        return "redirect:/antecedant/showalls";
+    } else {
+        // Handle the case where the Antecedant with the given id is not found
+        return "redirect:/fiche/showalls";
+    }
+}
+
+
+
+    @GetMapping("/deletes/{id}")
+    public String deleteAntecedants(@PathVariable(name = "id") Long id) {
+        antecedantService.deleteAntecedant(id);
+        return "redirect:/antecedant/showalls";
+    }
 }
 
