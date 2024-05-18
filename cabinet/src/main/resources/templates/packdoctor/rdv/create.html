@@ -88,15 +88,33 @@
           <ion-icon name="menu-outline"></ion-icon>
         </div>
       </div>
-      <form th:object="${rdvdto}" method="post"  enctype="application/x-www-form-urlencoded">
-        <!-- Form fields for appointment details -->
-       
-       <!--field to chose time -->
-        <select th:field="*{date}">
-          <option th:each="time : ${allowedTimes}" th:value="${time}" th:text="${#dates.format(time.time, 'HH:mm')}"></option>
-      </select>
-        <button type="submit">Sauvegarder</button>
+      <form th:action="@{/rdv/create/{id}(id=${patient.idPatient})}" th:object="${rdvdto}" method="post">
+        <div>
+            <label for="date">Date:</label>
+            <select id="date" th:field="*{date}">
+                <option th:each="time : ${oktime}" th:value="${time.time}" th:text="${#dates.format(time.time, 'dd/MM/yyyy HH:mm')}"></option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="datePriseRdv">Date de prise de rendez-vous:</label>
+            <input type="datetime-local" id="datePriseRdv" th:field="*{datePriseRdv}" required>
+        </div>
+        
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" rows="3" required></textarea>
+        </div>
+        
+        <div>
+            <input type="hidden" th:field="*{patientId}" th:value="${patient.idPatient}">
+        </div>
+        
+        <button type="submit">Create</button>
     </form>
+    
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+</body>
 
     <script
       type="module"

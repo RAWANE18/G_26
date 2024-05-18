@@ -20,7 +20,7 @@ import com.melimed.cabinet.dtos.RDVDTO;
 @Controller
 @RequestMapping("rdv")
 public class RDVController {
-    @Autowired
+ /*    @Autowired
     private RdvService rdvService;
     @Autowired
     private PatientService patientService;
@@ -50,11 +50,14 @@ public class RDVController {
       Patient patient =patientService.getPatientById(id);
 
       List<Calendar> oktime = rdvService.getAllowedAppointmentTimes();
+      
     
-      model.addAttribute("oktime", oktime);
-      model.addAttribute("patient", patient);
-      model.addAttribute("rdvdto", rdvdto);
-      return ("rdv/create");
+    model.addAttribute("oktime", oktime);
+    model.addAttribute("patient", patient);
+    model.addAttribute("rdvdto", rdvdto);
+    
+    
+      return ("packdoctor/rdv/create");
     }
 
      @PostMapping("/create/{id}")
@@ -67,15 +70,18 @@ public String createRDV(
     }
     rdvDTO.setPatientId(idpatient);
 
+   
+    
     try {
         rdvService.createRDV(rdvDTO);
-        return "redirect:/patient/showall"; // Redirect to patient list if  is success
+        return "redirect:/patient/showall"; // Redirect to patient list if successful
     } catch (Exception e) {
         model.addAttribute("error", e.getMessage()); // Add the error message to the model
         List<RDV> rdv = rdvService.getAllRdvs(); // Get all RDVs to display
         model.addAttribute("rdv", rdv);
-        return "rdv/showAll"; // Show list of RDV the error message
+        return "rdv/showAll"; // Show list of RDV with the error message
     }
-}
+
+}*/
 
 }

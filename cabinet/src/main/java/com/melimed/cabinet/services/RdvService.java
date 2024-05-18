@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RdvService {
-    private RdvRepository repo;
+ /*    private RdvRepository repo;
     private PatientRepository patientrepo;
     @Autowired
     public void setRepo(RdvRepository repo, PatientRepository patientrepo) {
@@ -68,12 +68,58 @@ public List<Calendar> getAllowedAppointmentTimes() {
   return allowedTimes;
 }
 
+// Add method to convert date and time to Calendar object
+public Calendar convertToCalendar(String date, String time) {
+  Calendar appointmentDateTime = Calendar.getInstance();
+  String[] dateParts = date.split("-");
+  int year = Integer.parseInt(dateParts[0]);
+  int month = Integer.parseInt(dateParts[1]) - 1; // Month is 0-based in Calendar
+  int day = Integer.parseInt(dateParts[2]);
+  String[] timeParts = time.split(":");
+  int hour = Integer.parseInt(timeParts[0]);
+  int minute = Integer.parseInt(timeParts[1]);
+  
+  appointmentDateTime.set(year, month, day, hour, minute, 0);
+  appointmentDateTime.set(Calendar.SECOND, 0);
+  appointmentDateTime.set(Calendar.MILLISECOND, 0);
+  
+  return appointmentDateTime;
+}
+
+// Update createRDV method to use date and time from RDVDTO
+public RDV createRDV(RDVDTO appointmentDTO) throws Exception {
+  RDV appointment = new RDV();
+ // Calendar appointmentDateTime = convertToCalendar(appointmentDTO.getDate(), appointmentDTO.getTime());
+ // appointment.setDate(appointmentDateTime);
+  appointment.setDatePriseRdv(appointmentDTO.getDatePriseRdv());
+  appointment.setDescription(appointmentDTO.getDescription());
+  appointment.setPatient(patientrepo.findByIdPatient(appointmentDTO.getPatientId()));
+
+  String err= "La date choisi est: ";  
+   String check=err;
+  // Check appointment validity and availability
+  if (!isAppointmentValid(appointment.getDate())) {
+      err=err+" Appointment date is outside working hours.";
+  }
+  if (!isRDVFree(appointment.getDate())) {
+      err=err+" Appointment date is already taken.";
+  }
+  if (!isOneHourAway(appointment.getDate())) {
+      err=err+" Appointment must be at least one hour after the current time.";
+  }
+  if (err.equals(check)){ 
+    return repo.save(appointment);
+     }
+     throw new Exception(err);
+ 
+}
+
 
 
 
 
 //creation du Rendez-vous
-public RDV createRDV (RDVDTO appointmentDTO)throws Exception {
+/*public RDV createRDV (RDVDTO appointmentDTO)throws Exception {
    RDV appointment=new RDV();
    appointment.setDate(appointmentDTO.getDate());
    appointment.setDatePriseRdv(appointmentDTO.getDatePriseRdv());
@@ -96,8 +142,8 @@ public RDV createRDV (RDVDTO appointmentDTO)throws Exception {
     }
     throw new Exception(err);
 
-}
-    //show all RDV
+}*/
+ /*    //show all RDV
     public List<RDV> getAllRdvs() {
       return repo.findAll();
   }
@@ -113,5 +159,5 @@ public List<RDV> getAllRdvByPatient(Patient patient){
   public void deleteRdv(Long id) {
     repo.deleteById(id);
 }
-
+*/
 }
