@@ -33,15 +33,22 @@ public class AntecedantController {
     public String showAntecedantList(Model model) {
         List<Antecedant> antecedants = antecedantService.getAllAntecedants();
         model.addAttribute("antecedants", antecedants);
-        return "antecedant/showAll";
+        return "packdoctor/antecedant/showAll";
     }
    //show un antecedant with the id of the patient
     @GetMapping("/showone{id}")
     public String showAntecedant(Model model, @PathVariable(name = "id") Long id) {
         Antecedant antecedants = antecedantService.getByIdPatient(id);
         model.addAttribute("antecedants", antecedants);
-        return "antecedant/showAll";
+        return "packdoctor/antecedant/showAll";
  }
+  //show un antecedant with the id of the patient
+  @GetMapping("/showonep{id}")
+  public String showAntecedantp(Model model, @PathVariable(name = "id") Long id) {
+      Antecedant antecedants = antecedantService.getByIdPatient(id);
+      model.addAttribute("antecedants", antecedants);
+      return "packpatient/antecedant/showAll";
+}
 
     @GetMapping("/create{id}")
     public String showCreatePage(Model model,@PathVariable(name = "id") Long id) {
@@ -50,7 +57,7 @@ public class AntecedantController {
         
         model.addAttribute("antecedantDTO", antecedantDTO);
         model.addAttribute("patient", patient);
-        return "antecedant/create";
+        return "packdoctor/antecedant/create";
     }
 
     @PostMapping("/create{id}")
@@ -77,13 +84,13 @@ public String showUpdatePage(@PathVariable(name = "id") Long id, Model model) {
     model.addAttribute("antecedantDTO", antecedantDTO);
     model.addAttribute("antecedantId", id);
     
-    return "antecedant/update";
+    return "packdoctor/antecedant/update";
 }
 
 @PostMapping("/update/{id}")
 public String updateAntecedant(@PathVariable(name = "id") Long id, @Valid @ModelAttribute("antecedantDTO") AntecedantDTO antecedantDTO, BindingResult result, Model model) {
     if (result.hasErrors()) {
-        return "antecedant/update";
+        return "packdoctor/antecedant/update";
     }
     
     Antecedant updatedAntecedant = antecedantService.updateAntecedant(id, antecedantDTO);

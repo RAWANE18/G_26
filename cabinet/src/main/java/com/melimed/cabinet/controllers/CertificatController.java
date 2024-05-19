@@ -38,6 +38,13 @@ public class CertificatController {
          model.addAttribute("certificats", certificats);
          return "packdoctor/certificat/showAll";
      }
+      // tableau de toutes les certificats d'un patient
+      @GetMapping("/showallp{id}")
+      public String showOrdonnanceListp(Model model, @PathVariable(name = "id") Long id) {
+          List<Certificat> certificats = certificatService.getAllCertificatsByPatient(patientService.getPatientById(id));
+          model.addAttribute("certificats", certificats);
+          return "packpatient/certificat/showAll";
+      }
 
    //show the html page to create the certif
   @GetMapping("/create{id}")

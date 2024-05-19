@@ -37,6 +37,14 @@ public class OrdonnanceController {
         model.addAttribute("ordonnances", ordonnances);
         return "packdoctor/ordonnance/showAll";
     }
+    //pour le patient
+     // tableau de toutes les ordonnances
+     @GetMapping("/showallp{id}")
+     public String showOrdonnanceListp(Model model, @PathVariable(name = "id") Long id) {
+         List<Ordonnance> ordonnances = ordonnanceService.getAllOrdonnancesByPatient(patientService.getPatientById(id));
+         model.addAttribute("ordonnances", ordonnances);
+         return "packpatient/ordonnance/showAll";
+     }
 
     // show the html page to create the ordonnance
     @GetMapping("/create{id}")
@@ -77,4 +85,6 @@ public class OrdonnanceController {
         return "redirect:/ordonnance/showall";
     }
 
+
+   
 }

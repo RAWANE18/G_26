@@ -80,35 +80,50 @@
             <h1 id="title">Liste des Rendez-Vous</h1>
             <div class="section2">
     <a class="btn-create" href="/rdv/creates"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
-        <table class="table">
-            
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody> <!--   smth: singular , element: plural-->
-                <tr th:each="smth : ${element}">
-                    <td th:text="${smth.attributr}"></td>
-                    <td th:text="${smth.attributr}"></td>
-    <!--attribute<td th:text="${smth.attributr}"></td>
-                    <td th:text="${smth.attributr}"></td>-->
-    <!--add strng--><td th:text="@{${smth.attributr}+'string'}"></td>
-    <!--date-->     <td th:text="${smth.attributr.toString().substring(0,10)}"></td>
-                    <td class="nameof classe">
-    <!--btn update--> <a class="btn-update" th:href="@{/element/edit(id=${smth.id})}"><i
-                    class="fa-solid fa-pen-to-square"
-                    style="color: #00816d"
-                  ></i> </a>    
-    <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/deletes(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
-                  > </a>
-                    </td>
-                </tr>
-            </tbody>   
+        
+           
+                <div class="main">
+                  <div class="topbar">
+                    <div class="toggle">
+                      <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <div class="center">
+                      <h1 id="title">Liste des Rendez-Vous</h1>
+                      <div class="section2">
+              <a class="btn-create" href="/rdv/create"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
+                  <table class="table">
+                      
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Date de prise</th>
+                          <th scope="col">Patient</th>
+                          <th scope="col">Date du Rendez-vous</th> 
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody> <!--   smth: singular , element: plural-->
+                          <tr th:each="rdv : ${rdv}">
+                              <td th:text="${rdv.idRdv}"></td>
+                              <td th:text="${rdv.date.toString().substring(0,10)}"></td>
+                              <td th:text="${rdv.patient.lastname}+${rdv.patient.firstname}"></td>
+              <!--date-->     <td th:text="${rdv.datePriseRdv.toString().substring(0,10)}"></td>
+                              <td class="nameof classe">
+              <!--btn update--> <a class="btn-update" th:href="@{/rdv/update(id=${rdv.idRdv})}"><i
+                              class="fa-solid fa-pen-to-square"
+                              style="color: #00816d"
+                            ></i> </a>    
+              <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/delete(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
+                            > </a>
+                              </td>
+                          </tr>
+                      </tbody>   
+                  </table>
+                      </div>
+                  </div>
+                </div>
+      
             <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"

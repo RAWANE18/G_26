@@ -44,7 +44,9 @@ public CertificatDTO createCertificatDTO() {
     CertificatDTO certificatDTO= new CertificatDTO();
     return certificatDTO;
 }
-
+public List<Certificat> getAllCertificatsByPatient(Patient patient){
+   return repo.findByPatient(patient);
+}
 // Fetch all patient IDs
 public List<Long> getAllPatientIds() {
     return patientrepo.findAll().stream()

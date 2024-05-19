@@ -211,7 +211,3 @@ body {
   font-weight: 400;
   letter-spacing: 2px;
 }
-.btn-create:hover {
-  text-decoration: none;
-  color: var(--white);
-}

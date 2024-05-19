@@ -29,7 +29,10 @@ public class OrdonnanceService {
     public List<Ordonnance> getAllOrdonnances() {
         return repo.findAll();
     }
-
+    //toute les ordos d'un patient
+    public List<Ordonnance> getAllOrdonnancesByPatient(Patient patient){
+        return repo.findAllByPatient(patient);
+    }
     // create une ordonnance
     public Ordonnance createOrdonnance(OrdonnanceDTO ordonnanceDto) {
         Ordonnance ordonnance = new Ordonnance();

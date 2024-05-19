@@ -45,6 +45,13 @@ public class FichepatientController {
          model.addAttribute("fichePatientDTO", fichePatientDTO);
          return "packdoctor/fichePatient/showAll";
      }
+   //show la fiche patient d'un patient 
+   @GetMapping("/showallp{id}")
+   public String showFichepatientp(Model model,  @PathVariable(name = "id") Long id) {
+       FichePatient fichePatientDTO = fichepatientService.getFicheOne(id);
+       model.addAttribute("fichePatientDTO", fichePatientDTO);
+       return "packpatient/fichePatient/showAll";
+   }  
   
 //create une fiche patient
     @GetMapping("/create")
