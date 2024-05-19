@@ -61,17 +61,7 @@ public class ConsultationController {
         return "packdoctor/consultation/show";
     }
 
-    // show the html page to create the ordonnance
-    /*
-     * @GetMapping("/create")
-     * public String showCreatePage(Model model) {
-     * ConsultationDTO consultationDTO = new ConsultationDTO();
-     * List<Long> patientIds = consultationService.getAllPatientIds();
-     * model.addAttribute("consultationDTO", consultationDTO);
-     * model.addAttribute("patientIds", patientIds);
-     * return "consultation/create";
-     * }
-     */
+   
     @GetMapping("/create{id}")
     public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
         ConsultationDTO consultationDTO = new ConsultationDTO();

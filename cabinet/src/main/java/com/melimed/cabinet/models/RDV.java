@@ -14,7 +14,7 @@ public class RDV {
 
     private LocalDate date;
     private LocalTime time;
-	private Date datePriseRdv;
+	private LocalDate datePriseRdv;
 	private String description;
 	
     //Foreign key
@@ -38,9 +38,9 @@ public class RDV {
     public LocalDate getDate() {
         return date;
     }
-    public Date getDatePriseRdv() {
-        return datePriseRdv;
-    }
+public LocalDate getDatePriseRdv() {
+    return datePriseRdv;
+}
     public LocalTime getTime() {
         return time;
     }
@@ -63,9 +63,9 @@ public class RDV {
    public void setDate(LocalDate date) {
        this.date = date;
    }
-   public void setDatePriseRdv(Date datePriseRdv) {
-       this.datePriseRdv = datePriseRdv;
-   }
+  public void setDatePriseRdv(LocalDate datePriseRdv) {
+      this.datePriseRdv = datePriseRdv;
+  }
    public void setTime(LocalTime time) {
        this.time = time;
    }

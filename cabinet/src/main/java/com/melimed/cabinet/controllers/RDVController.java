@@ -1,4 +1,5 @@
 package com.melimed.cabinet.controllers;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -73,13 +74,15 @@ public class RDVController {
 
 
 //only for secretaire
-  /*   @GetMapping("/create{id}")
+     @GetMapping("/create{id}")
     public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
       RDVDTO rdv= new RDVDTO();
       Patient patient =patientService.getPatientById(id);
       Calendar currentDate = Calendar.getInstance();
 
-      List<String> oktime = rdvService.getAvailableTimes(currentDate);
+      List<String> oktime =  Arrays.asList("08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
+      "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
+      "17:00", "17:30");
       
     
     model.addAttribute("oktime", oktime);
@@ -87,15 +90,18 @@ public class RDVController {
     model.addAttribute("rdv", rdv);
     
     
-      return ("packsecretaire/rdv/create");
+      return ("packsecretaire/rdv/create copy");
     }
-*/
+
      @PostMapping("/create{id}")
 public String createRDV(
         @Valid @ModelAttribute("rdvDTO") RDVDTO rdvDTO,
         @PathVariable(name = "id") Long idpatient,
         BindingResult result, Model model) {
-   try {rdvService.createRdv(rdvDTO); 
+   try {rdvDTO.setPatientId(idpatient);
+    rdvService.createRdv(rdvDTO); 
+        
+      System.out.println("\n \n \n \n \n \n done \n \n \n \n \n");
         return "packsecretaire/rdv/showAll";
    } catch (Exception e) { model.addAttribute("error", e.getMessage()); // Add the error message to the model
    List<RDV> rdv = rdvService.getAllRdvs(); // Get all RDVs to display
