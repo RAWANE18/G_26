@@ -18,7 +18,7 @@
       }
 
       body {
-        background-image: url("img/backround.jpeg");
+        background-image: url("/cabinet/src/main/img/backround.jpeg");
         object-fit: cover;
         background-repeat: no-repeat;
         background-size: cover;
@@ -79,7 +79,7 @@
       /*hovers*/
 
       .doctor:hover {
-        background-image: url("img/doctor.jpeg");
+        background-image: url("/cabinet/src/main/img/doctor.jpeg");
         object-fit: cover;
         background-repeat: no-repeat;
         background-size: cover;
@@ -89,7 +89,7 @@
       }
 
       .patient:hover {
-        background-image: url("img/patient.jpeg");
+        background-image: url("/cabinet/src/main/img/patient.jpeg");
         object-fit: cover;
         background-repeat: no-repeat;
         background-size: cover;
@@ -99,7 +99,7 @@
       }
 
       .secretary:hover {
-        background-image: url("img/secretaire.jpeg");
+        background-image: url("/cabinet/src/main/img/secretaire.jpeg");
         object-fit: cover;
         background-repeat: no-repeat;
         background-size: cover;
@@ -111,16 +111,23 @@
   </head>
   <body>
     <div class="container">
-      <div class="box doctor" >
-        <a href="/home/doctor">Doctor</a>
+      <div class="box doctor">
+        <a href="/cabinet/src/main/resources/templates/connection/doctor.html"
+          >Doctor</a
+        >
       </div>
 
       <div class="box patient" onclick="selectRole('patient')">
-        <a href="/home/register">Patient</a>
+        <a href="/cabinet/src/main/resources/templates/connection/register.html"
+          >Patient</a
+        >
       </div>
 
       <div class="box secretary" onclick="selectRole('secretary')">
-        <a href="/home/secretaire">Secretary</a>
+        <a
+          href="/cabinet/src/main/resources/templates/connection/secretaire.html"
+          >Secretary</a
+        >
       </div>
     </div>
 

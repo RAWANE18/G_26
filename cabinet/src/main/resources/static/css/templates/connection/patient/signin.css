@@ -1,5 +1,5 @@
 body {
-  background-image: url("../img/backround.jpeg");
+  background-image: url("/cabinet/src/main/img/backround.jpeg");
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;
