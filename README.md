@@ -1,4 +1,4 @@
-# **Gestion d'une Cabinet Médical**
+# **Gestion d'un Cabinet Médical**
 ## *Aperçu*
 
 Dans le cadre d'un projet de programmation orientée objet (POO), nous avons développé une application Java nommée "**Gestion d'une Cabinet Médical**". Cette application est construite avec **Spring Boot**, une plateforme populaire pour créer des applications web et microservices en Java. La gestion du projet est effectuée grâce à **Gradle**, un système de build puissant et flexible. L'IDE utilisé pour le développement est **Visual Studio Code (VSCode)**, reconnu pour son ergonomie et ses nombreuses extensions qui facilitent le travail sur différents projets.
