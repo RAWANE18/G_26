@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create Fiche Patient</title>
+
+    <link
+      th:href="@{/css/templates/antecedant/update/update.css}"
+      rel="stylesheet"
+    />
+    <link
+      th:href="@{/css/templates/antecedant/create/create.css}"
+      rel="stylesheet"
+    />
+    <link
+      th:href="@{/css/templates/antecedant/showAll/showAll.css}"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="ctn-form">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto rounded border p-4 m-4">
+            <div class="header">
+              <h2 class="text-center mb-5">Nouvelle fiche patient</h2>
+            </div>
+            <form
+              method="post"
+              enctype="application/x-www-form-urlencoded"
+              th:object="${fichePatientDTO}"
+            >
+              <div class="item">
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Date de Creation  <span>*</span></label>
+                  <div class="col-sm-12">
+                     <input type="text" class="form-control" th:field="*{dateCreation}" />
+                    
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"
+                    >Groupe sanguin <span>*</span></label
+                  >
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" th:field="*{groupesanguin}" />
+ 
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label" >Etat civil: <span>*</span></label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" th:field="*{etatCivil}" />
+                    
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label">Numero Securite sociale <span>*</span></label
+                  >
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" th:field="*{securiteSociale}" />
+                   
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label">Profession: <span>*</span></label
+                  >
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" th:field="*{profession}" />
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="btn-submit">
+                <button type="submit" class="button-3" role="button">
+                  Sauvegarder
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add your script links here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

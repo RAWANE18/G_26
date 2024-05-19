@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Role Selector</title>
+    <style>
+      .container {
+        text-align: center; /* Center align the content */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        text-align: center; /* Center align the content */
+        height: 110vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      body {
+        background-image: url("/cabinet/src/main/img/backround.jpeg");
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        margin: 0;
+        backdrop-filter: blur(4px);
+      }
+      /* Styling for the boxes */
+      .box {
+        width: 300px;
+        height: 400px;
+        display: inline-block;
+        margin: 52px;
+      }
+      .box a {
+        text-align: center;
+        line-height: 400px;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      /* Different colors for different roles */
+      .doctor {
+        /*background-image: url("doctor.jpeg");*/
+        background-color: #095d7e;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-style: groove;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      .patient {
+        background-color: #095d7e;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-style: groove;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      .secretary {
+        background-color: #095d7e;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-style: groove;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      /*hovers*/
+
+      .doctor:hover {
+        background-image: url("/cabinet/src/main/img/doctor.jpeg");
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-style: groove;
+        cursor: pointer;
+      }
+
+      .patient:hover {
+        background-image: url("/cabinet/src/main/img/patient.jpeg");
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-style: groove;
+        cursor: pointer;
+      }
+
+      .secretary:hover {
+        background-image: url("/cabinet/src/main/img/secretaire.jpeg");
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-style: groove;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box doctor">
+        <a href="/cabinet/src/main/resources/templates/connection/doctor.html"
+          >Doctor</a
+        >
+      </div>
+
+      <div class="box patient" onclick="selectRole('patient')">
+        <a href="/cabinet/src/main/resources/templates/connection/register.html"
+          >Patient</a
+        >
+      </div>
+
+      <div class="box secretary" onclick="selectRole('secretary')">
+        <a
+          href="/cabinet/src/main/resources/templates/connection/secretaire.html"
+          >Secretary</a
+        >
+      </div>
+    </div>
+
+    <script>
+      function selectRole(role) {
+        alert("You selected: " + role);
+      }
+    </script>
+  </body>
+</html>

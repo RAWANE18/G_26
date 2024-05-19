@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>updateAntecedant</title>
+
+    <link th:href="@{/css/templates/antecedant/update/update.css}" rel="stylesheet" />
+    <link th:href="@{/css/templates/antecedant/create/create.css}" rel="stylesheet" />
+    <link th:href="@{/css/templates/antecedant/showAll/showAll.css}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="ctn-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto rounded border p-4 m-4">
+                    <div class="header">
+                        <h2 class="text-center mb-5">Modifier Antécédant</h2>
+                    </div>
+                    <form method="post" enctype="application/x-www-form-urlencoded" th:object="${antecedantDTO}">
+                        <div class="item">
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label">Antécédants Médicaux <span>*</span></label>
+                                <div class="col-sm-12">
+                                    <textarea id="antecedantMedicaux" class="form-control" th:field="*{antecedantMedicaux}"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label">Antécédants Chirurgicaux <span>*</span></label>
+                                <div class="col-sm-12">
+                                    <textarea id="antecedantChirurgicaux" class="form-control" th:field="*{antecedantChirurgicaux}"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label">Allergies <span>*</span></label>
+                                <div class="col-sm-12">
+                                    <textarea id="allergies" class="form-control" th:field="*{allergies}"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label">Observations du medecin: <span>*</span></label>
+                                <div class="col-sm-12">
+                                    <textarea id="observation" class="form-control" th:field="*{observation}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-submit">
+                            <button type="submit" class="button-3" role="button">Mettre à jour</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your script links here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
