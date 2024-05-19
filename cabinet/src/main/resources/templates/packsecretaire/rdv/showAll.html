@@ -84,9 +84,10 @@
                       <thead>
                         <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Date de prise</th>
+                          <th scope="col">Date rendez vous</th>
+                          <th scope="col">Heure</th>
                           <th scope="col">Patient</th>
-                          <th scope="col">Date du Rendez-vous</th> 
+                          <th scope="col">Date de Prise RDV</th> 
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -94,7 +95,7 @@
                           <tr th:each="rdv : ${rdv}">
                               <td th:text="${rdv.idRdv}"></td>
                               <td th:text="${rdv.date.toString().substring(0,10)}"></td>
-                              <td th:text="${rdv.time.toString().substring(0,10)}"></td>
+                              <td th:text="${rdv.time}"></td>
                               <td th:text="${rdv.patient.lastname}+${rdv.patient.firstname}"></td>
               <!--date-->     <td th:text="${rdv.datePriseRdv.toString().substring(0,10)}"></td>
                               <td class="nameof classe">
@@ -104,7 +105,7 @@
                             ></i> </a>    
               <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/delete(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
                             > </a>
-                            <a class="btn-create" th:href="@{/rdv/creates(id=${rdv.patient.idPatient})}"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
+                            <a class="btn-update" th:href="@{/rdv/creates(id=${rdv.patient.idPatient})}"><i class="fa-solid fa-add"></i></a>
         
                               </td>
                           </tr>

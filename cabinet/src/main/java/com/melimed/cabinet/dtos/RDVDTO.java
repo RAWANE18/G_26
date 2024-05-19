@@ -5,11 +5,13 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class RDVDTO {
     private Long idRdv;
     private LocalDate date;
     private LocalTime time;
-    private Date datePriseRdv;
+    private LocalDate datePriseRdv;
     private String description;
     private Long patientId;
 
@@ -34,9 +36,9 @@ public class RDVDTO {
     public LocalDate getDate() {
         return date;
     }
-    public Date getDatePriseRdv() {
-        return datePriseRdv;
-    }
+ public LocalDate getDatePriseRdv() {
+     return datePriseRdv;
+ }
     public LocalTime getTime() {
         return time;
     }
@@ -46,7 +48,7 @@ public class RDVDTO {
     public void setTime(LocalTime time) {
         this.time = time;
     }
-    public void setDatePriseRdv(Date datePriseRdv) {
+    public void setDatePriseRdv(LocalDate datePriseRdv) {
         this.datePriseRdv = datePriseRdv;
     }
     public String getDescription() {

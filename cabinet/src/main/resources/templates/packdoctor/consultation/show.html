@@ -97,7 +97,7 @@
           
              <div class="section2">
               <h2>ordonnances:</h2>
-              <a  th:consult_id="${idConsultation}" class="button-3"  th:onclick="window.location.href=`/ordonnance/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i>Ajouter une ordonnance</i></a>
+              <a  th:consult_id="${consultation.idConsultation}" class="button-3"  th:onclick="window.location.href=`/ordonnance/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i>Ajouter une ordonnance</i></a>
                      
               <table class="table">
                
@@ -134,7 +134,7 @@
                <br>
                 <table class="table">
                   <h2>Certificats:</h2>
-                  <a   th:consult_id="${idConsultation}" class="button-3"  th:onclick="window.location.href=`/certificat/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i>Ajouter un Certificat</i></a>
+                  <a   th:consult_id="${consultation.idConsultation}" class="button-3"  th:onclick="window.location.href=`/certificat/create/${this.getAttribute('consult_id')}`" ><i class="fa-solid fa-add"></i>Ajouter un Certificat</i></a>
                    
                   <thead>
                       <tr>

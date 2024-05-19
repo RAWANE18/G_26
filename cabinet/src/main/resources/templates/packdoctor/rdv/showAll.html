@@ -90,35 +90,38 @@
         <div class="center">
             <h1 id="title">Liste des Rendez-Vous</h1>
             <div class="section2">
-         <table class="table">
-            
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Date de prise</th>
-                <th scope="col">Patient</th>
-                <th scope="col">Date du Rendez-vous</th> 
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr th:each="rdv : ${rdv}">
-                    <td th:text="${rdv.idRdv}"></td>
-                    <td th:text="${rdv.date.toString().substring(0,10)}"></td>
-                    <td th:text="${rdv.time.toString().substring(0,10)}"></td>
-                    <td th:text="${rdv.patient.lastname}+${rdv.patient.firstname}"></td>
-    <!--date-->     <td th:text="${rdv.datePriseRdv.toString().substring(0,10)}"></td>
-                    <td class="nameof classe">
-    <!--btn update--> <a class="btn-update" th:href="@{/rdv/update(id=${rdv.idRdv})}"><i
-                    class="fa-solid fa-pen-to-square"
-                    style="color: #00816d"
-                  ></i> </a>    
-    <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/delete(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
-                  > </a>
-                    </td>
-                </tr>
-            </tbody>    
-        </table>
+              <table class="table">
+                      
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date rendez vous</th>
+                    <th scope="col">Heure</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Date de Prise RDV</th> 
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody> <!--   smth: singular , element: plural-->
+                    <tr th:each="rdv : ${rdv}">
+                        <td th:text="${rdv.idRdv}"></td>
+                        <td th:text="${rdv.date.toString().substring(0,10)}"></td>
+                        <td th:text="${rdv.time}"></td>
+                        <td th:text="${rdv.patient.lastname}+${rdv.patient.firstname}"></td>
+        <!--date-->     <td th:text="${rdv.datePriseRdv.toString().substring(0,10)}"></td>
+                        <td class="nameof classe">
+        <!--btn update--> <a class="btn-update" th:href="@{/rdv/update(id=${rdv.idRdv})}"><i
+                        class="fa-solid fa-pen-to-square"
+                        style="color: #00816d"
+                      ></i> </a>    
+        <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/delete(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
+                      > </a>
+                      <a class="btn-update" th:href="@{/rdv/creates(id=${rdv.patient.idPatient})}"><i class="fa-solid fa-add"></i></a>
+  
+                        </td>
+                    </tr>
+                </tbody>   
+            </table>
             </div>
         </div>
       </div>
