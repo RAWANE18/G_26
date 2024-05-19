@@ -20,7 +20,7 @@ import com.melimed.cabinet.dtos.RDVDTO;
 @Controller
 @RequestMapping("rdv")
 public class RDVController {
- /*    @Autowired
+    @Autowired
     private RdvService rdvService;
     @Autowired
     private PatientService patientService;
@@ -33,6 +33,15 @@ public class RDVController {
         model.addAttribute("rdv", rdv);
         return "packdoctor/rdv/showAll";
     }
+    @GetMapping("/delete{id}")
+    public String deleteCertificat(
+            @PathVariable(name = "id") Long id) {
+
+       rdvService.deleteRdv(id);
+
+        return "redirect:/consultation/showall";
+    }
+
     //pour secretaire
      @GetMapping("/showalls")
     public String showRDVLists(Model model) {
@@ -60,7 +69,7 @@ public class RDVController {
      return "packpatient/rdv/showAll";
  }
 
-
+/* 
 //only for secretaire
     @GetMapping("/create{id}")
     public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RdvService {
- /*    private RdvRepository repo;
+     private RdvRepository repo;
     private PatientRepository patientrepo;
     @Autowired
     public void setRepo(RdvRepository repo, PatientRepository patientrepo) {
@@ -25,7 +25,7 @@ public class RdvService {
         this.patientrepo=patientrepo;
     }
   
-
+/* 
      // Check if the appointment date is from Saturday to Thursday, between 8am and 6pm
     public boolean isAppointmentValid(Calendar date) {
      
@@ -45,28 +45,39 @@ public class RdvService {
     return appointments.isEmpty();
 }
 //time needs to be only the allowed times
-public List<Calendar> getAllowedAppointmentTimes() {
-  List<Calendar> allowedTimes = new ArrayList<>();
-  
-  String[] allowedHours = {"8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                           "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"};
-  
-  for (String hourString : allowedHours) {
-      String[] parts = hourString.split(":");
-      int hour = Integer.parseInt(parts[0]);
-      int minute = Integer.parseInt(parts[1]);
-      
-      Calendar appointmentTime = Calendar.getInstance();
-      appointmentTime.set(Calendar.HOUR_OF_DAY, hour);
-      appointmentTime.set(Calendar.MINUTE, minute);
-      appointmentTime.set(Calendar.SECOND, 0);
-      appointmentTime.set(Calendar.MILLISECOND, 0);
-      
-      allowedTimes.add(appointmentTime);
-  }
-  
-  return allowedTimes;
-}
+
+    private static final String[] AVAILABLE_HOURS = {"8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"};
+
+    public List<Calendar> getAvailableDates() {
+        List<Calendar> availableDates = new ArrayList<>();
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.add(Calendar.HOUR, 1); // Set the minimum date to be at least 1 hour from now
+
+        while (availableDates.size() < 7) { // Fetch available dates for the next 7 days
+            if (isDateAvailable(currentDate)) {
+                availableDates.add((Calendar) currentDate.clone());
+            }
+            currentDate.add(Calendar.DAY_OF_YEAR, 1);
+        }
+
+        return availableDates;
+    }
+
+    public boolean  timeisinList(Calendar date)
+{// Check if the time is in the available hours list
+        int hour = date.get(Calendar.HOUR_OF_DAY);
+        int minute = date.get(Calendar.MINUTE);
+        String dateTimeString = String.format("%02d:%02d", hour, minute);
+        boolean isAvailableHour = false;
+        for (String availableHour : AVAILABLE_HOURS) {
+            if (availableHour.equals(dateTimeString)) {
+                isAvailableHour = true;
+                break;
+            }
+        }
+        if (!isAvailableHour) {
+            return false;
+        }
 
 // Add method to convert date and time to Calendar object
 public Calendar convertToCalendar(String date, String time) {
@@ -143,7 +154,7 @@ public RDV createRDV(RDVDTO appointmentDTO) throws Exception {
     throw new Exception(err);
 
 }*/
- /*    //show all RDV
+    //show all RDV
     public List<RDV> getAllRdvs() {
       return repo.findAll();
   }
@@ -159,5 +170,5 @@ public List<RDV> getAllRdvByPatient(Patient patient){
   public void deleteRdv(Long id) {
     repo.deleteById(id);
 }
-*/
+
 }
