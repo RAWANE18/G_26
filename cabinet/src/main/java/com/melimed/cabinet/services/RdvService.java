@@ -1,6 +1,9 @@
 package com.melimed.cabinet.services;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -24,8 +27,44 @@ public class RdvService {
         this.repo = repo;
         this.patientrepo=patientrepo;
     }
+    public RDV createRdv( RDVDTO rdvdto) {
+      RDV rdv= new RDV();
+      rdv.setDate(rdvdto.getDate());
+      rdv.setDatePriseRdv(rdvdto.getDatePriseRdv());
+      rdv.setTime(rdvdto.getTime());
+      Patient patient = new Patient(); 
+      patient = patientrepo.findById(rdvdto.getPatientId()).orElse(null);
+      rdv.setPatient(patient);
+      // Validate date and time
+      if (!isValidDateAndTime(rdv.getDate(), rdv.getTime())) {
+          throw new IllegalArgumentException("La date choisi est invalide");
+      }
+
+     
+
+      return repo.save(rdv); // Assuming you have a method to save entities
+  }
+
+  private boolean isValidDateAndTime(LocalDate date, LocalTime time) {
+      // Check if the date is between Saturday and Thursday
+      if (date.getDayOfWeek().getValue() < 6 && date.getDayOfWeek().getValue() > 0) {
+          // Check if the time is within the allowed range
+          List<String> validTimes = Arrays.asList("08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
+                  "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
+                  "17:00", "17:30");
+
+          if (validTimes.contains(time.toString())) {
+              // Additional check for time being at least one hour after the current time if the date is today
+              if (date.equals(LocalDate.now()) && time.isAfter(LocalTime.now().plusHours(1))) {
+                  return true;
+              }
+          }
+      }
+      return false;
+  }
+
   
-/* 
+ /* 
      // Check if the appointment date is from Saturday to Thursday, between 8am and 6pm
     public boolean isAppointmentValid(Calendar date) {
      
@@ -43,7 +82,7 @@ public class RdvService {
   public boolean isRDVFree(Calendar date) {
     List<RDV> appointments = repo.findAllByDate(date);
     return appointments.isEmpty();
-}
+}  
 //time needs to be only the allowed times
 
     private static final String[] AVAILABLE_HOURS = {"8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"};
@@ -61,25 +100,8 @@ public class RdvService {
         }
 
         return availableDates;
-    }
-
-    public boolean  timeisinList(Calendar date)
-{// Check if the time is in the available hours list
-        int hour = date.get(Calendar.HOUR_OF_DAY);
-        int minute = date.get(Calendar.MINUTE);
-        String dateTimeString = String.format("%02d:%02d", hour, minute);
-        boolean isAvailableHour = false;
-        for (String availableHour : AVAILABLE_HOURS) {
-            if (availableHour.equals(dateTimeString)) {
-                isAvailableHour = true;
-                break;
-            }
-        }
-        if (!isAvailableHour) {
-            return false;
-        }
-
-// Add method to convert date and time to Calendar object
+    }*/
+ // Add method to convert date and time to Calendar object
 public Calendar convertToCalendar(String date, String time) {
   Calendar appointmentDateTime = Calendar.getInstance();
   String[] dateParts = date.split("-");
@@ -96,7 +118,7 @@ public Calendar convertToCalendar(String date, String time) {
   
   return appointmentDateTime;
 }
-
+/* 
 // Update createRDV method to use date and time from RDVDTO
 public RDV createRDV(RDVDTO appointmentDTO) throws Exception {
   RDV appointment = new RDV();
@@ -118,6 +140,11 @@ public RDV createRDV(RDVDTO appointmentDTO) throws Exception {
   if (!isOneHourAway(appointment.getDate())) {
       err=err+" Appointment must be at least one hour after the current time.";
   }
+  List<String> availableTimes = getAvailableTimes(appointment.getDate());
+  if (!( availableTimes.contains(new SimpleDateFormat("HH:mm").format(appointment.getDate().getTime()))
+  )){
+    err=err+" Appointment hors des heures autorises";
+  }
   if (err.equals(check)){ 
     return repo.save(appointment);
      }
@@ -125,10 +152,10 @@ public RDV createRDV(RDVDTO appointmentDTO) throws Exception {
  
 }
 
+*/
 
 
-
-
+/*
 //creation du Rendez-vous
 /*public RDV createRDV (RDVDTO appointmentDTO)throws Exception {
    RDV appointment=new RDV();

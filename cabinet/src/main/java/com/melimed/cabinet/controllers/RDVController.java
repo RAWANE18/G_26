@@ -9,11 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.validation.Valid;
 
 import com.melimed.cabinet.models.RDV;
 import com.melimed.cabinet.models.Patient;
 import com.melimed.cabinet.services.RdvService;
+
+import jakarta.validation.Valid;
+
 import com.melimed.cabinet.services.PatientService;
 import com.melimed.cabinet.dtos.RDVDTO;
 
@@ -69,46 +71,38 @@ public class RDVController {
      return "packpatient/rdv/showAll";
  }
 
-/* 
-//only for secretaire
-    @GetMapping("/create{id}")
-    public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
-      RDVDTO rdvdto= new RDVDTO();
-      Patient patient =patientService.getPatientById(id);
 
-      List<Calendar> oktime = rdvService.getAllowedAppointmentTimes();
+//only for secretaire
+  /*   @GetMapping("/create{id}")
+    public String showCreatePage(Model model, @PathVariable(name = "id") Long id) {
+      RDVDTO rdv= new RDVDTO();
+      Patient patient =patientService.getPatientById(id);
+      Calendar currentDate = Calendar.getInstance();
+
+      List<String> oktime = rdvService.getAvailableTimes(currentDate);
       
     
     model.addAttribute("oktime", oktime);
     model.addAttribute("patient", patient);
-    model.addAttribute("rdvdto", rdvdto);
+    model.addAttribute("rdv", rdv);
     
     
       return ("packsecretaire/rdv/create");
     }
-
-     @PostMapping("/create/{id}")
+*/
+     @PostMapping("/create{id}")
 public String createRDV(
         @Valid @ModelAttribute("rdvDTO") RDVDTO rdvDTO,
         @PathVariable(name = "id") Long idpatient,
         BindingResult result, Model model) {
-    if (result.hasErrors()) {
-        return "packsecretaire/rdv/create";
-    }
-    rdvDTO.setPatientId(idpatient);
-
-   
-    
-    try {
-        rdvService.createRDV(rdvDTO);
-        return "redirect:/patient/showalls"; // Redirect to patient list if successful
-    } catch (Exception e) {
-        model.addAttribute("error", e.getMessage()); // Add the error message to the model
-        List<RDV> rdv = rdvService.getAllRdvs(); // Get all RDVs to display
-        model.addAttribute("rdv", rdv);
-        return "packsecretaire/rdv/showAll"; // Show list of RDV with the error message
-    }
-
-}*/
+   try {rdvService.createRdv(rdvDTO); 
+        return "packsecretaire/rdv/showAll";
+   } catch (Exception e) { model.addAttribute("error", e.getMessage()); // Add the error message to the model
+   List<RDV> rdv = rdvService.getAllRdvs(); // Get all RDVs to display
+   model.addAttribute("rdv", rdv);
+   return "packsecretaire/rdv/showAll";
+  
+   } 
+}
 
 }

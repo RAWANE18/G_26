@@ -79,8 +79,7 @@
         <div class="center">
             <h1 id="title">Liste des Rendez-Vous</h1>
             <div class="section2">
-    <a class="btn-create" href="/rdv/creates"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
-            <table class="table">
+        <table class="table">
                       
                       <thead>
                         <tr>
@@ -95,6 +94,7 @@
                           <tr th:each="rdv : ${rdv}">
                               <td th:text="${rdv.idRdv}"></td>
                               <td th:text="${rdv.date.toString().substring(0,10)}"></td>
+                              <td th:text="${rdv.time.toString().substring(0,10)}"></td>
                               <td th:text="${rdv.patient.lastname}+${rdv.patient.firstname}"></td>
               <!--date-->     <td th:text="${rdv.datePriseRdv.toString().substring(0,10)}"></td>
                               <td class="nameof classe">
@@ -104,6 +104,8 @@
                             ></i> </a>    
               <!--btn delete--> <a class="btn-delete" th:href="@{/rdv/delete(id=${rdv.idRdv})}"><i class="fa-solid fa-trash"></i
                             > </a>
+                            <a class="btn-create" th:href="@{/rdv/creates(id=${rdv.patient.idPatient})}"><i class="fa-solid fa-add"></i>Ajouter un rendez-vous</a>
+        
                               </td>
                           </tr>
                       </tbody>   

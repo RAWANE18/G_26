@@ -1,21 +1,24 @@
 package com.melimed.cabinet.dtos;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Date;
 
 public class RDVDTO {
     private Long idRdv;
-    private Calendar date;
-    private Calendar datePriseRdv;
+    private LocalDate date;
+    private LocalTime time;
+    private Date datePriseRdv;
     private String description;
     private Long patientId;
 
     public RDVDTO() {
     }
 
-    public RDVDTO(Long idRdv, Calendar date, Calendar datePriseRdv, String description, Long patientId) {
+    public RDVDTO(Long idRdv, String description, Long patientId) {
         this.idRdv = idRdv;
-        this.date = date;
-        this.datePriseRdv = datePriseRdv;
+       
         this.description = description;
         this.patientId = patientId;
     }
@@ -28,22 +31,24 @@ public class RDVDTO {
         this.idRdv = idRdv;
     }
 
-    public Calendar getDate() {
+    public LocalDate getDate() {
         return date;
     }
-
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
-
-    public Calendar getDatePriseRdv() {
+    public Date getDatePriseRdv() {
         return datePriseRdv;
     }
-
-    public void setDatePriseRdv(Calendar datePriseRdv) {
+    public LocalTime getTime() {
+        return time;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+    public void setDatePriseRdv(Date datePriseRdv) {
         this.datePriseRdv = datePriseRdv;
     }
-
     public String getDescription() {
         return description;
     }

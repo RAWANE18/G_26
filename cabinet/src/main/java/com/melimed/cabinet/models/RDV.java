@@ -1,5 +1,9 @@
 package com.melimed.cabinet.models;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Date;
+
 import jakarta.persistence.*;
 @Entity
 @Table(name="RendezVous")
@@ -8,8 +12,9 @@ public class RDV {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRdv;
 
-    private Calendar date;
-	private Calendar datePriseRdv;
+    private LocalDate date;
+    private LocalTime time;
+	private Date datePriseRdv;
 	private String description;
 	
     //Foreign key
@@ -19,9 +24,9 @@ public class RDV {
 
     //constructeurs
     public RDV(){}
-    public RDV(Long id, Calendar date, String description, Patient patient){
+    public RDV(Long id,String description, Patient patient){
        this.idRdv=id;
-       this.date=date;
+      
        this.description=description;
        this.patient=patient;
     }  
@@ -29,11 +34,15 @@ public class RDV {
     public Long getIdRdv() {
         return idRdv;
     }
-    public Calendar getDate() {
+   
+    public LocalDate getDate() {
         return date;
     }
-    public Calendar getDatePriseRdv() {
+    public Date getDatePriseRdv() {
         return datePriseRdv;
+    }
+    public LocalTime getTime() {
+        return time;
     }
     public String getDescription() {
         return description;
@@ -51,12 +60,15 @@ public class RDV {
     public void setIdRdv(Long idRdv) {
         this.idRdv = idRdv;
     }
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
-    public void setDatePriseRdv(Calendar datePriseRdv) {
-        this.datePriseRdv = datePriseRdv;
-    }
+   public void setDate(LocalDate date) {
+       this.date = date;
+   }
+   public void setDatePriseRdv(Date datePriseRdv) {
+       this.datePriseRdv = datePriseRdv;
+   }
+   public void setTime(LocalTime time) {
+       this.time = time;
+   }
 
     public void setPatient(Patient patient) {
         this.patient = patient;
